@@ -15,8 +15,15 @@ export type AdminSession = {
   expiresAt: string;
 };
 
-function getSessionSecret() {
-  return process.env.AUTH_SESSION_SECRET || "veyra-dev-session-secret";
+function getSessionSecret(): string {
+  const secret = process.env.AUTH_SESSION_SECRET;
+  if (!secret) {
+    throw new Error(
+      "AUTH_SESSION_SECRET environment variable is required. " +
+        "Set it to a random 32+ character string in your .env or Vercel environment variables.",
+    );
+  }
+  return secret;
 }
 
 function encodeBase64Url(value: string) {

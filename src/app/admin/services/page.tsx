@@ -21,24 +21,24 @@ export default async function AdminServicesPage() {
 
   return (
     <SaaSPageShell
-      title={pickAdminText(locale, "Services Catalog", "ÙƒØªØ§Ù„ÙˆØ¬ Ø§Ù„Ø®Ø¯Ù…Ø§Øª")}
+      title={pickAdminText(locale, "Services Catalog", "كتالوج الخدمات")}
       description={pickAdminText(
         locale,
         "Manage finishing and smart-home catalog entities from the source of truth.",
-        "Ø´ÙƒÙ‘Ù„ Ø¹Ø±ÙˆØ¶ Ø§Ù„ØªØ´Ø·ÙŠØ¨ ÙˆØ§Ù„Ù…Ù†Ø§Ø²Ù„ Ø§Ù„Ø°ÙƒÙŠØ© Ù…Ù† Ø¨ÙŠÙ„Ø¯Ø± ÙƒØªØ§Ù„ÙˆØ¬ ÙØ¹Ù„ÙŠ.",
+        "إدارة كتالوج التشطيب والمنازل الذكية من مصدر البيانات الرئيسي.",
       )}
     >
       <div className="flex flex-col gap-6">
         <section className="grid gap-4 md:grid-cols-2 2xl:grid-cols-4">
           <div className="admin-shell-card p-5">
             <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
-              {pickAdminText(locale, "Total items", "Ø¥Ø¬Ù…Ø§Ù„ÙŠ Ø§Ù„Ø¹Ù†Ø§ØµØ±")}
+              {pickAdminText(locale, "Total items", "إجمالي العناصر")}
             </p>
             <strong className="mt-2 block text-3xl font-semibold text-white tabular-nums">{catalogCount}</strong>
           </div>
           <div className="admin-shell-card p-5">
             <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
-              {pickAdminText(locale, "Finishing packages", "Ø¨Ø§Ù‚Ø§Øª Ø§Ù„ØªØ´Ø·ÙŠØ¨")}
+              {pickAdminText(locale, "Finishing packages", "باقات التشطيب")}
             </p>
             <strong className="mt-2 block text-3xl font-semibold text-white tabular-nums">
               {catalog.finishingPackages.length}
@@ -46,7 +46,7 @@ export default async function AdminServicesPage() {
           </div>
           <div className="admin-shell-card p-5">
             <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
-              {pickAdminText(locale, "Smart devices", "Ø§Ù„Ø£Ø¬Ù‡Ø²Ø© Ø§Ù„Ø°ÙƒÙŠØ©")}
+              {pickAdminText(locale, "Smart devices", "الأجهزة الذكية")}
             </p>
             <strong className="mt-2 block text-3xl font-semibold text-white tabular-nums">
               {catalog.smartDevices.length}
@@ -54,7 +54,7 @@ export default async function AdminServicesPage() {
           </div>
           <div className="admin-shell-card p-5">
             <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
-              {pickAdminText(locale, "Smart packages", "Ø§Ù„Ø¨Ø§Ù‚Ø§Øª Ø§Ù„Ø°ÙƒÙŠØ©")}
+              {pickAdminText(locale, "Smart packages", "الباقات الذكية")}
             </p>
             <strong className="mt-2 block text-3xl font-semibold text-white tabular-nums">
               {catalog.smartPackages.length}

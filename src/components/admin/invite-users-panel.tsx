@@ -114,7 +114,7 @@ function PermissionMatrix({
       <div className="grid gap-4 xl:grid-cols-[240px_minmax(0,1fr)]">
         <div className="grid gap-4">
           <label className="grid gap-2 text-xs uppercase tracking-[0.18em] text-white/42">
-            {t("Role preset", "Ø§Ù„Ù‚Ø§Ù„Ø¨ Ø§Ù„ÙˆØ¸ÙŠÙÙŠ")}
+            {t("Role preset", "القالب الوظيفي")}
             <select
               value={role}
               onChange={(event) => onRoleChange(event.target.value as UserRole)}
@@ -129,7 +129,7 @@ function PermissionMatrix({
           </label>
 
           <div className="grid gap-2">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/42">{t("Access mode", "ÙˆØ¶Ø¹ Ø§Ù„ÙˆØµÙˆÙ„")}</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-white/42">{t("Access mode", "وضع الوصول")}</p>
             <div className="grid gap-2">
               {(["role", "custom"] as AccessMode[]).map((mode) => (
                 <button
@@ -143,12 +143,12 @@ function PermissionMatrix({
                   }`}
                 >
                   <span className="block font-medium text-white">
-                    {mode === "role" ? t("Use role preset", "Ø§Ø³ØªØ®Ø¯Ù… Ù‚Ø§Ù„Ø¨ Ø§Ù„Ø¯ÙˆØ±") : t("Custom permissions", "ØµÙ„Ø§Ø­ÙŠØ§Øª Ù…Ø®ØµØµØ©")}
+                    {mode === "role" ? t("Use role preset", "استخدم قالب الدور") : t("Custom permissions", "صلاحيات مخصصة")}
                   </span>
                   <span className="mt-1 block text-xs leading-6 text-white/48">
                     {mode === "role"
-                      ? t("Keep this user aligned with the selected role.", "Ø£Ø¨Ù‚Ù Ù‡Ø°Ø§ Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ù…Ø±ØªØ¨Ø·Ù‹Ø§ Ø¨Ø§Ù„Ø¯ÙˆØ± Ø§Ù„Ù…Ø®ØªØ§Ø±.")
-                      : t("Choose individual permissions from grouped controls.", "Ø§Ø®ØªØ± Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª Ø§Ù„ÙØ±Ø¯ÙŠØ© Ù…Ù† Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø§Øª.")} 
+                      ? t("Keep this user aligned with the selected role.", "أبقِ هذا المستخدم مرتبطًا بالدور المختار.")
+                      : t("Choose individual permissions from grouped controls.", "اختر الصلاحيات الفردية من المجموعات.")} 
                   </span>
                 </button>
               ))}
@@ -156,19 +156,19 @@ function PermissionMatrix({
           </div>
 
           <div className="rounded-[22px] border border-white/10 bg-[#120f0d] p-4">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/38">{t("Selection summary", "Ù…Ù„Ø®Øµ Ø§Ù„Ø§Ø®ØªÙŠØ§Ø±")}</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-white/38">{t("Selection summary", "ملخص الاختيار")}</p>
             <strong className="mt-3 block font-serif text-3xl text-white">{permissions.length}</strong>
             <p className="mt-2 text-sm leading-7 text-white/56">
               {accessMode === "role"
-                ? t("Permissions follow the role preset and are shown by group for review.", "Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª ØªØªØ¨Ø¹ Ù‚Ø§Ù„Ø¨ Ø§Ù„Ø¯ÙˆØ± ÙˆØªØ¸Ù‡Ø± Ø­Ø³Ø¨ Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø© Ù„Ù„Ù…Ø±Ø§Ø¬Ø¹Ø©.")
-                : t("Checkboxes are unlocked. Use the group tabs to edit without long scrolling.", "Ø®Ø§Ù†Ø§Øª Ø§Ù„Ø§Ø®ØªÙŠØ§Ø± Ù…ÙØ¹Ù„Ø©. Ø§Ø³ØªØ®Ø¯Ù… ØªØ¨ÙˆÙŠØ¨Ø§Øª Ø§Ù„Ù…Ø¬Ù…ÙˆØ¹Ø§Øª Ù„Ù„ØªØ¹Ø¯ÙŠÙ„ Ø¨Ø¯ÙˆÙ† ØªÙ…Ø±ÙŠØ± Ø·ÙˆÙŠÙ„.")} 
+                ? t("Permissions follow the role preset and are shown by group for review.", "الصلاحيات تتبع قالب الدور وتظهر حسب المجموعة للمراجعة.")
+                : t("Checkboxes are unlocked. Use the group tabs to edit without long scrolling.", "خانات الاختيار مفعلة. استخدم تبويبات المجموعات للتعديل بدون تمرير طويل.")} 
             </p>
           </div>
         </div>
 
         <div className="grid gap-3 lg:grid-cols-[260px_minmax(0,1fr)]">
           <div className="grid gap-2">
-            <p className="text-xs uppercase tracking-[0.18em] text-white/42">{t("Permission groups", "Ù…Ø¬Ù…ÙˆØ¹Ø§Øª Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª")}</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-white/42">{t("Permission groups", "مجموعات الصلاحيات")}</p>
             <div className="grid gap-2">
               {PERMISSION_GROUPS.map((group) => {
                 const groupCount = group.permissions.filter((permission) =>
@@ -204,7 +204,7 @@ function PermissionMatrix({
               <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">
                 {activeGroup.label}
               </p>
-              <h4 className="mt-2 text-xl font-semibold text-white">{t("Focused permission editing", "ØªØ­Ø±ÙŠØ± Ù…Ø±ÙƒØ² Ù„Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª")}</h4>
+              <h4 className="mt-2 text-xl font-semibold text-white">{t("Focused permission editing", "تحرير مركز للصلاحيات")}</h4>
               <p className="mt-2 text-sm leading-7 text-white/54">{activeGroup.description}</p>
             </div>
 
@@ -572,7 +572,7 @@ export function InviteUsersPanel({
 
       const json = (await response.json()) as { user?: TeamUser; message?: string };
       if (!response.ok || !json.user) {
-        setFeedback(json.message ?? t("Could not update user access.", "ØªØ¹Ø°Ø± ØªØ­Ø¯ÙŠØ« ØµÙ„Ø§Ø­ÙŠØ§Øª Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…."));
+        setFeedback(json.message ?? t("Could not update user access.", "تعذر تحديث صلاحيات المستخدم."));
         setSavingId(null);
         return;
       }
@@ -600,7 +600,7 @@ export function InviteUsersPanel({
 
       const json = (await response.json()) as { invitation?: UserInvitation; message?: string };
       if (!response.ok || !json.invitation) {
-        setFeedback(json.message ?? t("Could not update invitation access.", "ØªØ¹Ø°Ø± ØªØ­Ø¯ÙŠØ« ØµÙ„Ø§Ø­ÙŠØ§Øª Ø§Ù„Ø¯Ø¹ÙˆØ©."));
+        setFeedback(json.message ?? t("Could not update invitation access.", "تعذر تحديث صلاحيات الدعوة."));
         setSavingId(null);
         return;
       }
@@ -659,7 +659,7 @@ export function InviteUsersPanel({
       };
 
       if (!response.ok || !json.invitation) {
-        setFeedback(json.message ?? t("Could not send invite.", "ØªØ¹Ø°Ø± Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¯Ø¹ÙˆØ©."));
+        setFeedback(json.message ?? t("Could not send invite.", "تعذر إرسال الدعوة."));
         return;
       }
 
@@ -682,7 +682,7 @@ export function InviteUsersPanel({
       const response = await fetch(`/api/admin/users/${id}`, { method: "DELETE" });
       const json = (await response.json()) as { message?: string };
       if (!response.ok) {
-        setFeedback(json.message ?? t("Could not delete user.", "ØªØ¹Ø°Ø± Ø­Ø°Ù Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…."));
+        setFeedback(json.message ?? t("Could not delete user.", "تعذر حذف المستخدم."));
         setSavingId(null);
         return;
       }
@@ -691,7 +691,7 @@ export function InviteUsersPanel({
       setUsers(nextUsers);
       pushActivity(`Deleted user ${id}`);
       setSelectedUserId(nextUsers[0]?.id ?? null);
-      setFeedback(json.message ?? t("User deleted.", "ØªÙ… Ø­Ø°Ù Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…."));
+      setFeedback(json.message ?? t("User deleted.", "تم حذف المستخدم."));
       setSavingId(null);
     });
   }
@@ -703,7 +703,7 @@ export function InviteUsersPanel({
       const response = await fetch(`/api/admin/invitations/${id}`, { method: "DELETE" });
       const json = (await response.json()) as { message?: string };
       if (!response.ok) {
-        setFeedback(json.message ?? t("Could not delete invitation.", "ØªØ¹Ø°Ø± Ø­Ø°Ù Ø§Ù„Ø¯Ø¹ÙˆØ©."));
+        setFeedback(json.message ?? t("Could not delete invitation.", "تعذر حذف الدعوة."));
         setSavingId(null);
         return;
       }
@@ -712,7 +712,7 @@ export function InviteUsersPanel({
       setInvitations(nextInvitations);
       pushActivity(`Deleted invitation ${id}`);
       setSelectedInvitationId(nextInvitations[0]?.id ?? null);
-      setFeedback(json.message ?? t("Invitation deleted.", "ØªÙ… Ø­Ø°Ù Ø§Ù„Ø¯Ø¹ÙˆØ©."));
+      setFeedback(json.message ?? t("Invitation deleted.", "تم حذف الدعوة."));
       setSavingId(null);
     });
   }
@@ -730,24 +730,24 @@ export function InviteUsersPanel({
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Access presets", "Ù‚ÙˆØ§Ù„Ø¨ Ø§Ù„ÙˆØµÙˆÙ„")}</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Access presets", "قوالب الوصول")}</p>
           <strong className="mt-3 block font-serif text-4xl text-white">{roles.length}</strong>
           <p className="mt-2 text-sm text-white/62">
-            {t("Base roles available before custom permission tuning.", "Ø§Ù„Ø£Ø¯ÙˆØ§Ø± Ø§Ù„Ø£Ø³Ø§Ø³ÙŠØ© Ø§Ù„Ù…ØªØ§Ø­Ø© Ù‚Ø¨Ù„ ØªØ®ØµÙŠØµ Ø§Ù„ØµÙ„Ø§Ø­ÙŠØ§Øª.")}
+            {t("Base roles available before custom permission tuning.", "الأدوار الأساسية المتاحة قبل تخصيص الصلاحيات.")}
           </p>
         </div>
         <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Custom access", "ÙˆØµÙˆÙ„ Ù…Ø®ØµØµ")}</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Custom access", "وصول مخصص")}</p>
           <strong className="mt-3 block font-serif text-4xl text-white">{totalCustomAccess}</strong>
           <p className="mt-2 text-sm text-white/62">
-            {t("Users or invites currently using checkbox-customized permissions.", "Ù…Ø³ØªØ®Ø¯Ù…ÙˆÙ† Ø£Ùˆ Ø¯Ø¹ÙˆØ§Øª ØªØ³ØªØ®Ø¯Ù… ØµÙ„Ø§Ø­ÙŠØ§Øª Ù…Ø®ØµØµØ© Ø¹Ø¨Ø± Ø®Ø§Ù†Ø§Øª Ø§Ù„Ø§Ø®ØªÙŠØ§Ø±.")}
+            {t("Users or invites currently using checkbox-customized permissions.", "مستخدمون أو دعوات تستخدم صلاحيات مخصصة عبر خانات الاختيار.")}
           </p>
         </div>
         <div className="rounded-[28px] border border-white/10 bg-white/5 p-5">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Tracked invitations", "Ø§Ù„Ø¯Ø¹ÙˆØ§Øª Ø§Ù„Ù…ØªØ§Ø¨Ø¹Ø©")}</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-white/42">{t("Tracked invitations", "الدعوات المتابعة")}</p>
           <strong className="mt-3 block font-serif text-4xl text-white">{invitations.length}</strong>
           <p className="mt-2 text-sm text-white/62">
-            {t("Pending and recent invitation records with editable access.", "Ø³Ø¬Ù„Ø§Øª Ø§Ù„Ø¯Ø¹ÙˆØ§Øª Ø§Ù„Ù…Ø¹Ù„Ù‚Ø© ÙˆØ§Ù„Ø­Ø¯ÙŠØ«Ø© Ù…Ø¹ ÙˆØµÙˆÙ„ Ù‚Ø§Ø¨Ù„ Ù„Ù„ØªØ¹Ø¯ÙŠÙ„.")}
+            {t("Pending and recent invitation records with editable access.", "سجلات الدعوات المعلقة والحديثة مع وصول قابل للتعديل.")}
           </p>
         </div>
       </section>
@@ -762,23 +762,23 @@ export function InviteUsersPanel({
       <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Team workspace", "Ù…Ø³Ø§Ø­Ø© Ø§Ù„ÙØ±ÙŠÙ‚")}</p>
-            <h2 className="mt-2 font-serif text-3xl text-white">{t("Access center", "Ø¥Ø¯Ø§Ø±Ø© ÙˆØµÙˆÙ„ Ù…Ø±ÙƒØ²Ø©")}</h2>
+            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Team workspace", "مساحة الفريق")}</p>
+            <h2 className="mt-2 font-serif text-3xl text-white">{t("Access center", "إدارة وصول مركزة")}</h2>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-white/62">
               {t(
                 "Every flow is separated into a clear workspace: create invites, edit one active user, or review one pending invitation at a time.",
-                "ÙƒÙ„ Ù…Ø³Ø§Ø± Ù…ÙØµÙˆÙ„ Ø¯Ø§Ø®Ù„ Ù…Ø³Ø§Ø­Ø© ÙˆØ§Ø¶Ø­Ø©: Ø£Ù†Ø´Ø¦ Ø¯Ø¹ÙˆØ§ØªØŒ Ø£Ùˆ Ø¹Ø¯Ù„ Ù…Ø³ØªØ®Ø¯Ù…Ù‹Ø§ Ù†Ø´Ø·Ù‹Ø§ ÙˆØ§Ø­Ø¯Ù‹Ø§ØŒ Ø£Ùˆ Ø±Ø§Ø¬Ø¹ Ø¯Ø¹ÙˆØ© Ù…Ø¹Ù„Ù‚Ø© ÙˆØ§Ø­Ø¯Ø© ÙÙŠ ÙƒÙ„ Ù…Ø±Ø©.",
+                "كل مسار مفصول داخل مساحة واضحة: أنشئ دعوات، أو عدل مستخدمًا نشطًا واحدًا، أو راجع دعوة معلقة واحدة في كل مرة.",
               )}
             </p>
           </div>
 
           <label className="grid gap-2 text-xs uppercase tracking-[0.18em] text-white/42 lg:w-[320px]">
-            {t("Search team or invite records", "Ø§Ø¨Ø­Ø« ÙÙŠ Ø³Ø¬Ù„Ø§Øª Ø§Ù„ÙØ±ÙŠÙ‚ Ø£Ùˆ Ø§Ù„Ø¯Ø¹ÙˆØ§Øª")}
+            {t("Search team or invite records", "ابحث في سجلات الفريق أو الدعوات")}
             <input
               value={teamSearch}
               onChange={(event) => setTeamSearch(event.target.value)}
               className="rounded-2xl border border-white/10 bg-[#151211] px-4 py-3 text-sm normal-case tracking-normal text-white outline-none"
-              placeholder={t("Search by name, email, or role", "Ø§Ø¨Ø­Ø« Ø¨Ø§Ù„Ø§Ø³Ù… Ø£Ùˆ Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø£Ùˆ Ø§Ù„Ø¯ÙˆØ±")}
+              placeholder={t("Search by name, email, or role", "ابحث بالاسم أو البريد أو الدور")}
             />
           </label>
         </div>
@@ -793,18 +793,18 @@ export function InviteUsersPanel({
           {activeView === "invite" ? (
             <div className="grid gap-5 xl:grid-cols-[340px_minmax(0,1fr)]">
               <section className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Invite setup", "Ø¥Ø¹Ø¯Ø§Ø¯ Ø§Ù„Ø¯Ø¹ÙˆØ©")}</p>
-                <h3 className="mt-3 text-2xl font-semibold text-white">{t("Send a new access record", "Ø£Ø±Ø³Ù„ Ø³Ø¬Ù„ ÙˆØµÙˆÙ„ Ø¬Ø¯ÙŠØ¯")}</h3>
+                <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Invite setup", "إعداد الدعوة")}</p>
+                <h3 className="mt-3 text-2xl font-semibold text-white">{t("Send a new access record", "أرسل سجل وصول جديد")}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/56">
                   {t(
                     "Start with the team member email, then choose whether the invite follows a preset role or a custom permission stack.",
-                    "Ø§Ø¨Ø¯Ø£ Ø¨Ø¨Ø±ÙŠØ¯ Ø¹Ø¶Ùˆ Ø§Ù„ÙØ±ÙŠÙ‚ØŒ Ø«Ù… Ø§Ø®ØªØ± Ù‡Ù„ ØªØªØ¨Ø¹ Ø§Ù„Ø¯Ø¹ÙˆØ© Ù‚Ø§Ù„Ø¨ Ø¯ÙˆØ± Ø¬Ø§Ù‡Ø²Ù‹Ø§ Ø£Ù… ØµÙ„Ø§Ø­ÙŠØ§Øª Ù…Ø®ØµØµØ©.",
+                    "ابدأ ببريد عضو الفريق، ثم اختر هل تتبع الدعوة قالب دور جاهزًا أم صلاحيات مخصصة.",
                   )}
                 </p>
 
                 <div className="mt-6 grid gap-4">
                   <label className="grid gap-2 text-xs uppercase tracking-[0.18em] text-white/40">
-                    {t("Email", "Ø§Ù„Ø¨Ø±ÙŠØ¯ Ø§Ù„Ø¥Ù„ÙƒØªØ±ÙˆÙ†ÙŠ")}
+                    {t("Email", "البريد الإلكتروني")}
                     <input
                       value={email}
                       onChange={(event) => setEmail(event.target.value)}
@@ -815,11 +815,11 @@ export function InviteUsersPanel({
                   </label>
 
                   <div className="rounded-[22px] border border-white/10 bg-[#120f0d] p-4">
-                    <p className="text-xs uppercase tracking-[0.18em] text-white/38">{t("Flow notes", "Ù…Ù„Ø§Ø­Ø¸Ø§Øª Ø§Ù„Ù…Ø³Ø§Ø±")}</p>
+                    <p className="text-xs uppercase tracking-[0.18em] text-white/38">{t("Flow notes", "ملاحظات المسار")}</p>
                     <ul className="mt-3 grid gap-2 text-sm leading-7 text-white/56">
-                      <li>{t("1. Create the invite with preset or custom access.", "1. Ø£Ù†Ø´Ø¦ Ø§Ù„Ø¯Ø¹ÙˆØ© Ø¨Ù‚Ø§Ù„Ø¨ Ø¬Ø§Ù‡Ø² Ø£Ùˆ ØµÙ„Ø§Ø­ÙŠØ§Øª Ù…Ø®ØµØµØ©.")}</li>
-                      <li>{t("2. Review it inside the Invitations workspace.", "2. Ø±Ø§Ø¬Ø¹Ù‡Ø§ Ø¯Ø§Ø®Ù„ Ù…Ø³Ø§Ø­Ø© Ø§Ù„Ø¯Ø¹ÙˆØ§Øª.")}</li>
-                      <li>{t("3. Update or delete the invitation later if needed.", "3. Ø¹Ø¯Ù„ Ø§Ù„Ø¯Ø¹ÙˆØ© Ø£Ùˆ Ø§Ø­Ø°ÙÙ‡Ø§ Ù„Ø§Ø­Ù‚Ù‹Ø§ Ø¹Ù†Ø¯ Ø§Ù„Ø­Ø§Ø¬Ø©.")}</li>
+                      <li>{t("1. Create the invite with preset or custom access.", "1. أنشئ الدعوة بقالب جاهز أو صلاحيات مخصصة.")}</li>
+                      <li>{t("2. Review it inside the Invitations workspace.", "2. راجعها داخل مساحة الدعوات.")}</li>
+                      <li>{t("3. Update or delete the invitation later if needed.", "3. عدل الدعوة أو احذفها لاحقًا عند الحاجة.")}</li>
                     </ul>
                   </div>
 
@@ -829,7 +829,7 @@ export function InviteUsersPanel({
                     disabled={!email}
                     className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-5 py-3 font-semibold text-[#1d140d] disabled:cursor-not-allowed disabled:opacity-40"
                   >
-                    {isPending && !savingId ? t("Sending...", "Ø¬Ø§Ø±Ù Ø§Ù„Ø¥Ø±Ø³Ø§Ù„...") : t("Send invitation", "Ø¥Ø±Ø³Ø§Ù„ Ø§Ù„Ø¯Ø¹ÙˆØ©")}
+                    {isPending && !savingId ? t("Sending...", "جارٍ الإرسال...") : t("Send invitation", "إرسال الدعوة")}
                   </button>
                 </div>
               </section>
@@ -1113,13 +1113,13 @@ export function InviteUsersPanel({
 
       <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Activity log", "Ø³Ø¬Ù„ Ø§Ù„Ù†Ø´Ø§Ø·")}</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Activity log", "سجل النشاط")}</p>
           <button
             type="button"
             onClick={() => setActivityLog([])}
             className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/70 hover:bg-white/5"
           >
-            {t("Clear", "Ù…Ø³Ø­")}
+            {t("Clear", "مسح")}
           </button>
         </div>
         <div className="mt-4 grid gap-2">
@@ -1131,7 +1131,7 @@ export function InviteUsersPanel({
               </div>
             ))
           ) : (
-            <p className="text-sm text-white/55">{t("No team actions recorded yet.", "Ù„Ø§ ØªÙˆØ¬Ø¯ Ø£Ø­Ø¯Ø§Ø« ÙØ±ÙŠÙ‚ Ø­ØªÙ‰ Ø§Ù„Ø¢Ù†.")}</p>
+            <p className="text-sm text-white/55">{t("No team actions recorded yet.", "لا توجد أحداث فريق حتى الآن.")}</p>
           )}
         </div>
       </section>

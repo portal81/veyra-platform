@@ -4,7 +4,6 @@ import { dashboardStats, finishingPackages, projects as fallbackProjects, siteSe
 import { resolvePermissions } from "@/lib/permissions";
 import { defaultPageContent, defaultSiteLayouts, defaultSystemBlocks } from "@/lib/site-content-defaults";
 import { createSupabaseServerClient, isSupabaseConfigured } from "@/lib/supa";
-import { repairTextDeep } from "@/lib/text-fixes";
 import type {
   ClientCase,
   ClientCaseAssignment,
@@ -50,7 +49,7 @@ function mergeProject(project: Project): Project {
   const fallback = fallbackProjects.find((item) => item.id === project.id);
   const unitsSource = project.units?.length ? project.units : fallback?.units ?? [];
 
-  return repairTextDeep({
+  return {
     ...fallback,
     ...project,
     heroImage: resolveMedia(project.heroImage, fallback?.heroImage),
@@ -74,12 +73,12 @@ function mergeProject(project: Project): Project {
       };
     }),
     highlights: project.highlights ?? fallback?.highlights ?? [],
-  });
+  };
 }
 
 function mergeFinishingPackage(item: FinishingPackage): FinishingPackage {
   const fallback = finishingPackages.find((candidate) => candidate.id === item.id);
-  return repairTextDeep({
+  return {
     ...fallback,
     ...item,
     content: {
@@ -87,7 +86,7 @@ function mergeFinishingPackage(item: FinishingPackage): FinishingPackage {
       ...item.content,
     },
     features: item.features ?? fallback?.features ?? [],
-  });
+  };
 }
 
 async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerClient>) {
@@ -110,7 +109,7 @@ async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerC
   }
 
   if (!leadCount) {
-    const seedLeads = repairTextDeep(demoStore.leads);
+    const seedLeads = demoStore.leads;
     const { error: seedLeadsError } = await supabase.from("leads").upsert(seedLeads);
     if (seedLeadsError) {
       throw new Error(seedLeadsError.message);
@@ -118,7 +117,7 @@ async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerC
   }
 
   if (!activityCount) {
-    const seedActivities = repairTextDeep(demoStore.leadActivities);
+    const seedActivities = demoStore.leadActivities;
     const { error: seedActivitiesError } = await supabase.from("lead_activities").upsert(seedActivities);
     if (seedActivitiesError) {
       throw new Error(seedActivitiesError.message);
@@ -128,7 +127,7 @@ async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerC
 
 function mergeSmartDevice(item: SmartDevice): SmartDevice {
   const fallback = smartDevices.find((candidate) => candidate.id === item.id);
-  return repairTextDeep({
+  return {
     ...fallback,
     ...item,
     content: {
@@ -136,12 +135,12 @@ function mergeSmartDevice(item: SmartDevice): SmartDevice {
       ...item.content,
     },
     benefits: item.benefits ?? fallback?.benefits ?? [],
-  });
+  };
 }
 
 function mergeSmartPackage(item: SmartPackage): SmartPackage {
   const fallback = smartPackages.find((candidate) => candidate.id === item.id);
-  return repairTextDeep({
+  return {
     ...fallback,
     ...item,
     content: {
@@ -149,19 +148,19 @@ function mergeSmartPackage(item: SmartPackage): SmartPackage {
       ...item.content,
     },
     devices: item.devices ?? fallback?.devices ?? [],
-  });
+  };
 }
 
 function mergeSiteSettings(input?: Partial<SiteSettings> | null): SiteSettings {
   if (!input) {
-    return repairTextDeep(structuredClone(fallbackSiteSettings));
+    return structuredClone(fallbackSiteSettings);
   }
   const hazemFromContent = (input as Record<string, unknown>)?.content
     ? ((input as Record<string, unknown>).content as Record<string, unknown>)?.hazemAi
     : undefined;
   const hazemInput = (input.hazemAi ?? hazemFromContent) as SiteSettings["hazemAi"] | undefined;
 
-  return repairTextDeep({
+  return {
     ...fallbackSiteSettings,
     ...input,
     branding: {
@@ -302,7 +301,7 @@ function mergeSiteSettings(input?: Partial<SiteSettings> | null): SiteSettings {
       tiers: input.finishingCalculator?.tiers ?? fallbackSiteSettings.finishingCalculator.tiers,
       addOns: input.finishingCalculator?.addOns ?? fallbackSiteSettings.finishingCalculator.addOns,
     },
-  });
+  };
 }
 
 function normalizeSiteSettingsRecord(input: Record<string, unknown> | null | undefined): Partial<SiteSettings> {
@@ -468,7 +467,7 @@ export async function getProjectBySlug(slug: string) {
 }
 
 export async function updateProjectsCatalog(projects: Project[]) {
-  const normalized = repairTextDeep(projects).map(mergeProject);
+  const normalized = projects.map(mergeProject);
   const supabase = createSupabaseServerClient();
 
   if (supabase) {
@@ -889,14 +888,14 @@ export async function deleteLeadCrm(id: string) {
 export async function createLead(
   lead: Omit<Lead, "id" | "createdAt" | "status" | "stage" | "priority">,
 ) {
-  const record: Lead = repairTextDeep({
+  const record: Lead = {
     ...lead,
     id: `lead-${crypto.randomUUID()}`,
     createdAt: new Date().toISOString(),
     status: "new",
     stage: "new",
     priority: "medium",
-  });
+  };
   const { linkedEntity, ...leadRow } = record;
 
   const supabase = createSupabaseServerClient();
@@ -1068,7 +1067,7 @@ export async function createInvitation(
   accessMode: AccessMode = "role",
 ) {
   const supabase = createSupabaseServerClient();
-  const record: UserInvitation = repairTextDeep({
+  const record: UserInvitation = {
     id: `inv-${crypto.randomUUID()}`,
     email,
     role,
@@ -1078,7 +1077,7 @@ export async function createInvitation(
     invitedBy,
     createdAt: new Date().toISOString(),
     lastSentAt: new Date().toISOString(),
-  });
+  };
 
   if (supabase) {
     const redirectTo = `${process.env.NEXT_PUBLIC_SITE_URL ?? "https://veyra-admin.vercel.app"}/auth/accept-invite`;
@@ -1508,7 +1507,7 @@ export async function getSiteSettings() {
 }
 
 export async function updateSiteSettings(payload: SiteSettings) {
-  const normalized = mergeSiteSettings(repairTextDeep(payload));
+  const normalized = mergeSiteSettings(payload);
   const supabase = createSupabaseServerClient();
 
   if (supabase) {
@@ -1620,7 +1619,7 @@ export async function getServiceCatalog(): Promise<ServiceCatalog> {
 }
 
 export async function updateServiceCatalog(payload: ServiceCatalog) {
-  const sanitizedPayload = repairTextDeep(payload);
+  const sanitizedPayload = payload;
   const normalized: ServiceCatalog = {
     finishingPackages: sanitizedPayload.finishingPackages.map(mergeFinishingPackage),
     smartDevices: sanitizedPayload.smartDevices.map(mergeSmartDevice),
@@ -1745,23 +1744,23 @@ export async function updateMarketingTrackingSettings(
 }
 
 export async function getBlogCategories() {
-  return repairTextDeep(demoStore.blogCategories.length ? demoStore.blogCategories : fallbackBlogCategories);
+  return demoStore.blogCategories.length ? demoStore.blogCategories : fallbackBlogCategories;
 }
 
 export async function getBlogTags() {
-  return repairTextDeep(demoStore.blogTags.length ? demoStore.blogTags : fallbackBlogTags);
+  return demoStore.blogTags.length ? demoStore.blogTags : fallbackBlogTags;
 }
 
 export async function getBlogPosts() {
   const source = demoStore.blogPosts.length ? demoStore.blogPosts : fallbackBlogPosts;
-  return repairTextDeep([...source].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)));
+  return [...source].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 }
 
 export async function upsertBlogPost(payload: BlogPost) {
-  const normalized = repairTextDeep({
+  const normalized = {
     ...payload,
     updatedAt: new Date().toISOString(),
-  });
+  };
   const existing = demoStore.blogPosts.findIndex((post) => post.id === normalized.id);
   if (existing >= 0) {
     demoStore.blogPosts[existing] = normalized;
@@ -1785,14 +1784,14 @@ export async function deleteBlogPost(id: string) {
 
 export async function getSeoPageConfigs() {
   const source = demoStore.seoPages.length ? demoStore.seoPages : fallbackSeoPages;
-  return repairTextDeep(source);
+  return source;
 }
 
 export async function upsertSeoPageConfig(payload: SeoPageConfig) {
-  const normalized = repairTextDeep({
+  const normalized = {
     ...payload,
     updatedAt: new Date().toISOString(),
-  });
+  };
   const existing = demoStore.seoPages.findIndex((entry) => entry.id === normalized.id);
   if (existing >= 0) {
     demoStore.seoPages[existing] = normalized;

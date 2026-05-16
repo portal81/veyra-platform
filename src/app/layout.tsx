@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-
 export const viewport: Viewport = {
   themeColor: "#120f0d",
   width: "device-width",
@@ -17,6 +16,8 @@ import { SiteHeader } from "@/components/site-header";
 import { getAdminLocaleDirection } from "@/lib/admin-locale";
 import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
 import { SITE_URL } from "@/lib/site-url";
+import arMessages from "../../messages/ar.json";
+import enMessages from "../../messages/en.json";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -68,6 +69,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getCurrentAdminLocale();
+  const messages = locale === "ar" ? arMessages : enMessages;
   const direction = getAdminLocaleDirection(locale);
 
   return (
@@ -77,7 +79,7 @@ export default async function RootLayout({
       className={`${manrope.variable} ${cormorant.variable} ${cairo.variable} h-full antialiased`}
     >
       <body className={`min-h-full bg-[#120f0d] text-white ${direction === "rtl" ? "font-arabic" : ""}`}>
-        <AdminLocaleProvider initialLocale={locale}>
+        <AdminLocaleProvider initialLocale={locale} messages={messages}>
           <Toaster
             position={direction === "rtl" ? "bottom-left" : "bottom-right"}
             theme="dark"
@@ -104,5 +106,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-
