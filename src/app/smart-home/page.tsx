@@ -1,5 +1,6 @@
 ﻿import { LeadForm } from "@/components/lead-form";
 import { SectionTitle } from "@/components/section-title";
+import { MotionSection, MotionCard } from "@/components/motion-public";
 import { getSmartDevices, getSmartPackages } from "@/lib/repository";
 
 export default async function SmartHomePage() {
@@ -7,7 +8,7 @@ export default async function SmartHomePage() {
 
   return (
     <div>
-      <section data-preview-id="page-hero" className="smart-hero py-20">
+      <MotionSection className="smart-hero py-20">
         <div className="mx-auto grid w-[min(1180px,calc(100%-1.5rem))] gap-8 lg:grid-cols-[1fr_0.95fr]">
           <SectionTitle
             eyebrow="Smart Home"
@@ -27,47 +28,47 @@ export default async function SmartHomePage() {
             )}
           </div>
         </div>
-      </section>
+      </MotionSection>
 
-      <section className="mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16 md:py-20">
+      <MotionSection className="mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16 md:py-20" delay={0.1}>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {devices.map((device) => (
-            <article
-              key={device.id}
-              className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20"
-            >
-              <h2 className="font-serif text-3xl">{device.name}</h2>
-              <p className="mt-3 text-white/70">{device.summary}</p>
-              <ul className="mt-4 grid gap-2 text-sm text-white/65">
-                {device.benefits.map((benefit) => (
-                  <li key={benefit}>- {benefit}</li>
-                ))}
-              </ul>
-            </article>
+          {devices.map((device, i) => (
+            <MotionCard key={device.id} index={i}>
+              <article className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20">
+                <h2 className="font-serif text-3xl">{device.name}</h2>
+                <p className="mt-3 text-white/70">{device.summary}</p>
+                <ul className="mt-4 grid gap-2 text-sm text-white/65">
+                  {device.benefits.map((benefit) => (
+                    <li key={benefit}>- {benefit}</li>
+                  ))}
+                </ul>
+              </article>
+            </MotionCard>
           ))}
         </div>
 
         <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.1fr]">
           <div className="grid gap-4">
-            {packages.map((item) => (
-              <div key={item.id} className="rounded-[28px] border border-white/10 bg-white/5 p-6">
-                <h2 className="font-serif text-3xl">{item.name}</h2>
-                <p className="mt-2 text-white/70">{item.summary}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {item.devices.map((device) => (
-                    <span key={device} className="rounded-full border border-white/10 px-3 py-1 text-xs">
-                      {device}
-                    </span>
-                  ))}
+            {packages.map((item, i) => (
+              <MotionCard key={item.id} index={i}>
+                <div className="rounded-[28px] border border-white/10 bg-white/5 p-6">
+                  <h2 className="font-serif text-3xl">{item.name}</h2>
+                  <p className="mt-2 text-white/70">{item.summary}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {item.devices.map((device) => (
+                      <span key={device} className="rounded-full border border-white/10 px-3 py-1 text-xs">
+                        {device}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </MotionCard>
             ))}
           </div>
 
           <LeadForm defaultService="Smart Home Setup" />
         </div>
-      </section>
+      </MotionSection>
     </div>
   );
 }
-

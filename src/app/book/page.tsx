@@ -1,9 +1,10 @@
 ﻿import { LeadForm } from "@/components/lead-form";
 import { SectionTitle } from "@/components/section-title";
+import { MotionSection } from "@/components/motion-public";
 
 export default function BookPage() {
   return (
-    <section data-preview-id="page-hero" className="book-hero py-20">
+    <MotionSection className="book-hero py-20">
       <div className="mx-auto grid w-[min(1180px,calc(100%-1.5rem))] gap-8 lg:grid-cols-[0.8fr_1.1fr]">
         <SectionTitle
           eyebrow="Book"
@@ -12,7 +13,6 @@ export default function BookPage() {
         />
         <LeadForm />
       </div>
-    </section>
+    </MotionSection>
   );
 }
-

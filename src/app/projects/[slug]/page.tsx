@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LeadForm } from "@/components/lead-form";
+import { MotionSection, MotionCard } from "@/components/motion-public";
 import { getProjectBySlug } from "@/lib/repository";
 import { formatCurrency } from "@/lib/utils";
 
@@ -21,7 +22,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   return (
     <div>
-      <section data-preview-id="project-detail-hero" className="relative isolate overflow-hidden">
+      <MotionSection className="relative isolate overflow-hidden">
         <Image
           src={project.heroImage}
           alt={project.name}
@@ -63,38 +64,37 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </Link>
           </div>
         </div>
-      </section>
+      </MotionSection>
 
-      <section className="mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16 md:py-20">
+      <MotionSection className="mx-auto w-[min(1180px,calc(100%-1.5rem))] py-16 md:py-20" delay={0.1}>
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="grid gap-6">
             <div data-preview-id="project-units" className="rounded-[32px] border border-white/10 bg-white/5 p-6">
               <h2 className="font-serif text-4xl">Available units</h2>
               <div className="mt-6 grid gap-4">
-                {project.units.map((unit) => (
-                  <div
-                    key={unit.id}
-                    className="grid gap-3 rounded-[24px] border border-white/10 bg-black/15 p-5 md:grid-cols-5 md:items-center"
-                  >
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">
-                        {unit.type}
-                      </p>
-                      <strong className="text-lg text-white">{unit.area} m²</strong>
+                {project.units.map((unit, i) => (
+                  <MotionCard key={unit.id} index={i}>
+                    <div className="grid gap-3 rounded-[24px] border border-white/10 bg-black/15 p-5 md:grid-cols-5 md:items-center">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">
+                          {unit.type}
+                        </p>
+                        <strong className="text-lg text-white">{unit.area} m²</strong>
+                      </div>
+                      <div className="text-sm text-white/65">Floor {unit.floor}</div>
+                      <div className="text-sm text-white/65">
+                        {unit.bedrooms ? `${unit.bedrooms} bedrooms` : "Office ready"}
+                      </div>
+                      <div className="text-sm font-semibold text-white">
+                        {formatCurrency(unit.price)}
+                      </div>
+                      <div>
+                        <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-white/70">
+                          {unit.status}
+                        </span>
+                      </div>
                     </div>
-                    <div className="text-sm text-white/65">Floor {unit.floor}</div>
-                    <div className="text-sm text-white/65">
-                      {unit.bedrooms ? `${unit.bedrooms} bedrooms` : "Office ready"}
-                    </div>
-                    <div className="text-sm font-semibold text-white">
-                      {formatCurrency(unit.price)}
-                    </div>
-                    <div>
-                      <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-white/70">
-                        {unit.status}
-                      </span>
-                    </div>
-                  </div>
+                  </MotionCard>
                 ))}
               </div>
             </div>
@@ -124,7 +124,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             <LeadForm defaultService="Project Visit" />
           </div>
         </div>
-      </section>
+      </MotionSection>
     </div>
   );
 }

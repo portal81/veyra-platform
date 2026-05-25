@@ -13,6 +13,7 @@ import { PageTransition } from "@/components/page-transition";
 import { PreviewFocusBridge } from "@/components/preview-focus-bridge";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { AiConcierge } from "@/components/ai-concierge";
 import { getAdminLocaleDirection } from "@/lib/admin-locale";
 import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
 import { SITE_URL } from "@/lib/site-url";
@@ -38,27 +39,30 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "Veyra Admin",
-  description: "Administrative dashboard for Veyra projects, leads, and service operations.",
+  title: {
+    default: "Veyra Developments",
+    template: "%s | Veyra Developments",
+  },
+  description: "Real estate development, finishing, and smart home solutions. From project selection to delivery.",
   metadataBase: new URL(SITE_URL),
-  applicationName: "Veyra Admin",
+  applicationName: "Veyra Developments",
   icons: {
     icon: [{ url: "/brand/veyra-mark.svg", type: "image/svg+xml" }],
     shortcut: ["/brand/veyra-mark.svg"],
     apple: [{ url: "/brand/veyra-mark.svg" }],
   },
   openGraph: {
-    title: "Veyra Admin",
-    description: "Administrative dashboard for Veyra projects, leads, and service operations.",
-    siteName: "Veyra Admin",
+    title: "Veyra Developments",
+    description: "Real estate development, finishing, and smart home solutions.",
+    siteName: "Veyra Developments",
     locale: "en_US",
     type: "website",
     images: [{ url: "/scenes/brand-og.svg", width: 1200, height: 630, alt: "Veyra Developments" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Veyra Admin",
-    description: "Administrative dashboard for Veyra projects, leads, and service operations.",
+    title: "Veyra Developments",
+    description: "Real estate development, finishing, and smart home solutions.",
     images: ["/scenes/brand-og.svg"],
   },
 };
@@ -101,6 +105,7 @@ export default async function RootLayout({
             </main>
             <SiteFooter />
           </div>
+          <AiConcierge />
         </AdminLocaleProvider>
       </body>
     </html>
