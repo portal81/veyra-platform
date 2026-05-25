@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ClientCaseFilesEditor } from "@/components/admin/crm/client-case-files-editor";
 import { ClientCaseRoleTasksEditor } from "@/components/admin/crm/client-case-role-tasks-editor";
 import { ClientCaseTeamEditor } from "@/components/admin/crm/client-case-team-editor";
+import { LeadDiscussionPanel } from "@/components/admin/crm/lead-discussion-panel";
 import { SaaSPageShell } from "@/components/admin/saas-page-shell";
 import { getAdminSession } from "@/lib/admin-auth";
 import { pickAdminText } from "@/lib/admin-locale";
@@ -359,6 +360,12 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         ? "needs_attention"
         : "healthy";
   const timeline = activities.filter((activity) => activity.leadId === lead.id).slice(0, 20);
+  const leadDiscussions = activities.filter(
+    (activity) => activity.leadId === lead.id && activity.kind === "discussion",
+  );
+  const leadHandoffs = activities.filter(
+    (activity) => activity.leadId === lead.id && (activity.kind === "handoff" || activity.kind === "handoff_accepted"),
+  );
 
   return (
     <SaaSPageShell
@@ -689,6 +696,59 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
             )}
           </div>
         </section>
+
+        {/* ── Veyra Connect: internal discussion ── */}
+        <LeadDiscussionPanel
+          leadId={lead.id}
+          initialComments={leadDiscussions}
+          users={users}
+          currentUserId={session!.userId}
+        />
+
+        {/* ── Veyra Connect: handoff history ── */}
+        {leadHandoffs.length > 0 ? (
+          <section className="admin-shell-panel scroll-mt-6 p-5">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                  {pickAdminText(locale, "Handoff history", "سجل التسليم")}
+                </p>
+                <h2 className="mt-2 text-xl font-semibold text-white">
+                  {pickAdminText(locale, "Previous handoffs", "التسليمات السابقة")}
+                </h2>
+              </div>
+            </div>
+            <div className="mt-4 grid gap-3">
+              {leadHandoffs.map((handoff) => {
+                let payload: { from: string; to: string; note: string; status: string } | null = null;
+                try { payload = JSON.parse(handoff.body); } catch { /* skip */ }
+                const isAccepted = handoff.kind === "handoff_accepted" || payload?.status === "accepted";
+                return (
+                  <div key={handoff.id} className={`admin-shell-muted-card p-4 ${isAccepted ? "border-emerald-400/20" : "border-amber-400/20"}`}>
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-sm font-semibold text-white">
+                        {payload ? `${payload.from} → ${payload.to}` : handoff.body}
+                      </span>
+                      <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
+                        isAccepted
+                          ? "bg-emerald-400/10 text-emerald-300 border border-emerald-400/20"
+                          : "bg-amber-400/10 text-amber-300 border border-amber-400/20"
+                      }`}>
+                        {isAccepted
+                          ? pickAdminText(locale, "Completed", "مكتمل")
+                          : pickAdminText(locale, "Pending", "معلق")}
+                      </span>
+                    </div>
+                    {payload?.note ? (
+                      <p className="mt-2 text-sm text-white/60">{payload.note}</p>
+                    ) : null}
+                    <p className="mt-2 text-xs text-white/35">{formatDate(handoff.createdAt)}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        ) : null}
       </div>
     </SaaSPageShell>
   );

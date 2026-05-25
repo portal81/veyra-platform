@@ -1,11 +1,13 @@
 import { AdminLoginForm } from "@/components/auth/admin-login-form";
 import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
 import { pickAdminText } from "@/lib/admin-locale";
+import { isDevMode } from "@/lib/admin-auth";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminLoginPage() {
   const locale = await getCurrentAdminLocale();
+  const devMode = isDevMode();
 
   return (
     <div className="mx-auto w-[min(1120px,calc(100%-1.5rem))] py-10 md:py-16">
@@ -45,7 +47,7 @@ export default async function AdminLoginPage() {
           </div>
         </section>
 
-        <AdminLoginForm />
+        <AdminLoginForm devMode={devMode} />
       </div>
     </div>
   );

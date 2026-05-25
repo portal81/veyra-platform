@@ -4,18 +4,36 @@ import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
 import { useAdminLocale } from "@/components/admin/admin-locale-provider";
 
-export function AdminLoginForm() {
+export function AdminLoginForm({ devMode = false }: { devMode?: boolean }) {
   const { t } = useAdminLocale();
   const searchParams = useSearchParams();
   const next = searchParams.get("next");
   const invite = searchParams.get("invite");
   const invitedEmail = searchParams.get("email") || "";
+  const devParam = searchParams.get("dev");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [devResult, setDevResult] = useState<"idle" | "checking" | "available" | "unavailable">("idle");
 
   const effectiveEmail = useMemo(() => email || invitedEmail, [email, invitedEmail]);
+
+  // Check dev mode availability on mount
+  useMemo(() => {
+    if (devMode) {
+      setDevResult("available");
+    } else if (devParam === "1" || devParam === "true") {
+      setDevResult("checking");
+      fetch("/api/auth/dev-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: "check" }),
+      })
+        .then((res) => setDevResult(res.ok ? "available" : "unavailable"))
+        .catch(() => setDevResult("unavailable"));
+    }
+  }, [devParam]);
 
   function submit() {
     startTransition(async () => {
@@ -29,6 +47,25 @@ export function AdminLoginForm() {
       const json = (await response.json()) as { message?: string; redirectTo?: string };
       if (!response.ok) {
         setMessage(json.message ?? t("Could not sign in.", "تعذر تسجيل الدخول."));
+        return;
+      }
+
+      window.location.href = next || json.redirectTo || "/admin";
+    });
+  }
+
+  function devLogin(name: string) {
+    startTransition(async () => {
+      setMessage("");
+      const response = await fetch("/api/auth/dev-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier: name }),
+      });
+
+      const json = (await response.json()) as { message?: string; redirectTo?: string };
+      if (!response.ok) {
+        setMessage(json.message ?? "Dev login failed.");
         return;
       }
 
@@ -93,6 +130,49 @@ export function AdminLoginForm() {
 
         {message ? <p className="text-sm text-[#f2c16b]">{message}</p> : null}
       </div>
+
+      {/* ── Dev Mode Quick Access ── */}
+      {devResult === "available" ? (
+        <div className="mt-6 rounded-[22px] border border-dashed border-white/10 bg-black/20 p-4">
+          <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-neutral-500">
+            {t("Dev Access", "دخول المطور")}
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => devLogin("Spez")}
+              disabled={isPending}
+              className="rounded-full border border-[#f2c16b]/30 bg-[#f2c16b]/8 px-4 py-2 text-sm font-semibold text-[#f2c16b] transition hover:bg-[#f2c16b]/15 disabled:opacity-40"
+            >
+              {t("Enter as Spez", "دخول كـ Spez")}
+            </button>
+            <button
+              type="button"
+              onClick={() => devLogin("Mariam")}
+              disabled={isPending}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 disabled:opacity-40"
+            >
+              {t("Enter as Mariam", "دخول كـ Mariam")}
+            </button>
+            <button
+              type="button"
+              onClick={() => devLogin("Karim")}
+              disabled={isPending}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 disabled:opacity-40"
+            >
+              {t("Enter as Karim", "دخول كـ Karim")}
+            </button>
+            <button
+              type="button"
+              onClick={() => devLogin("Omar")}
+              disabled={isPending}
+              className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white/70 transition hover:bg-white/10 disabled:opacity-40"
+            >
+              {t("Enter as Omar", "دخول كـ Omar")}
+            </button>
+          </div>
+        </div>
+      ) : null}
     </section>
   );
 }

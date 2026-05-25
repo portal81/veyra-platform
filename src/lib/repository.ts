@@ -933,6 +933,199 @@ export async function createLead(
   return { record, mode: "demo" as const };
 }
 
+// ── Veyra Connect: Discussion Thread ──────────────────────────────────
+export async function addLeadDiscussionComment(
+  leadId: string,
+  body: string,
+  createdBy: string,
+  mentions?: string[],
+) {
+  const activity: LeadActivity = {
+    id: `act-${crypto.randomUUID()}`,
+    leadId,
+    kind: "discussion",
+    body,
+    createdAt: new Date().toISOString(),
+    createdBy,
+    mentions,
+  };
+
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { error } = await supabase.from("lead_activities").insert(activity);
+    if (error) throw new Error(error.message);
+    return { activity, mode: "supabase" as const };
+  }
+
+  demoStore.leadActivities.unshift(activity);
+  return { activity, mode: "demo" as const };
+}
+
+export async function getLeadDiscussion(leadId: string) {
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .eq("leadId", leadId)
+      .eq("kind", "discussion")
+      .order("createdAt", { ascending: true });
+    if (data?.length) return data as LeadActivity[];
+  }
+
+  return demoStore.leadActivities
+    .filter((a) => a.leadId === leadId && a.kind === "discussion")
+    .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
+}
+
+// ── Veyra Connect: Handoff ────────────────────────────────────────────
+export async function createHandoff(
+  leadId: string,
+  fromUserId: string,
+  toUserId: string,
+  note: string,
+) {
+  const activity: LeadActivity = {
+    id: `act-${crypto.randomUUID()}`,
+    leadId,
+    kind: "handoff",
+    body: JSON.stringify({ from: fromUserId, to: toUserId, note, status: "pending" }),
+    createdAt: new Date().toISOString(),
+    createdBy: fromUserId,
+  };
+
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { error } = await supabase.from("lead_activities").insert(activity);
+    if (error) throw new Error(error.message);
+    return { activity, mode: "supabase" as const };
+  }
+
+  demoStore.leadActivities.unshift(activity);
+  return { activity, mode: "demo" as const };
+}
+
+export async function resolveHandoff(activityId: string, accepted: boolean) {
+  const kind = accepted ? "handoff_accepted" : "handoff";
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data: existing } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .eq("id", activityId)
+      .single();
+    if (existing) {
+      const payload = { ...(typeof existing.body === "string" ? JSON.parse(existing.body) : existing.body), status: accepted ? "accepted" : "rejected" };
+      await supabase.from("lead_activities").update({ body: JSON.stringify(payload), kind }).eq("id", activityId);
+    }
+    return;
+  }
+
+  const idx = demoStore.leadActivities.findIndex((a) => a.id === activityId);
+  if (idx !== -1) {
+    const existing = demoStore.leadActivities[idx];
+    const payload = JSON.parse(existing.body);
+    payload.status = accepted ? "accepted" : "rejected";
+    demoStore.leadActivities[idx] = { ...existing, body: JSON.stringify(payload), kind };
+  }
+}
+
+export async function getLeadHandoffs(leadId: string) {
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .eq("leadId", leadId)
+      .in("kind", ["handoff", "handoff_accepted"])
+      .order("createdAt", { ascending: false });
+    if (data?.length) return data as LeadActivity[];
+  }
+
+  return demoStore.leadActivities
+    .filter((a) => a.leadId === leadId && (a.kind === "handoff" || a.kind === "handoff_accepted"))
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function getPendingHandoffs(userId: string) {
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .in("kind", ["handoff", "handoff_accepted"])
+      .order("createdAt", { ascending: false });
+    if (data?.length) {
+      return (data as LeadActivity[]).filter((h) => {
+        try {
+          const payload = JSON.parse(h.body);
+          return payload.to === userId && payload.status === "pending";
+        } catch {
+          return false;
+        }
+      });
+    }
+  }
+
+  return demoStore.leadActivities
+    .filter((h) => (h.kind === "handoff" || h.kind === "handoff_accepted"))
+    .filter((h) => {
+      try {
+        const payload = JSON.parse(h.body);
+        return payload.to === userId && payload.status === "pending";
+      } catch {
+        return false;
+      }
+    })
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
+export async function getTeamDiscussionThreads() {
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .eq("kind", "discussion")
+      .order("createdAt", { ascending: false })
+      .limit(20);
+    if (data?.length) return data as LeadActivity[];
+  }
+
+  return demoStore.leadActivities
+    .filter((a) => a.kind === "discussion")
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .slice(0, 20);
+}
+
+export async function getTeamHandoffFeed() {
+  const supabase = createSupabaseServerClient();
+  if (supabase) {
+    const { data } = await supabase
+      .from("lead_activities")
+      .select("*")
+      .in("kind", ["handoff", "handoff_accepted"])
+      .order("createdAt", { ascending: false })
+      .limit(20);
+    if (data?.length) return data as LeadActivity[];
+  }
+
+  return demoStore.leadActivities
+    .filter((a) => a.kind === "handoff" || a.kind === "handoff_accepted")
+    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    .slice(0, 20);
+}
+
+export async function getTeamConnectFeed() {
+  const [discussions, handoffs] = await Promise.all([
+    getTeamDiscussionThreads(),
+    getTeamHandoffFeed(),
+  ]);
+  return [...discussions, ...handoffs].sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+  );
+}
+
 export async function getTeamUsers() {
   const supabase = createSupabaseServerClient();
 

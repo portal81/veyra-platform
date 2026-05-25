@@ -188,10 +188,11 @@ export type Lead = {
 export type LeadActivity = {
   id: string;
   leadId: string;
-  kind: "note" | "stage_change" | "assignment" | "invite_sent";
+  kind: "note" | "stage_change" | "assignment" | "invite_sent" | "discussion" | "handoff" | "handoff_accepted";
   body: string;
   createdAt: string;
   createdBy: string;
+  mentions?: string[];
 };
 
 export type ClientCaseStatus = "open" | "won" | "lost";

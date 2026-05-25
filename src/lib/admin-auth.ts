@@ -99,7 +99,12 @@ export async function ensureOwnerAccount(options?: { syncPassword?: boolean }) {
 
 export async function authenticateAdmin(email: string, password: string) {
   const authClient = createSupabaseAuthClient();
+
+  // Fall back to dev auth if Supabase is not configured
   if (!authClient) {
+    if (OWNER_EMAIL && email.toLowerCase() === OWNER_EMAIL.toLowerCase() && password === OWNER_PASSWORD) {
+      return devAuthenticateAdmin(OWNER_FULL_NAME);
+    }
     throw new Error("Supabase auth is not configured yet.");
   }
 
@@ -156,4 +161,33 @@ export async function getAdminSession() {
   const store = await cookies();
   const token = store.get(ADMIN_SESSION_COOKIE)?.value;
   return verifyAdminSessionToken(token);
+}
+
+// ── Dev / Demo Auth (no Supabase required) ──────────────────────────
+const DEV_MODE = process.env.DEV_MODE === "true";
+
+export function isDevMode() {
+  return DEV_MODE;
+}
+
+export async function devAuthenticateAdmin(identifier: string) {
+  if (!DEV_MODE) {
+    throw new Error("Dev mode is not enabled.");
+  }
+
+  const fullName = identifier.trim() || "Dev User";
+  const session: Omit<AdminSession, "issuedAt" | "expiresAt"> = {
+    userId: `dev-${identifier.toLowerCase().replace(/\s+/g, "-")}`,
+    email: `${identifier.toLowerCase().replace(/\s+/g, ".")}@veyra.dev`,
+    fullName,
+    role: "owner",
+    permissions: getRolePermissions("owner"),
+    accessMode: "role",
+  };
+
+  return {
+    session,
+    token: createAdminSessionToken(session),
+    redirectTo: "/admin",
+  };
 }

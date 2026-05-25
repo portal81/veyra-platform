@@ -5,7 +5,7 @@ import { getAdminSession } from "@/lib/admin-auth";
 import { hasPermission } from "@/lib/admin-session";
 import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
 import { pickAdminText, translateDbText } from "@/lib/admin-locale";
-import { getCrmSnapshot, getDashboardStats, getLeads } from "@/lib/repository";
+import { getCrmSnapshot, getDashboardStats, getLeads, getTeamConnectFeed } from "@/lib/repository";
 
 const closedStages = new Set(["closed_won", "closed_lost"]);
 const STALE_DAYS = 3;
@@ -21,6 +21,7 @@ export default async function AdminPage() {
   }
 
   const [stats, snapshot, leads] = await Promise.all([getDashboardStats(), getCrmSnapshot(), getLeads()]);
+  const connectFeed = await getTeamConnectFeed();
 
   const leadTimestamps = leads.map((lead) => new Date(lead.createdAt).getTime()).filter((ts) => Number.isFinite(ts));
   const newestLeadTs = leadTimestamps.length ? Math.max(...leadTimestamps) : 0;
@@ -305,6 +306,41 @@ export default async function AdminPage() {
             </div>
           </section>
         </div>
+
+        {/* ── Veyra Connect Feed ── */}
+        {connectFeed.length > 0 ? (
+          <section className="admin-shell-panel mt-6 p-5">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                  {pickAdminText(locale, "Veyra Connect", "تواصل الفريق")}
+                </p>
+                <h2 className="mt-1 text-lg font-semibold text-white">
+                  {pickAdminText(locale, "Latest team activity", "آخر نشاط الفريق")}
+                </h2>
+              </div>
+            </div>
+            <div className="mt-4 grid gap-2">
+              {connectFeed.slice(0, 5).map((item) => (
+                <div key={item.id} className="admin-shell-muted-card flex items-center justify-between gap-3 px-4 py-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className={`text-[10px] font-bold uppercase tracking-wider shrink-0 ${
+                      item.kind === "discussion" ? "text-sky-400" : "text-amber-400"
+                    }`}>
+                      {item.kind === "discussion"
+                        ? pickAdminText(locale, "discussion", "نقاش")
+                        : item.kind === "handoff_accepted"
+                          ? pickAdminText(locale, "handoff", "تسليم")
+                          : pickAdminText(locale, "handoff", "تسليم")}
+                    </span>
+                    <span className="text-sm text-white/70 truncate">{item.body}</span>
+                  </div>
+                  <span className="shrink-0 text-[10px] text-white/35">{item.createdBy}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </SaaSPageShell>
   );

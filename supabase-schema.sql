@@ -127,3 +127,35 @@ create table if not exists public.ai_chat_logs (
 );
 
 alter table public.ai_chat_logs add column if not exists "metadata" jsonb default '{}'::jsonb;
+
+-- Veyra Connect: internal team communication
+create table if not exists public.entity_threads (
+  "id" text primary key,
+  "entityType" text not null,
+  "entityId" text not null,
+  "title" text not null,
+  "createdBy" text not null,
+  "createdAt" timestamptz not null default now(),
+  "resolved" boolean not null default false
+);
+
+create table if not exists public.entity_comments (
+  "id" text primary key,
+  "threadId" text not null references public.entity_threads("id") on delete cascade,
+  "body" text not null,
+  "createdBy" text not null,
+  "createdAt" timestamptz not null default now(),
+  "mentions" jsonb not null default '[]'::jsonb
+);
+
+create table if not exists public.handoffs (
+  "id" text primary key,
+  "entityType" text not null,
+  "entityId" text not null,
+  "fromUserId" text not null,
+  "toUserId" text not null,
+  "note" text not null default '',
+  "status" text not null default 'pending',
+  "createdAt" timestamptz not null default now(),
+  "resolvedAt" timestamptz
+);
