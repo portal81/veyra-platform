@@ -1,0 +1,51 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#120F0D"/>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#veil)"/>
+  <path d="M770 464C872 432 994 430 1200 480V630H684C691 566 719 504 770 464Z" fill="#0F0C0A"/>
+  <rect x="820" y="108" width="112" height="360" rx="10" fill="url(#tower)"/>
+  <rect x="860" y="74" width="32" height="62" rx="10" fill="#382D24"/>
+  <rect x="868" y="48" width="16" height="36" rx="8" fill="#4B392A"/>
+  <g opacity="0.9">
+    <rect x="838" y="134" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="858" y="134" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="878" y="134" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="898" y="134" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="838" y="162" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="858" y="162" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="878" y="162" width="10" height="16" fill="#F7DDA3"/>
+    <rect x="898" y="162" width="10" height="16" fill="#F7DDA3"/>
+  </g>
+  <path d="M64 112H90L108 176L126 112H152L117 236H101L64 112Z" fill="url(#gold1)"/>
+  <path d="M94 112H108L126 168L132 146H146L129 218H117L94 112Z" fill="url(#gold2)" fill-opacity="0.96"/>
+  <text x="194" y="148" fill="#F2D19A" font-family="Cormorant Garamond, Georgia, serif" font-size="48" font-weight="600" letter-spacing="14">VEYRA</text>
+  <text x="198" y="178" fill="rgba(233,220,198,0.76)" font-family="Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="9">DEVELOPMENTS</text>
+  <text x="64" y="316" fill="#F2C16B" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="6">LUXURY REAL ESTATE / FINISHING / SMART HOMES</text>
+  <text x="64" y="404" fill="white" font-family="Cormorant Garamond, Georgia, serif" font-size="74" font-weight="600">Building Modern Living</text>
+  <text x="64" y="468" fill="rgba(255,255,255,0.76)" font-family="Arial, sans-serif" font-size="28">A premium digital platform for projects, finishing, and smart living.</text>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="0" x2="600" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#19212E"/>
+      <stop offset="0.44" stop-color="#5A463F"/>
+      <stop offset="1" stop-color="#120F0D"/>
+    </linearGradient>
+    <linearGradient id="veil" x1="0" y1="0" x2="730" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#090807" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#090807" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="tower" x1="876" y1="108" x2="876" y2="468" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4A4037"/>
+      <stop offset="0.5" stop-color="#8F7D68"/>
+      <stop offset="1" stop-color="#2B221C"/>
+    </linearGradient>
+    <linearGradient id="gold1" x1="64" y1="112" x2="152" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7DDA3"/>
+      <stop offset="0.46" stop-color="#E0AC58"/>
+      <stop offset="1" stop-color="#8F5B1F"/>
+    </linearGradient>
+    <linearGradient id="gold2" x1="94" y1="112" x2="146" y2="218" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2CB" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#C88D3B" stop-opacity="0.84"/>
+    </linearGradient>
+  </defs>
+</svg>

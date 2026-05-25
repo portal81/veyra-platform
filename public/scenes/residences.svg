@@ -1,0 +1,39 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#0E0B0A"/>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <ellipse cx="694" cy="178" rx="266" ry="148" fill="url(#glow)"/>
+  <rect x="178" y="330" width="350" height="208" rx="18" fill="url(#villa)"/>
+  <rect x="568" y="294" width="276" height="238" rx="18" fill="url(#villa)"/>
+  <rect x="862" y="344" width="166" height="180" rx="16" fill="url(#villa2)"/>
+  <g opacity="0.88">
+    <rect x="214" y="364" width="58" height="72" fill="#F8DFAE"/>
+    <rect x="286" y="364" width="58" height="72" fill="#F8DFAE"/>
+    <rect x="358" y="364" width="58" height="72" fill="#F8DFAE"/>
+    <rect x="430" y="364" width="58" height="72" fill="#F8DFAE"/>
+    <rect x="214" y="450" width="112" height="62" fill="#F8DFAE"/>
+    <rect x="348" y="450" width="140" height="62" fill="#F8DFAE"/>
+    <rect x="600" y="326" width="100" height="90" fill="#F8DFAE"/>
+    <rect x="720" y="326" width="88" height="90" fill="#F8DFAE"/>
+    <rect x="600" y="434" width="208" height="70" fill="#F8DFAE"/>
+  </g>
+  <path d="M0 600C172 562 370 564 562 624C788 694 986 706 1200 672V800H0V600Z" fill="#17120F"/>
+  <defs>
+    <linearGradient id="bg" x1="600" y1="0" x2="600" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242D3D"/>
+      <stop offset="0.35" stop-color="#745A49"/>
+      <stop offset="1" stop-color="#120F0D"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(694 178) rotate(90) scale(148 266)">
+      <stop stop-color="#F7DDA3"/>
+      <stop offset="1" stop-color="#F2C16B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="villa" x1="353" y1="330" x2="353" y2="538" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#48382D"/>
+      <stop offset="1" stop-color="#271F19"/>
+    </linearGradient>
+    <linearGradient id="villa2" x1="945" y1="344" x2="945" y2="524" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#544234"/>
+      <stop offset="1" stop-color="#2A211B"/>
+    </linearGradient>
+  </defs>
+</svg>

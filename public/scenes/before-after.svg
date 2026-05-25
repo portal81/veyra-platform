@@ -1,0 +1,20 @@
+<svg width="1400" height="900" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="900" fill="#17110F"/>
+  <rect x="40" y="80" width="1320" height="700" rx="36" fill="#1F1814"/>
+  <rect x="80" y="120" width="610" height="620" rx="20" fill="#584840"/>
+  <rect x="120" y="168" width="530" height="496" rx="12" fill="#6D6059"/>
+  <rect x="168" y="220" width="434" height="292" rx="8" fill="#9A918A"/>
+  <rect x="118" y="688" width="264" height="16" rx="8" fill="#3A302A"/>
+  <rect x="710" y="120" width="610" height="620" rx="20" fill="#2B211C"/>
+  <rect x="748" y="160" width="534" height="200" rx="14" fill="#43352C"/>
+  <rect x="748" y="390" width="250" height="206" rx="24" fill="#C4B39C"/>
+  <rect x="1030" y="402" width="220" height="194" rx="18" fill="#3A2D24"/>
+  <rect x="1090" y="454" width="118" height="16" rx="8" fill="#A48B72"/>
+  <rect x="1090" y="486" width="118" height="16" rx="8" fill="#A48B72"/>
+  <rect x="756" y="648" width="498" height="12" rx="6" fill="#F2C16B" opacity="0.48"/>
+  <rect x="694" y="190" width="12" height="470" fill="#F2C16B"/>
+  <circle cx="700" cy="426" r="38" fill="#1C1613" stroke="#F2C16B" stroke-width="4"/>
+  <path d="M712 426L688 408V444L712 426Z" fill="#F2C16B"/>
+  <text x="214" y="160" fill="#F1E5D1" font-family="Arial, sans-serif" font-size="40" letter-spacing="3">BEFORE</text>
+  <text x="924" y="160" fill="#F2C16B" font-family="Arial, sans-serif" font-size="40" letter-spacing="3">AFTER</text>
+</svg>

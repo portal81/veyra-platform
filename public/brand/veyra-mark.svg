@@ -1,0 +1,16 @@
+<svg width="128" height="128" viewBox="0 0 70 86" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="veyraMarkPrimary" x1="7" y1="10" x2="60" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7DDA3" />
+      <stop offset="0.46" stop-color="#E0AC58" />
+      <stop offset="1" stop-color="#8F5B1F" />
+    </linearGradient>
+    <linearGradient id="veyraMarkSecondary" x1="24" y1="10" x2="46" y2="76" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2CB" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#C88D3B" stop-opacity="0.84" />
+    </linearGradient>
+  </defs>
+  <path d="M8 9H23.5L35 48.5L46.7 9H62L39.3 77H29.6L8 9Z" fill="url(#veyraMarkPrimary)" />
+  <path d="M25.3 9H34.3L45 41.8L48.6 29.4H57.3L44.9 68.8H37.6L25.3 9Z" fill="url(#veyraMarkSecondary)" fill-opacity="0.94" />
+  <path d="M14.5 77.5C20 73.1 26.4 70.8 33.6 70.8C41.4 70.8 48.5 73.4 54.9 78.6" stroke="#BB7D31" stroke-width="3" stroke-linecap="round" opacity="0.72" />
+</svg>

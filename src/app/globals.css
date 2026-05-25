@@ -1386,3 +1386,799 @@ button,
   background: transparent;
   color: rgba(255, 255, 255, 0.74);
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PUBLIC WEBSITE — Veyra Estate Theme
+   Light, estate-style design for public-facing pages.
+   ═══════════════════════════════════════════════════════════════ */
+
+.site-public-shell {
+  background:
+    radial-gradient(circle at top left, rgba(212, 164, 79, 0.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(183, 123, 47, 0.1), transparent 22%),
+    linear-gradient(180deg, #fffdfa 0%, #f7f1e7 44%, #f3eadf 100%);
+  color: #241b13;
+}
+
+.site-public-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(120deg, rgba(255,255,255,0.76), transparent 46%),
+    radial-gradient(circle at 20% 0%, rgba(212, 164, 79, 0.12), transparent 32%);
+}
+
+.site-public-shell > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Brand Logo ──────────────────────────────────────────── */
+
+.brand-logo-wordmark {
+  color: #9a651f;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.24);
+}
+
+.brand-logo-descriptor {
+  color: rgba(36, 27, 19, 0.68);
+}
+
+/* ── Public Header ───────────────────────────────────────── */
+
+.public-header {
+  position: sticky;
+  top: 12px;
+  z-index: 50;
+  padding: 0 12px;
+}
+
+.public-header-frame {
+  margin: 0 auto;
+  max-width: 1380px;
+  border: 1px solid rgba(212, 164, 79, 0.22);
+  border-radius: 2rem;
+  background:
+    radial-gradient(circle at top right, rgba(212, 164, 79, 0.13), transparent 24%),
+    rgba(255, 252, 248, 0.97);
+  box-shadow: 0 18px 50px rgba(84, 57, 22, 0.18), 0 2px 10px rgba(84,57,22,0.1);
+  backdrop-filter: blur(28px);
+  padding: 0.9rem 1rem 1rem;
+}
+
+.public-header-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(212, 164, 79, 0.12);
+  padding-bottom: 0.7rem;
+}
+
+.public-header-chipline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 164, 79, 0.22);
+  background: rgba(212, 164, 79, 0.08);
+  padding: 0.55rem 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #bb8733;
+}
+
+.public-header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  padding: 0.85rem 1.2rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f150d;
+  box-shadow: 0 14px 32px rgba(183, 123, 47, 0.22);
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.public-header-cta:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.public-header-mainrow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.85rem;
+}
+
+/* ── Language Switcher ───────────────────────────────── */
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 164, 79, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 3px;
+  box-shadow: 0 12px 28px rgba(84, 57, 22, 0.08);
+}
+
+.lang-switch-btn {
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: background-color 160ms ease, color 160ms ease;
+  border: none;
+  cursor: pointer;
+}
+
+.lang-switch-btn-active {
+  background: #dba14a;
+  color: #20150d;
+}
+
+.lang-switch-btn-inactive {
+  color: rgba(36, 27, 19, 0.6);
+  background: transparent;
+}
+
+.lang-switch-btn-inactive:hover {
+  color: #241b13;
+}
+
+/* ── Mobile Panel ─────────────────────────────────────── */
+
+.public-mobile-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: max-height 260ms ease, opacity 220ms ease;
+}
+
+.public-mobile-panel-open {
+  max-height: 40rem;
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.public-mobile-sheet {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 0;
+}
+
+.public-mobile-link {
+  display: grid;
+  gap: 0.25rem;
+  border-radius: 1.35rem;
+  border: 1px solid rgba(212, 164, 79, 0.14);
+  background: rgba(255, 255, 255, 0.72);
+  padding: 1rem 1.1rem;
+  color: rgba(36, 27, 19, 0.8);
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.public-mobile-link:hover,
+.public-mobile-link-active {
+  border-color: rgba(212, 164, 79, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+/* ── Public Footer ────────────────────────────────────── */
+
+.public-footer {
+  border-top: 1px solid rgba(212, 164, 79, 0.16);
+  background: rgba(255, 253, 250, 0.88);
+}
+
+.public-footer-inner {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 2.5rem 0 3.5rem;
+  width: min(1280px, calc(100% - 1.5rem));
+}
+
+.public-footer-shell {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .public-footer-shell {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+.public-footer-rule {
+  height: 1px;
+  background: rgba(212, 164, 79, 0.14);
+  margin: 1rem 0;
+}
+
+.public-footer-tagline {
+  color: rgba(36, 27, 19, 0.66);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 32rem;
+}
+
+.public-footer-copyright {
+  color: rgba(36, 27, 19, 0.42);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.public-footer-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.public-footer-col-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(36, 27, 19, 0.4);
+  margin-bottom: 0.75rem;
+}
+
+.public-footer-col {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.public-footer-link {
+  color: rgba(36, 27, 19, 0.7);
+  font-size: 0.92rem;
+  transition: color 160ms ease;
+}
+
+.public-footer-link:hover {
+  color: #9a651f;
+}
+
+/* ── Public Estate Page Sections ──────────────────────── */
+
+.public-hero-search {
+  position: relative;
+  padding: 8rem 1rem 5rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(212, 164, 79, 0.1);
+}
+
+.public-hero-search h1 {
+  color: #241b13;
+}
+
+.public-hero-search p {
+  color: rgba(36, 27, 19, 0.8);
+}
+
+.public-hero-search-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.public-hero-search-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to top, #f7f1e7, rgba(247, 241, 231, 0.8) 50%, rgba(247, 241, 231, 0.3) 100%);
+}
+
+.public-hero-search-content {
+  position: relative;
+  z-index: 1;
+  max-width: 64rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.public-search-box {
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(24px);
+  padding: 1rem 1.5rem;
+  box-shadow: 0 24px 60px rgba(84, 57, 22, 0.14);
+  border: 1px solid rgba(212, 164, 79, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .public-search-box {
+    flex-direction: row;
+  }
+}
+
+.public-search-input {
+  flex: 1;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 2px solid #e5ddd4;
+  padding: 1rem 1.5rem;
+  font-size: 1.05rem;
+  color: #241b13;
+  outline: none;
+  transition: border-color 180ms ease;
+}
+
+.public-search-input:focus {
+  border-color: #dba14a;
+}
+
+.public-popular-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.public-popular-tag {
+  padding: 0.5rem 1.25rem;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 164, 79, 0.3);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #241b13;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.public-popular-tag:hover {
+  background: #dba14a;
+  border-color: transparent;
+  color: white;
+}
+
+/* ── Estate Home Section ──────────────────────────────── */
+
+.public-section {
+  margin: 0 auto;
+  width: min(1240px, calc(100% - 1.5rem));
+}
+
+.public-section-wide {
+  padding: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .public-section-wide {
+    padding: 7rem 0;
+  }
+}
+
+.public-browse-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .public-browse-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.public-browse-card {
+  border-radius: 2rem;
+  background: white;
+  border: 1px solid rgba(212, 164, 79, 0.1);
+  padding: 2rem;
+  text-align: center;
+  transition: box-shadow 300ms ease, border-color 300ms ease, transform 300ms ease;
+}
+
+.public-browse-card:hover {
+  box-shadow: 0 24px 56px rgba(84, 57, 22, 0.14);
+  border-color: rgba(212, 164, 79, 0.4);
+  transform: translateY(-8px);
+}
+
+.public-browse-icon {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 999px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 164, 79, 0.1);
+  color: #dba14a;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.public-browse-label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #241b13;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Estate Home Showcase ─────────────────────────────── */
+
+.estate-home-showcase-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.estate-home-showcase-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.estate-home-showcase-unit {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(36, 27, 19, 0.08);
+  background: rgba(36, 27, 19, 0.04);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.estate-home-showcase-unit span {
+  font-size: 0.72rem;
+  color: rgba(36, 27, 19, 0.62);
+}
+
+.estate-home-showcase-unit strong {
+  font-size: 0.92rem;
+  color: #241b13;
+}
+
+.estate-pulse-line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 164, 79, 0.4), rgba(212, 164, 79, 0));
+  margin: 1rem 0;
+}
+
+/* ── Estate Booking Section ───────────────────────────── */
+
+.estate-booking-atlas-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.estate-booking-atlas-note strong {
+  background: rgba(212, 164, 79, 0.12);
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-weight: 700;
+  color: #9a651f;
+}
+
+.estate-home-booking-list {
+  margin-top: 2rem;
+}
+
+.estate-project-fit-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(36, 27, 19, 0.06);
+}
+
+.estate-project-fit-row:last-child {
+  border-bottom: none;
+}
+
+.estate-project-fit-index {
+  flex-shrink: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 999px;
+  background: rgba(212, 164, 79, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #9a651f;
+}
+
+.estate-project-fit-row p {
+  color: rgba(36, 27, 19, 0.7);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+/* ── Estate Scene Shell ───────────────────────────────── */
+
+.estate-scene-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.estate-scene-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(212, 164, 79, 0.3), transparent);
+}
+
+/* ── Estate Portfolio ─────────────────────────────────── */
+
+.estate-portfolio-shell {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* ── Estate Card Styles ───────────────────────────────── */
+
+.estate-service-card-editorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.estate-tool-shell-atlas {
+  padding: 1.5rem;
+}
+
+.estate-module-card-dossier {
+  padding: 1.5rem;
+}
+
+.estate-lead-shell-atlas {
+  border: 1px solid rgba(212, 164, 79, 0.16);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.5rem;
+  box-shadow: 0 24px 60px rgba(84, 57, 22, 0.14);
+}
+
+/* ── Service Page Styles ──────────────────────────────── */
+
+.service-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(212, 164, 79, 0.1);
+}
+
+.service-calc-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(36, 27, 19, 0.08);
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 48px rgba(84, 57, 22, 0.08);
+}
+
+.service-faq-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.service-faq-item {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(36, 27, 19, 0.06);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.25rem 1.5rem;
+}
+
+.service-faq-q {
+  font-weight: 700;
+  color: #241b13;
+  margin-bottom: 0.3rem;
+}
+
+.service-faq-a {
+  color: rgba(36, 27, 19, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.service-why-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .service-why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-why-card {
+  border: 1px solid rgba(36, 27, 19, 0.06);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+}
+
+.service-why-card h3 {
+  color: #241b13;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.service-why-card p {
+  color: rgba(36, 27, 19, 0.62);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.service-step-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.service-step-item {
+  border-radius: 1.25rem;
+  background: rgba(36, 27, 19, 0.04);
+  padding: 1rem 1.25rem;
+}
+
+.service-step-item strong {
+  color: #241b13;
+  font-size: 1.1rem;
+}
+
+.service-step-item span {
+  color: rgba(36, 27, 19, 0.5);
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.82rem;
+}
+
+.service-mobile-conversion {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: rgba(255, 253, 250, 0.92);
+  border-top: 1px solid rgba(212, 164, 79, 0.16);
+  backdrop-filter: blur(20px);
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .service-mobile-conversion {
+    display: none;
+  }
+}
+
+.service-mobile-conversion .estate-primary-button {
+  flex: 1;
+  text-align: center;
+}
+
+.service-mobile-conversion .estate-secondary-button {
+  flex: 1;
+  text-align: center;
+}
+
+/* ── Public Lead Form Overrides ───────────────────────── */
+
+.site-public-shell .lead-form-field input,
+.site-public-shell .lead-form-field select,
+.site-public-shell .lead-form-field textarea {
+  background: white;
+  border-color: rgba(36, 27, 19, 0.1);
+  color: #241b13;
+  border-radius: 1rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.92rem;
+  width: 100%;
+  outline: none;
+  transition: border-color 180ms ease;
+}
+
+.site-public-shell .lead-form-field input:focus,
+.site-public-shell .lead-form-field select:focus,
+.site-public-shell .lead-form-field textarea:focus {
+  border-color: #dba14a;
+}
+
+.site-public-shell .lead-form-field label {
+  color: rgba(36, 27, 19, 0.7);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.site-public-shell .lead-form-field input::placeholder,
+.site-public-shell .lead-form-field textarea::placeholder {
+  color: rgba(36, 27, 19, 0.3);
+}
+
+.site-public-shell .lead-form-submit {
+  border-radius: 999px;
+  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  color: #1f150d;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.site-public-shell .lead-form-submit:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.site-public-shell .lead-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Input/Select base overrides for light theme ─────── */
+
+.site-public-shell input,
+.site-public-shell select,
+.site-public-shell textarea {
+  max-width: 100%;
+}
+
+.site-public-shell input::placeholder,
+.site-public-shell textarea::placeholder {
+  color: rgba(36, 27, 19, 0.3);
+}
+
+/* ── Public Button Overrides ──────────────────────────── */
+
+.site-public-shell .estate-primary-button {
+  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  color: #1f150d;
+  font-weight: 700;
+  box-shadow: 0 20px 38px rgba(183, 123, 47, 0.28);
+}
+
+.site-public-shell .estate-secondary-button {
+  border: 1px solid rgba(36, 27, 19, 0.1);
+  color: #241b13;
+  background: rgba(255, 255, 255, 0.5);
+}

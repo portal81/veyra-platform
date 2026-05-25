@@ -13,7 +13,6 @@ import { PageTransition } from "@/components/page-transition";
 import { PreviewFocusBridge } from "@/components/preview-focus-bridge";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { AiConcierge } from "@/components/ai-concierge";
 import { getAdminLocaleDirection } from "@/lib/admin-locale";
 import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
 import { SITE_URL } from "@/lib/site-url";
@@ -82,7 +81,7 @@ export default async function RootLayout({
       dir={direction}
       className={`${manrope.variable} ${cormorant.variable} ${cairo.variable} h-full antialiased`}
     >
-      <body className={`min-h-full bg-[#120f0d] text-white ${direction === "rtl" ? "font-arabic" : ""}`}>
+      <body className={`min-h-full antialiased ${direction === "rtl" ? "font-arabic" : ""}`}>
         <AdminLocaleProvider initialLocale={locale} messages={messages}>
           <Toaster
             position={direction === "rtl" ? "bottom-left" : "bottom-right"}
@@ -105,7 +104,6 @@ export default async function RootLayout({
             </main>
             <SiteFooter />
           </div>
-          <AiConcierge />
         </AdminLocaleProvider>
       </body>
     </html>
