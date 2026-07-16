@@ -97,7 +97,7 @@ function GroupTabs({
           onClick={() => onChange(group.key)}
           className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition ${
             active === group.key
-              ? "border-[#f2c16b]/60 bg-[#f2c16b]/14 text-[#f8d28b]"
+              ? "border-brand-gold/60 bg-brand-gold/14 text-[#f8d28b]"
               : "border-white/10 bg-black/18 text-white/68 hover:border-white/20 hover:bg-white/[0.04]"
           }`}
         >
@@ -131,7 +131,7 @@ function FlowTabs({
           onClick={() => onChange(item.key)}
           className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition ${
             active === item.key
-              ? "border-[#f2c16b]/60 bg-[#f2c16b]/14 text-[#f8d28b]"
+              ? "border-brand-gold/60 bg-brand-gold/14 text-[#f8d28b]"
               : "border-white/10 bg-black/18 text-white/68 hover:border-white/20 hover:bg-white/[0.04]"
           }`}
         >
@@ -165,11 +165,11 @@ function GroupChooser({
             onClick={() => onPick(group.key)}
             className={`grid gap-3 rounded-[24px] border p-4 text-start transition ${
               active === group.key
-                ? "border-[#f2c16b]/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
+                ? "border-brand-gold/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
                 : "border-white/10 bg-black/18 hover:border-white/20 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Step {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Step {index + 1}</span>
             <span className="text-base font-semibold text-white">{group.label}</span>
           </button>
         ))}
@@ -194,13 +194,13 @@ function PageRail({
             key={item.key}
             className={`grid gap-2 rounded-[22px] border p-4 transition ${
               isActive
-                ? "border-[#f2c16b]/60 bg-[#f2c16b]/10 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
+                ? "border-brand-gold/60 bg-brand-gold/10 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
                 : "border-white/10 bg-black/18"
             }`}
           >
             <div className="flex items-center justify-between gap-3">
               <span className="text-sm font-semibold text-white">{item.label}</span>
-              <span className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-[0.16em] ${isActive ? "bg-[#f2c16b]/16 text-[#f8d28b]" : "bg-white/6 text-white/42"}`}>
+              <span className={`rounded-full px-2 py-1 text-[10px] uppercase tracking-[0.16em] ${isActive ? "bg-brand-gold/16 text-[#f8d28b]" : "bg-white/6 text-white/42"}`}>
                 {isActive ? "Now" : "Page"}
               </span>
             </div>
@@ -237,13 +237,13 @@ function SectionCanvas({
               onClick={() => onPick(item.key)}
               className={`grid gap-3 rounded-[24px] border p-4 text-start transition ${
                 isActive
-                  ? "border-[#f2c16b]/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
+                  ? "border-brand-gold/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
                   : "border-white/10 bg-black/18 hover:border-white/20 hover:bg-white/[0.04]"
               }`}
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Section {index + 1}</span>
-                <span className={`rounded-full px-2 py-1 text-[10px] ${isActive ? "bg-[#f2c16b]/16 text-[#f8d28b]" : "bg-white/6 text-white/42"}`}>
+                <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Section {index + 1}</span>
+                <span className={`rounded-full px-2 py-1 text-[10px] ${isActive ? "bg-brand-gold/16 text-[#f8d28b]" : "bg-white/6 text-white/42"}`}>
                   {isActive ? "Focused" : "Open"}
                 </span>
               </div>
@@ -272,7 +272,7 @@ function ElementListStrip({
           <div
             key={`${item.label}-${item.hint}`}
             className={`rounded-[20px] border p-4 ${
-              item.tone === "shared" ? "border-[#f2c16b]/30 bg-[#f2c16b]/8" : "border-white/10 bg-black/18"
+              item.tone === "shared" ? "border-brand-gold/30 bg-brand-gold/8" : "border-white/10 bg-black/18"
             }`}
           >
             <p className="text-sm font-semibold text-white">{item.label}</p>
@@ -418,7 +418,7 @@ function PagePreviewActions({
       <button
         type="button"
         onClick={() => onPreviewFocus?.(focus)}
-        className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15"
+        className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15"
       >
         {t("Show in live preview", "اعرضها في المعاينة الحية")}
       </button>
@@ -455,7 +455,7 @@ function OwnershipNotice({
       <div className="flex flex-wrap items-center gap-2">
         <span
           className={`rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] ${
-            scope === "catalog" ? "bg-[#f2c16b]/16 text-[#f8d28b]" : "bg-white/8 text-white/70"
+            scope === "catalog" ? "bg-brand-gold/16 text-[#f8d28b]" : "bg-white/8 text-white/70"
           }`}
         >
           {scope === "catalog" ? t("Managed in source", "تدار من المصدر") : t("Managed here", "تدار هنا")}
@@ -498,10 +498,6 @@ function PreviewChoiceGrid({
   const [editorOpen, setEditorOpen] = useState(true);
   const activeEntry = items.find(([field]) => field === selectedField) ?? items[0];
 
-  useEffect(() => {
-    if (activeEntry) setEditorOpen(true);
-  }, [activeEntry?.[0]]);
-
   if (!activeEntry) return null;
 
   const [field, label, as = "input", rows = 2] = activeEntry;
@@ -521,16 +517,16 @@ function PreviewChoiceGrid({
               <button
                 key={itemField}
                 type="button"
-                onClick={() => setSelectedField(itemField)}
+                onClick={() => { setSelectedField(itemField); setEditorOpen(true); }}
                 className={`grid gap-3 rounded-[24px] border p-4 text-start transition ${
                   isActive
-                    ? "border-[#f2c16b]/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
+                    ? "border-brand-gold/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
                     : "border-white/10 bg-black/18 hover:border-white/20 hover:bg-white/[0.04]"
                 }`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#f2c16b]">{ui(itemLabel)}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand-gold">{ui(itemLabel)}</p>
                     <p className="mt-2 text-sm font-semibold text-white/92">{englishPreview}</p>
                   </div>
                   <span
@@ -550,7 +546,7 @@ function PreviewChoiceGrid({
         <div className="rounded-[28px] border border-white/10 bg-black/18 p-5 shadow-[0_16px_60px_rgba(0,0,0,0.18)] xl:sticky xl:top-6">
           <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f2c16b]">Focused editor</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">Focused editor</p>
               <h5 className="mt-2 font-serif text-2xl text-white">{ui(label)}</h5>
               <p className="mt-2 text-sm text-white/58">اختر عنصرًا واحدًا من البطاقات، عدله هنا، ثم انتقل للعنصر التالي بدون زحام بصري.</p>
             </div>
@@ -612,7 +608,7 @@ function FocusedCollectionPanel({
     <div className="grid gap-4 rounded-[24px] border border-white/10 bg-[#120f0d] p-5 shadow-[0_16px_60px_rgba(0,0,0,0.22)] xl:sticky xl:top-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">Focused editor</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-brand-gold">Focused editor</p>
           <h5 className="mt-2 text-xl font-semibold text-white">{title}</h5>
           <p className="mt-2 max-w-xl text-sm text-white/58">{subtitle}</p>
         </div>
@@ -639,11 +635,8 @@ function HomeServiceLinesEditor({ items, onChange }: { items: HomeServiceLine[];
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title="Home service cards" description="اختر بطاقة خدمة واحدة من المعاينات ثم عدّل محتواها.">
@@ -653,12 +646,12 @@ function HomeServiceLinesEditor({ items, onChange }: { items: HomeServiceLine[];
             <button
               key={item.id}
               type="button"
-              onClick={() => setSelectedId(item.id)}
+              onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
               className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-                item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+                item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
               }`}
             >
-              <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Card {index + 1}</span>
+              <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Card {index + 1}</span>
               <span className="text-base font-semibold text-white">{item.title.en || "Untitled service card"}</span>
               <span className="line-clamp-2 text-sm text-white/62">{item.copy.en || "No English copy yet"}</span>
             </button>
@@ -686,11 +679,8 @@ function HomeSignalsEditor({ items, onChange }: { items: HomeSignal[]; onChange:
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title="Hero market signals" description="هذه الإشارات الصغيرة تظهر تحت الهيرو، فحافظ عليها قصيرة وواضحة.">
@@ -700,12 +690,12 @@ function HomeSignalsEditor({ items, onChange }: { items: HomeSignal[]; onChange:
           <button
             key={item.id}
             type="button"
-            onClick={() => setSelectedId(item.id)}
+            onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
             className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-              item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+              item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Signal {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Signal {index + 1}</span>
             <span className="text-sm font-semibold text-white">{item.label.en || "Signal label"}</span>
             <span className="text-sm text-white/62">{item.value.en || "Signal value"}</span>
           </button>
@@ -731,11 +721,8 @@ function DashboardStatsEditor({ items, onChange }: { items: HomeDashboardStatCop
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title="Homepage dashboard stats" description="هذه التسميات توضح معنى الأرقام الحقيقية، فخليها تعريفية لا مكررة.">
@@ -745,12 +732,12 @@ function DashboardStatsEditor({ items, onChange }: { items: HomeDashboardStatCop
           <button
             key={item.id}
             type="button"
-            onClick={() => setSelectedId(item.id)}
+            onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
             className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-              item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+              item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Stat {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Stat {index + 1}</span>
             <span className="text-sm font-semibold text-white">{item.label.en || "Stat label"}</span>
             <span className="line-clamp-2 text-sm text-white/62">{item.hint.en || "Hint preview"}</span>
           </button>
@@ -774,11 +761,8 @@ function DecisionCardsEditor({ title, description, items, onChange }: { title: s
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title={title} description={description}>
@@ -788,12 +772,12 @@ function DecisionCardsEditor({ title, description, items, onChange }: { title: s
           <button
             key={item.id}
             type="button"
-            onClick={() => setSelectedId(item.id)}
+            onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
             className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-              item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+              item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Card {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Card {index + 1}</span>
             <span className="text-sm font-semibold text-white">{item.title.en || item.label.en || "Decision card"}</span>
             <span className="line-clamp-2 text-sm text-white/62">{item.copy.en || "No English copy yet"}</span>
           </button>
@@ -819,11 +803,8 @@ function ValueCardsEditor({ title, description, items, onChange }: { title: stri
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title={title} description={description}>
@@ -833,12 +814,12 @@ function ValueCardsEditor({ title, description, items, onChange }: { title: stri
           <button
             key={item.id}
             type="button"
-            onClick={() => setSelectedId(item.id)}
+            onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
             className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-              item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+              item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">Value card {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">Value card {index + 1}</span>
             <span className="text-sm font-semibold text-white">{item.label.en || "Value label"}</span>
             <span className="line-clamp-2 text-sm text-white/62">{item.note.en || "No note yet"}</span>
           </button>
@@ -863,11 +844,8 @@ function FaqItemsEditor({ title, description, items, onChange }: { title: string
   const [selectedId, setSelectedId] = useState(items[0]?.id ?? "");
   const [editorOpen, setEditorOpen] = useState(true);
   const current = items.find((item) => item.id === selectedId) ?? items[0];
-  if (!current) return null;
 
-  useEffect(() => {
-    setEditorOpen(true);
-  }, [current.id]);
+  if (!current) return null;
 
   return (
     <CollectionEditor title={title} description={description}>
@@ -877,12 +855,12 @@ function FaqItemsEditor({ title, description, items, onChange }: { title: string
           <button
             key={item.id}
             type="button"
-            onClick={() => setSelectedId(item.id)}
+            onClick={() => { setSelectedId(item.id); setEditorOpen(true); }}
             className={`grid gap-2 rounded-[24px] border p-4 text-start transition ${
-              item.id === current.id ? "border-[#f2c16b]/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
+              item.id === current.id ? "border-brand-gold/60 bg-white/8" : "border-white/10 bg-black/18 hover:bg-white/[0.04]"
             }`}
           >
-            <span className="text-xs uppercase tracking-[0.16em] text-[#f2c16b]">FAQ {index + 1}</span>
+            <span className="text-xs uppercase tracking-[0.16em] text-brand-gold">FAQ {index + 1}</span>
             <span className="line-clamp-2 text-sm font-semibold text-white">{item.question.en || "Question preview"}</span>
             <span className="line-clamp-2 text-sm text-white/62">{item.answer.en || "Answer preview"}</span>
           </button>
@@ -1111,7 +1089,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>
@@ -1184,7 +1162,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>
@@ -1238,7 +1216,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>
@@ -1293,7 +1271,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>
@@ -1342,7 +1320,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>
@@ -1390,7 +1368,7 @@ export function PagesContentModule({ settings, mutateSettings, ui, t, activeSect
               <button type="button" onClick={() => askHazemForLane("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about this lane", "اسأل حازم عن هذا المسار")}
               </button>
-              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForLane("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better copy", "اطلب من حازم تحسين النص")}
               </button>
             </div>

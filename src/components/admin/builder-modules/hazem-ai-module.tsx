@@ -249,7 +249,7 @@ export function HazemAIModule({
 
             <div className="mt-4 grid gap-4 lg:grid-cols-[1.2fr,0.8fr]">
               <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">{t("Readiness checklist", "قائمة الجاهزية")}</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-brand-gold">{t("Readiness checklist", "قائمة الجاهزية")}</p>
                 <div className="mt-3 grid gap-2">
                   {readinessItems.map((item) => (
                     <div
@@ -270,7 +270,7 @@ export function HazemAIModule({
               </div>
 
               <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">{t("Recommended next actions", "الإجراءات المقترحة الآن")}</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-brand-gold">{t("Recommended next actions", "الإجراءات المقترحة الآن")}</p>
                 <div className="mt-3 grid gap-2 text-sm text-white/78">
                   {recommendedActions.length ? (
                     recommendedActions.map((action) => (
@@ -397,7 +397,7 @@ export function HazemAIModule({
                     draft.hazemAi.analysis.recommendationsPrompt = RECOMMENDED_RECOMMENDATIONS_PROMPT;
                   })
                 }
-                className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-[#f2c16b] transition hover:bg-[#f2c16b]/20"
+                className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-brand-gold transition hover:bg-brand-gold/20"
               >
                 {t("Load recommended prompts", "تحميل البرومبتات المقترحة")}
               </button>
@@ -538,7 +538,7 @@ export function HazemAIModule({
                   onClick={() => setHazemChatMode("admin")}
                   className={`rounded-full px-3 py-1.5 transition ${
                     hazemChatMode === "admin"
-                      ? "bg-[#f2c16b] text-[#1a130b]"
+                      ? "bg-brand-gold text-[#1a130b]"
                       : "border border-white/15 bg-black/35 text-white/70"
                   }`}
                 >
@@ -549,7 +549,7 @@ export function HazemAIModule({
                   onClick={() => setHazemChatMode("website")}
                   className={`rounded-full px-3 py-1.5 transition ${
                     hazemChatMode === "website"
-                      ? "bg-[#f2c16b] text-[#1a130b]"
+                      ? "bg-brand-gold text-[#1a130b]"
                       : "border border-white/15 bg-black/35 text-white/70"
                   }`}
                 >
@@ -574,7 +574,7 @@ export function HazemAIModule({
                     className={`max-w-[92%] rounded-2xl border px-4 py-3 text-sm leading-7 ${
                       item.role === "assistant"
                         ? "justify-self-start border-white/15 bg-black/35 text-white/92"
-                        : "justify-self-end border-[#f2c16b]/35 bg-[#f2c16b]/10 text-[#f6ddb1]"
+                        : "justify-self-end border-brand-gold/35 bg-brand-gold/10 text-[#f6ddb1]"
                     }`}
                   >
                     {item.content}
@@ -597,7 +597,7 @@ export function HazemAIModule({
                   type="button"
                   onClick={() => void runSaveAndTest()}
                   disabled={hazemTestLoading || saveAndTestLoading || isSavingSettings || !hazemChatMessage.trim()}
-                  className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-5 py-3 text-sm font-semibold text-[#1f150d] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
+                  className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-5 py-3 text-sm font-semibold text-[#1f150d] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {saveAndTestLoading || isSavingSettings
                     ? t("Saving + sending...", "جارٍ الحفظ ثم الإرسال...")
@@ -607,7 +607,7 @@ export function HazemAIModule({
             </div>
 
             <div className="mt-4 rounded-2xl border border-white/10 bg-black/20 p-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">{t("Starter scenarios", "سيناريوهات جاهزة")}</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-brand-gold">{t("Starter scenarios", "سيناريوهات جاهزة")}</p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {starterScenarios.map((scenario) => (
                   <button

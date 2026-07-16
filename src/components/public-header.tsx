@@ -4,18 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { BrandLogo } from "@/components/brand-logo";
+import { useAdminLocale } from "@/components/admin/admin-locale-provider";
 
 const NAV_ITEMS = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/finishing", label: "Finishing" },
-  { href: "/smart-home", label: "Smart Home" },
-  { href: "/book", label: "Book" },
+  { href: "/", key: "nav:Home" },
+  { href: "/projects", key: "nav:Projects" },
+  { href: "/finishing", key: "nav:Finishing" },
+  { href: "/smart-home", key: "nav:Smart Home" },
+  { href: "/book", key: "nav:Book" },
 ];
 
 export function PublicHeader() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useAdminLocale();
 
   function isActive(href: string) {
     return href === "/" ? pathname === "/" : pathname.startsWith(href);
@@ -25,10 +27,10 @@ export function PublicHeader() {
     <header className="public-header">
       <div className="public-header-frame">
         <div className="public-header-topline">
-          <span className="public-header-chipline">Luxury Real Estate / Finishing / Smart Homes</span>
+          <span className="public-header-chipline">{t("Luxury Real Estate / Finishing / Smart Homes", "عقارات فاخرة / تشطيب / منزل ذكي")}</span>
           <div className="hidden items-center gap-3 lg:flex">
             <Link href="/book" className="public-header-cta">
-              Book a Visit
+              {t("Book a Visit", "احجز زيارة")}
             </Link>
           </div>
         </div>
@@ -46,7 +48,7 @@ export function PublicHeader() {
                 className={`site-nav-link ${isActive(item.href) ? "site-nav-link-active" : ""}`}
                 style={{ color: isActive(item.href) ? "#241b13" : "rgba(36,27,19,0.78)" }}
               >
-                {item.label}
+                {t(item.key.replace("nav:", ""), item.key.replace("nav:", ""))}
               </Link>
             ))}
           </nav>
@@ -69,11 +71,11 @@ export function PublicHeader() {
                 onClick={() => setMobileOpen(false)}
                 className={`public-mobile-link ${isActive(item.href) ? "public-mobile-link-active" : ""}`}
               >
-                <strong className="text-base">{item.label}</strong>
+                <strong className="text-base">{t(item.key.replace("nav:", ""), item.key.replace("nav:", ""))}</strong>
               </Link>
             ))}
             <Link href="/book" onClick={() => setMobileOpen(false)} className="estate-primary-button w-full text-center">
-              Book a Visit
+              {t("Book a Visit", "احجز زيارة")}
             </Link>
           </div>
         </div>

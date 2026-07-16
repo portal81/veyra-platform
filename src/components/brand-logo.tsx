@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { useAdminLocale } from "@/components/admin/admin-locale-provider";
 
 type BrandLogoProps = {
   className?: string;
@@ -29,6 +32,8 @@ export function BrandLogo({
   size = "md",
   showDescriptor = true,
 }: BrandLogoProps) {
+  const { t } = useAdminLocale();
+
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <svg
@@ -83,7 +88,7 @@ export function BrandLogo({
               descriptorSizes[size],
             )}
           >
-            Developments
+            {t("Developments", "للتطوير")}
           </span>
         ) : null}
       </div>

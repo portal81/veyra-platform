@@ -91,8 +91,10 @@ export function LeadCardList({
   const approvedCaseFiles = caseFiles.filter((file) => file.approvalStatus === "approved").length;
   const submittedCaseFiles = caseFiles.filter((file) => file.approvalStatus === "submitted").length;
 
+  const isHighPriority = lead.priority === "high";
+
   return (
-    <article className="admin-shell-card min-w-0 p-5">
+    <article className={`admin-shell-card min-w-0 p-5 ${isHighPriority ? "high-priority-lead-card" : ""}`}>
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
           <label className="mb-2 inline-flex items-center gap-2 text-xs text-white/65">
@@ -104,7 +106,7 @@ export function LeadCardList({
             {t("Select", "تحديد")}
           </label>
           <h4 className="break-words text-xl font-semibold text-white">{lead.fullName}</h4>
-          <p className="mt-2 break-words text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{lead.service}</p>
+          <p className="mt-2 break-words text-xs uppercase tracking-[0.24em] text-brand-gold">{lead.service}</p>
         </div>
 
         <div className="flex flex-wrap gap-2">
@@ -322,7 +324,7 @@ export function LeadCardList({
                     href={file.storagePath}
                     target="_blank"
                     rel="noreferrer"
-                    className={`rounded-full border px-3 py-1 text-[11px] transition hover:border-[#f2c16b]/40 hover:text-[#f2c16b] ${getFileStatusTone(file.approvalStatus)}`}
+                    className={`rounded-full border px-3 py-1 text-[11px] transition hover:border-brand-gold/40 hover:text-brand-gold ${getFileStatusTone(file.approvalStatus)}`}
                   >
                     {file.displayName} · {statusLabel}
                   </a>
@@ -478,7 +480,7 @@ export function LeadCardList({
 
         <Link
           href={`/admin/leads/${lead.id}`}
-          className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-3 text-center text-sm font-semibold text-[#f2c16b] transition hover:-translate-y-0.5"
+          className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-3 text-center text-sm font-semibold text-brand-gold transition hover:-translate-y-0.5"
         >
           {t("Open client case", "فتح ملف العميل")}
         </Link>

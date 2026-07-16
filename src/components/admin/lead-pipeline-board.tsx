@@ -128,6 +128,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
   });
   const [savedViewName, setSavedViewName] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [viewMode, setViewMode] = useState<"tabs" | "kanban">("tabs");
 
   useEffect(() => {
     const leadId = searchParams.get("open");
@@ -536,7 +537,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
           <div className="grid gap-5">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div className="max-w-3xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{t("Lead workspace", "مساحة العملاء")}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{t("Lead workspace", "مساحة العملاء")}</p>
                 <h2 className="mt-3 font-serif text-3xl text-white md:text-4xl">{t("Organized pipeline without stacked lanes or overlapping cards.", "مراحل منظمة بدون أعمدة متراكبة أو كروت متداخلة.")}</h2>
                 <p className="mt-3 text-sm leading-7 text-white/66 md:text-base">
                   {t("Pick a stage, focus on the leads inside it, and update ownership, priority, and notes from one clean board.", "اختر مرحلة، وركّز على العملاء بداخلها، ثم حدّث المسؤولية والأولوية والملاحظات من لوحة واحدة مرتبة.")}
@@ -547,14 +548,14 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                 <button
                   type="button"
                   onClick={() => setShowCreateCase((current) => !current)}
-                  className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-4 py-2.5 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5"
+                  className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-4 py-2.5 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5"
                 >
                   {showCreateCase
                     ? t("Hide intake", "إخفاء الإدخال")
                     : t("Add client case", "إضافة ملف عميل")}
                 </button>
                 {feedback ? (
-                  <span className="admin-shell-muted-card px-3 py-2 text-xs text-[#f2c16b]">
+                  <span className="admin-shell-muted-card px-3 py-2 text-xs text-brand-gold">
                     {feedback}
                   </span>
                 ) : null}
@@ -570,7 +571,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
               <div className="admin-shell-panel border border-white/10 p-4 md:p-5">
                 <div className="flex flex-col gap-3 border-b border-white/10 pb-4 md:flex-row md:items-start md:justify-between">
                   <div className="max-w-2xl">
-                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2c16b]">
+                    <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-gold">
                       {t("Manual intake", "إدخال يدوي")}
                     </p>
                     <h3 className="mt-2 text-xl font-semibold text-white">
@@ -691,7 +692,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                     type="button"
                     onClick={handleCreateCase}
                     disabled={!createCaseDraft.fullName.trim() || !createCaseDraft.phone.trim()}
-                    className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-4 py-2.5 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
+                    className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-4 py-2.5 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     {isPending ? t("Creating...", "جارٍ الإنشاء...") : t("Create client case", "إنشاء ملف العميل")}
                   </button>
@@ -747,7 +748,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                   onClick={() => setSelectedStage(stage.id)}
                   className={`min-w-[170px] rounded-[24px] border px-4 py-4 text-left transition ${
                     isActive
-                      ? "border-[#f2c16b]/35 bg-[#f2c16b]/10 shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
+                      ? "border-brand-gold/35 bg-brand-gold/10 shadow-[0_18px_40px_rgba(0,0,0,0.18)]"
                       : "border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/7"
                   }`}
                 >
@@ -758,7 +759,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                         {stage.count} {t(stage.count === 1 ? "lead" : "leads", stage.count === 1 ? "عميل" : "عملاء")}
                       </p>
                     </div>
-                    <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] text-[#f2c16b]">
+                    <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] text-brand-gold">
                       {String(stage.count).padStart(2, "0")}
                     </span>
                   </div>
@@ -773,7 +774,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
         <section className="admin-shell-panel p-5 md:p-6">
           <div className="flex flex-col gap-4 border-b border-white/10 pb-5 xl:flex-row xl:items-end xl:justify-between">
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{t("Current stage", "المرحلة الحالية")}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{t("Current stage", "المرحلة الحالية")}</p>
               <h3 className="mt-3 font-serif text-3xl text-white">{t(selectedStageMeta.label, selectedStageMeta.labelAr)}</h3>
               <p className="mt-2 text-sm leading-7 text-white/62">{t(selectedStageMeta.description, selectedStageMeta.descriptionAr)}</p>
             </div>
@@ -893,7 +894,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                   type="button"
                   onClick={applyBulkUpdate}
                   disabled={!selectedLeadIds.length}
-                  className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-4 py-3 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-4 py-3 text-sm font-semibold text-[#1d140d] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {t("Apply bulk update", "تطبيق التعديل الجماعي")}
                 </button>
@@ -940,7 +941,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
 
         <aside className="grid gap-6">
           <section className="admin-shell-panel p-5">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Pipeline map", "خريطة المراحل")}</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Pipeline map", "خريطة المراحل")}</p>
             <h3 className="mt-3 font-serif text-2xl text-white">{t("Stage health", "صحة المراحل")}</h3>
 
             <div className="mt-5 grid gap-3">
@@ -955,7 +956,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                     onClick={() => setSelectedStage(stage.id)}
                     className={`rounded-[22px] border px-4 py-4 text-left transition ${
                       isActive
-                        ? "border-[#f2c16b]/35 bg-[#f2c16b]/10"
+                        ? "border-brand-gold/35 bg-brand-gold/10"
                         : "border-white/10 bg-black/20 hover:border-white/20 hover:bg-white/6"
                     }`}
                   >
@@ -965,7 +966,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
                     </div>
                     <div className="mt-3 h-2 overflow-hidden rounded-full bg-white/8">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43]"
+                        className="h-full rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark"
                         style={{ width: `${ratio}%` }}
                       />
                     </div>
@@ -976,7 +977,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
           </section>
 
           <section className="admin-shell-panel p-5">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Team focus", "تركيز الفريق")}</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Team focus", "تركيز الفريق")}</p>
             <h3 className="mt-3 font-serif text-2xl text-white">{t("Next actions", "الخطوات القادمة")}</h3>
 
             <div className="mt-5 grid gap-3">
@@ -999,7 +1000,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
           </section>
 
           <section className="admin-shell-panel p-5">
-            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Saved views", "العروض المحفوظة")}</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Saved views", "العروض المحفوظة")}</p>
             <h3 className="mt-3 font-serif text-2xl text-white">{t("Filter presets", "إعدادات الفلاتر")}</h3>
             <div className="mt-4 grid gap-2">
               <input
@@ -1050,7 +1051,7 @@ export function LeadPipelineBoard({ initialLeads, users, projectOptions, service
 
           <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
             <div className="flex items-center justify-between gap-3">
-              <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Activity log", "سجل النشاط")}</p>
+              <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Activity log", "سجل النشاط")}</p>
               <button
                 type="button"
                 onClick={() => setActivityLog([])}

@@ -135,7 +135,7 @@ export default async function AdminPage() {
           <section className="admin-shell-surface p-6">
             <div className="flex flex-wrap items-end justify-between gap-4 border-b border-white/8 pb-5">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2c16b]">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-gold">
                   {pickAdminText(locale, "Today workspace", "مساحة عمل اليوم")}
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white">
@@ -150,7 +150,7 @@ export default async function AdminPage() {
                 </p>
               </div>
               <div className="admin-shell-muted-card px-4 py-3 text-sm text-[#f6d293]">
-                <span className="block text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]/72">
+                <span className="block text-[11px] uppercase tracking-[0.22em] text-brand-gold/72">
                   {pickAdminText(locale, "Action count", "عدد التدخلات")}
                 </span>
                 <strong className="mt-2 block text-2xl font-semibold text-white">{totalActionItems}</strong>
@@ -165,7 +165,7 @@ export default async function AdminPage() {
                   target={card.external ? "_blank" : undefined}
                   className="admin-shell-card p-5"
                 >
-                  <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">
+                  <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">
                     {pickAdminText(locale, card.eyebrowEn, card.eyebrowAr)}
                   </p>
                   <h3 className="mt-3 text-lg font-semibold text-white">
@@ -191,7 +191,7 @@ export default async function AdminPage() {
                       : "border-emerald-400/20 bg-emerald-500/[0.05]";
 
               return (
-                <Link key={card.titleEn} href={card.href} className={`rounded-[26px] border p-5 transition hover:border-[#f2c16b]/35 ${toneClass}`}>
+                <Link key={card.titleEn} href={card.href} className={`rounded-[26px] border p-5 transition hover:border-brand-gold/35 ${toneClass}`}>
                   <p className="text-[11px] uppercase tracking-[0.22em] text-white/42">
                     {pickAdminText(locale, "Needs action", "يحتاج حركة")}
                   </p>
@@ -206,7 +206,7 @@ export default async function AdminPage() {
                   <p className="mt-3 text-sm leading-7 text-white/58">
                     {pickAdminText(locale, card.noteEn, card.noteAr)}
                   </p>
-                  <span className="admin-shell-button-ghost mt-4 inline-flex px-3 py-1.5 text-[11px] font-semibold text-[#f2c16b]">
+                  <span className="admin-shell-button-ghost mt-4 inline-flex px-3 py-1.5 text-[11px] font-semibold text-brand-gold">
                     {pickAdminText(locale, card.ctaEn, card.ctaAr)}
                   </span>
                 </Link>
@@ -244,14 +244,14 @@ export default async function AdminPage() {
           <section className="admin-shell-panel overflow-hidden">
             <div className="flex items-center justify-between border-b border-white/8 px-5 py-4">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">
+                <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">
                   {pickAdminText(locale, "Latest movement", "آخر حركة")}
                 </p>
                 <h2 className="mt-2 text-base font-semibold text-white">
                   {pickAdminText(locale, "Fresh leads", "طلبات حديثة")}
                 </h2>
               </div>
-              <Link href="/admin/leads" className="text-xs text-[#f2c16b] hover:underline">
+              <Link href="/admin/leads" className="text-xs text-brand-gold hover:underline">
                 {pickAdminText(locale, "View all", "عرض الكل")}
               </Link>
             </div>
@@ -261,7 +261,7 @@ export default async function AdminPage() {
                   <Link key={lead.id} href="/admin/leads" className="group block p-4 transition hover:bg-white/[0.04]">
                     <div className="flex items-start justify-between gap-3">
                       <div className="min-w-0">
-                        <strong className="block text-sm font-semibold text-white transition group-hover:text-[#f2c16b]">{lead.fullName}</strong>
+                        <strong className="block text-sm font-semibold text-white transition group-hover:text-brand-gold">{lead.fullName}</strong>
                         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-white/48">
                           <span className="rounded-full border border-white/10 bg-black/25 px-2.5 py-1 font-medium text-white/70">
                             {translateDbText(locale, lead.service)}
@@ -284,7 +284,7 @@ export default async function AdminPage() {
           </section>
 
           <section className="rounded-[26px] border border-white/10 bg-black/20 p-5">
-            <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">
+            <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">
               {pickAdminText(locale, "Quick reading", "قراءة سريعة")}
             </p>
             <div className="mt-4 grid gap-4">
@@ -312,7 +312,7 @@ export default async function AdminPage() {
           <section className="admin-shell-panel mt-6 p-5">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                   {pickAdminText(locale, "Veyra Connect", "تواصل الفريق")}
                 </p>
                 <h2 className="mt-1 text-lg font-semibold text-white">

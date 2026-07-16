@@ -318,7 +318,7 @@ type AdminContentScoreProps = {
 
 export function AdminContentScore({ score, items, compact = false }: AdminContentScoreProps) {
   const [expanded, setExpanded] = useState(false);
-  const color = score >= 80 ? "#4caf72" : score >= 50 ? "#f2c16b" : "#e07070";
+  const color = score >= 80 ? "#059669" : score >= 50 ? "#D4AF37" : "#DC2626";
 
   return (
     <div className="admin-content-score">

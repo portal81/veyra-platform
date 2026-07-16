@@ -406,13 +406,13 @@ export function ProjectCatalogBuilder({ initialProjects }: ProjectCatalogBuilder
               type="button"
               onClick={saveProjects}
               disabled={isPending}
-              className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-5 py-3 text-sm font-semibold text-[#1f150d]"
+              className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-5 py-3 text-sm font-semibold text-[#1f150d]"
             >
               {isPending ? t("Saving...", "جارٍ الحفظ...") : t("Save projects", "حفظ المشروعات")}
             </button>
           </div>
         </div>
-        {message ? <p className="mt-4 text-sm text-[#f2c16b]">{message}</p> : null}
+        {message ? <p className="mt-4 text-sm text-brand-gold">{message}</p> : null}
         <div className="mt-4 rounded-xl border border-amber-400/30 bg-amber-500/5 px-4 py-3 text-sm text-white/80">
           {t("Missing required fields in selected project:", "الحقول المطلوبة الناقصة في المشروع المحدد:")}{" "}
           <span className="font-semibold text-white">{selectedMissingCount}</span>
@@ -472,11 +472,11 @@ export function ProjectCatalogBuilder({ initialProjects }: ProjectCatalogBuilder
                       onClick={() => setSelectedProjectId(project.id)}
                       className={`rounded-[22px] border px-4 py-4 text-left transition ${
                         isActive
-                          ? "border-[#f2c16b] bg-white/10 text-white"
+                          ? "border-brand-gold bg-white/10 text-white"
                           : "border-white/10 bg-black/20 text-white/76 hover:bg-white/6"
                       }`}
                     >
-                      <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">
+                      <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">
                         {t("Project", "مشروع")} {index + 1}
                       </p>
                       <label
@@ -526,7 +526,7 @@ export function ProjectCatalogBuilder({ initialProjects }: ProjectCatalogBuilder
                       onClick={() => setActiveTab(tab.id)}
                       className={`rounded-full border px-4 py-2 text-xs uppercase tracking-[0.16em] transition ${
                         activeTab === tab.id
-                          ? "border-[#f2c16b] bg-white/10 text-white"
+                          ? "border-brand-gold bg-white/10 text-white"
                           : "border-white/10 bg-black/20 text-white/70 hover:bg-white/6"
                       }`}
                     >

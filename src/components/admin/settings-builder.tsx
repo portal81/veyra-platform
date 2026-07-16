@@ -694,7 +694,7 @@ export function SettingsBuilder({
       <section className="admin-shell-surface rounded-[32px] p-6">
         <div className="flex flex-col gap-5 2xl:flex-row 2xl:items-center 2xl:justify-between">
           <div className="max-w-4xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">
               {t("Builder nucleus", "\u0646\u0648\u0627\u0629 \u0627\u0644\u0645\u0646\u0634\u0626")}
             </p>
             <h2 className="mt-3 font-serif text-4xl text-white">
@@ -789,7 +789,7 @@ export function SettingsBuilder({
             </span>
           ))}
         </div>
-        {message ? <p className="mt-4 text-sm text-[#f2c16b]">{message}</p> : null}
+        {message ? <p className="mt-4 text-sm text-brand-gold">{message}</p> : null}
         {hasRecoveredDraft ? (
           <p className="mt-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-200">
             {t("Draft recovered from local autosave.", "\u062a\u0645 \u0627\u0633\u062a\u0631\u062c\u0627\u0639 \u0627\u0644\u0645\u0633\u0648\u062f\u0629 \u0645\u0646 \u0627\u0644\u062d\u0641\u0638 \u0627\u0644\u0645\u062d\u0644\u064a \u0627\u0644\u062a\u0644\u0642\u0627\u0626\u064a.")}
@@ -800,7 +800,7 @@ export function SettingsBuilder({
       <div className="grid gap-6 xl:grid-cols-[260px_minmax(0,1fr)] xl:items-start">
         <aside className="xl:sticky xl:top-24">
           <section className="admin-shell-panel rounded-[30px] p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{t("Settings navigator", "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a")}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{t("Settings navigator", "\u0642\u0627\u0626\u0645\u0629 \u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a")}</p>
             <h3 className="mt-3 font-serif text-3xl text-white">{t("Builder map", "\u062e\u0631\u064a\u0637\u0629 \u0627\u0644\u0645\u0646\u0634\u0626")}</h3>
             <div className="mt-4">
               <input
@@ -808,7 +808,7 @@ export function SettingsBuilder({
                 value={sectionFilter}
                 onChange={(event) => setSectionFilter(event.target.value)}
                 placeholder={t("Search section...", "\u0627\u0628\u062d\u062b \u0639\u0646 \u0642\u0633\u0645...")}
-                className="w-full rounded-2xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-white/35 focus:border-[#f2c16b]/50 focus:outline-none"
+                className="w-full rounded-2xl border border-white/10 bg-black/30 px-3 py-2 text-sm text-white placeholder:text-white/35 focus:border-brand-gold/50 focus:outline-none"
               />
             </div>
             <div className="admin-shell-muted-card mt-3 grid gap-2 rounded-2xl p-2">
@@ -822,7 +822,7 @@ export function SettingsBuilder({
             </div>
             <div className="mt-6 grid gap-3">
               <div className="admin-shell-card rounded-2xl p-4">
-                <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">
+                <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">
                   {t(activeWorkspaceMeta.titleEn, activeWorkspaceMeta.titleAr)}
                 </p>
                 <p className="mt-3 text-sm leading-7 text-white/58">
@@ -882,7 +882,7 @@ export function SettingsBuilder({
               <div className="flex flex-col items-start gap-3 2xl:items-end">
                 {nextSectionId ? (
                   <div className="admin-shell-card rounded-2xl px-4 py-3 text-sm text-white/72">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                       {t("Next suggested task", "\u0627\u0644\u0645\u0647\u0645\u0629 \u0627\u0644\u062a\u0627\u0644\u064a\u0629 \u0627\u0644\u0645\u0642\u062a\u0631\u062d\u0629")}
                     </p>
                     <strong className="mt-2 block text-white">{nextSectionLabel}</strong>
@@ -957,7 +957,7 @@ export function SettingsBuilder({
       <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
         <div className="grid gap-4 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
           <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">
+            <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">
               {t("Review before publish", "\u0645\u0631\u0627\u062c\u0639\u0629 \u0642\u0628\u0644 \u0627\u0644\u0646\u0634\u0631")}
             </p>
             <h3 className="mt-3 font-serif text-2xl text-white">
@@ -995,7 +995,7 @@ export function SettingsBuilder({
           <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{ui("Activity log")}</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">{ui("Activity log")}</p>
                 <p className="mt-2 text-sm text-white/55">
                   {t(
                     "Keep this hidden by default and open it only when you need context.",
@@ -1024,7 +1024,7 @@ export function SettingsBuilder({
               <ul className="grid max-h-72 gap-2 overflow-y-auto pr-1">
                 {activityLog.map((item) => (
                   <li key={item.id} className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs text-white/72">
-                    <span className="text-[#f2c16b]">{item.kind}</span> - {item.message}
+                    <span className="text-brand-gold">{item.kind}</span> - {item.message}
                   </li>
                 ))}
               </ul>

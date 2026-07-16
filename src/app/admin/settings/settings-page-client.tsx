@@ -45,7 +45,7 @@ export function SettingsPageClient({ initialSettings, locale }: SettingsPageClie
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
               </span>
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-widest text-[#f2c16b]">
+                <p className="text-[11px] font-semibold uppercase tracking-widest text-brand-gold">
                   {isAr ? "وضع التحرير المباشر" : "Live Edit Mode"}
                 </p>
                 <p className="text-[10px] text-white/36">
@@ -97,21 +97,21 @@ export function SettingsPageClient({ initialSettings, locale }: SettingsPageClie
             onClick={() => setHazemOpen((value) => !value)}
             className="inline-flex items-center gap-2 rounded-[16px] border border-white/10 bg-white/[0.03] px-4 py-3 text-sm font-medium text-white/76 transition hover:border-white/20 hover:bg-white/[0.06]"
           >
-            <span className="h-2 w-2 rounded-full bg-[#f2c16b]" />
+            <span className="h-2 w-2 rounded-full bg-brand-gold" />
             <span>{hazemOpen ? (isAr ? "إخفاء حازم" : "Hide Hazem") : (isAr ? "افتح حازم" : "Open Hazem")}</span>
           </button>
 
           <button
             type="button"
             onClick={() => setShowPreview(true)}
-            className="group inline-flex items-center gap-3 rounded-[16px] border border-[#f2c16b]/25 bg-gradient-to-r from-[#f2c16b]/8 to-[#c68f43]/5 px-5 py-3 text-sm font-medium text-[#f2c16b] shadow-[0_0_32px_rgba(242,193,107,0.06)] transition hover:border-[#f2c16b]/50 hover:shadow-[0_0_48px_rgba(242,193,107,0.12)]"
+            className="group inline-flex items-center gap-3 rounded-[16px] border border-brand-gold/25 bg-gradient-to-r from-brand-gold/8 to-brand-gold-dark/5 px-5 py-3 text-sm font-medium text-brand-gold shadow-[0_0_32px_rgba(242,193,107,0.06)] transition hover:border-brand-gold/50 hover:shadow-[0_0_48px_rgba(242,193,107,0.12)]"
           >
             <span className="relative flex h-2.5 w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#f2c16b] opacity-50" />
-              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#f2c16b]" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-gold opacity-50" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-gold" />
             </span>
             <span>{isAr ? "المعاينة الحية" : "Live Preview"}</span>
-            <span className="rounded-full border border-[#f2c16b]/20 bg-[#f2c16b]/8 px-2 py-0.5 text-[10px] uppercase tracking-widest">
+            <span className="rounded-full border border-brand-gold/20 bg-brand-gold/8 px-2 py-0.5 text-[10px] uppercase tracking-widest">
               {isAr ? "جديد" : "New"}
             </span>
           </button>
@@ -138,7 +138,7 @@ export function SettingsPageClient({ initialSettings, locale }: SettingsPageClie
           <button
             type="button"
             onClick={() => setHazemOpen(true)}
-            className="sticky top-24 flex min-h-[260px] items-center justify-center rounded-2xl border border-white/10 bg-[#0c0a09] px-3 text-xs font-semibold tracking-[0.18em] text-[#f2c16b] [writing-mode:vertical-rl]"
+            className="sticky top-24 flex min-h-[260px] items-center justify-center rounded-2xl border border-white/10 bg-[#0c0a09] px-3 text-xs font-semibold tracking-[0.18em] text-brand-gold [writing-mode:vertical-rl]"
           >
             {isAr ? "افتح حازم" : "Open Hazem"}
           </button>

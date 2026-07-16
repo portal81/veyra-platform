@@ -398,11 +398,11 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         <section className="admin-shell-panel p-5">
           <div className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                 {pickAdminText(locale, "Client case overview", "نظرة عامة على ملف العميل")}
               </p>
               <h2 className="mt-2 text-2xl font-semibold text-white">{lead.service}</h2>
-              <div className="mt-3 inline-flex rounded-full border border-[#f2c16b]/25 bg-[#f2c16b]/10 px-4 py-2 text-sm font-semibold text-[#f2c16b]">
+              <div className="mt-3 inline-flex rounded-full border border-brand-gold/25 bg-brand-gold/10 px-4 py-2 text-sm font-semibold text-brand-gold">
                 {lead.linkedEntity
                   ? pickAdminText(
                       locale,
@@ -421,7 +421,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
               ) : null}
               <Link
                 href={`/admin/leads?open=${lead.id}&mode=overview`}
-                className="mt-4 inline-flex rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-3 text-sm font-semibold text-[#f2c16b]"
+                className="mt-4 inline-flex rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-3 text-sm font-semibold text-brand-gold"
               >
                 {pickAdminText(locale, "Edit overview", "تعديل النظرة العامة")}
               </Link>
@@ -450,7 +450,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         <section className="admin-shell-panel overflow-hidden p-5">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                 {pickAdminText(locale, "Owner readings", "قراءات المالك")}
               </p>
               <h2 className="mt-2 text-xl font-semibold text-white">
@@ -574,7 +574,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         <section id="team" className="admin-shell-panel scroll-mt-6 p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                 {pickAdminText(locale, "Team and execution", "الفريق والتنفيذ")}
               </p>
               <h2 className="mt-2 text-xl font-semibold text-white">
@@ -648,7 +648,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         <section id="files" className="admin-shell-panel scroll-mt-6 p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                 {pickAdminText(locale, "Files and approvals", "الملفات والاعتمادات")}
               </p>
               <h2 className="mt-2 text-xl font-semibold text-white">
@@ -667,7 +667,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
         <section id="timeline" className="admin-shell-panel scroll-mt-6 p-5">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                 {pickAdminText(locale, "Timeline and notes", "السجل والملاحظات")}
               </p>
               <h2 className="mt-2 text-xl font-semibold text-white">
@@ -676,7 +676,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
             </div>
             <Link
               href={`/admin/leads?open=${lead.id}&mode=overview`}
-              className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-3 py-2 text-xs font-semibold text-[#f2c16b]"
+              className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-3 py-2 text-xs font-semibold text-brand-gold"
             >
               {pickAdminText(locale, "Add note", "إضافة ملاحظة")}
             </Link>
@@ -710,7 +710,7 @@ export default async function ClientCasePage({ params }: ClientCasePageProps) {
           <section className="admin-shell-panel scroll-mt-6 p-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                   {pickAdminText(locale, "Handoff history", "سجل التسليم")}
                 </p>
                 <h2 className="mt-2 text-xl font-semibold text-white">

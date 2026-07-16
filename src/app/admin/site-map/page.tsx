@@ -193,7 +193,7 @@ export default async function SiteMapPage() {
         <section className="rounded-[32px] border border-white/10 bg-white/[0.05] p-5 md:p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">
+              <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">
                 {pickAdminText(locale, "Website pages", "صفحات الموقع")}
               </p>
               <h2 className="mt-2 font-serif text-3xl text-white">
@@ -202,7 +202,7 @@ export default async function SiteMapPage() {
             </div>
             <Link
               href="/admin/settings"
-              className="inline-flex items-center justify-center rounded-xl border border-[#f2c16b] bg-[#f2c16b]/10 px-4 py-2 text-sm font-medium text-[#f2c16b] transition hover:bg-[#f2c16b]/15"
+              className="inline-flex items-center justify-center rounded-xl border border-brand-gold bg-brand-gold/10 px-4 py-2 text-sm font-medium text-brand-gold transition hover:bg-brand-gold/15"
             >
               {pickAdminText(locale, "Open website editor", "افتح محرر الموقع")}
             </Link>
@@ -261,7 +261,7 @@ export default async function SiteMapPage() {
                     <Link
                       href={`${PUBLIC_SITE_URL}${node.path}`}
                       target="_blank"
-                      className="inline-flex items-center justify-center rounded-xl border border-[#f2c16b]/40 bg-[#f2c16b]/10 px-4 py-2 text-sm text-[#f2c16b] transition hover:bg-[#f2c16b]/15"
+                      className="inline-flex items-center justify-center rounded-xl border border-brand-gold/40 bg-brand-gold/10 px-4 py-2 text-sm text-brand-gold transition hover:bg-brand-gold/15"
                     >
                       {pickAdminText(locale, "Open on website", "افتحها على الموقع")}
                     </Link>
@@ -274,7 +274,7 @@ export default async function SiteMapPage() {
 
         <section className="rounded-[32px] border border-white/10 bg-white/[0.05] p-5 md:p-6">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">
+            <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">
               {pickAdminText(locale, "Shared elements", "العناصر المشتركة")}
             </p>
             <h2 className="mt-2 font-serif text-3xl text-white">
@@ -356,7 +356,7 @@ export default async function SiteMapPage() {
                     <Link
                       href={PUBLIC_SITE_URL}
                       target="_blank"
-                      className="inline-flex items-center justify-center rounded-xl border border-[#f2c16b]/40 bg-[#f2c16b]/10 px-4 py-2 text-sm text-[#f2c16b] transition hover:bg-[#f2c16b]/15"
+                      className="inline-flex items-center justify-center rounded-xl border border-brand-gold/40 bg-brand-gold/10 px-4 py-2 text-sm text-brand-gold transition hover:bg-brand-gold/15"
                     >
                       {pickAdminText(locale, "Open website", "افتح الموقع")}
                     </Link>

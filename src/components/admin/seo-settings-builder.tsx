@@ -53,7 +53,7 @@ export function SeoSettingsBuilder({ initialPages }: SeoSettingsBuilderProps) {
               onClick={() => setActiveId(page.id)}
               className={`rounded-xl border px-3 py-3 text-left ${
                 activePage?.id === page.id
-                  ? "border-[#f2c16b]/40 bg-[#f2c16b]/10"
+                  ? "border-brand-gold/40 bg-brand-gold/10"
                   : "border-white/10 bg-black/20 hover:bg-white/5"
               }`}
             >
@@ -169,7 +169,7 @@ export function SeoSettingsBuilder({ initialPages }: SeoSettingsBuilderProps) {
             </label>
 
             {feedback ? (
-              <p className="rounded-xl border border-[#f2c16b]/30 bg-[#f2c16b]/10 px-3 py-2 text-sm text-[#f2c16b]">
+              <p className="rounded-xl border border-brand-gold/30 bg-brand-gold/10 px-3 py-2 text-sm text-brand-gold">
                 {feedback}
               </p>
             ) : null}

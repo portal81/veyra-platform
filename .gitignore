@@ -42,3 +42,8 @@ supabase/.temp/
 # IDE
 .idea/
 .vscode/
+.env*
+
+DEBUG_REPORT.md
+DEPLOYMENT_PLAN.md
+UX_AUDIT_REPORT.md

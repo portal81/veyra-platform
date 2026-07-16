@@ -343,12 +343,12 @@ export function ServiceCatalogBuilder({ initialCatalog }: ServiceCatalogBuilderP
             type="button"
             onClick={saveCatalog}
             disabled={isPending}
-            className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-5 py-3 text-sm font-semibold text-[#1f150d]"
+            className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-5 py-3 text-sm font-semibold text-[#1f150d]"
           >
             {isPending ? t("Saving...", "جارٍ الحفظ...") : t("Save catalog", "حفظ الفهرس")}
           </button>
         </div>
-        {message ? <p className="mt-4 text-sm text-[#f2c16b]">{message}</p> : null}
+        {message ? <p className="mt-4 text-sm text-brand-gold">{message}</p> : null}
         {hasRecoveredDraft ? (
           <p className="mt-3 rounded-lg border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-200">
             {t("Draft recovered from local autosave.", "تم استرجاع مسودة من الحفظ التلقائي المحلي.")}
@@ -382,11 +382,11 @@ export function ServiceCatalogBuilder({ initialCatalog }: ServiceCatalogBuilderP
                     onClick={() => setSection(section.id)}
                     className={`rounded-[22px] border px-4 py-4 text-left transition ${
                       isActive
-                        ? "border-[#f2c16b] bg-white/10 text-white"
+                        ? "border-brand-gold bg-white/10 text-white"
                         : "border-white/10 bg-black/20 text-white/76 hover:bg-white/6"
                     }`}
                   >
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">
                       {sectionCount[section.id]} {t("items", "عناصر")}
                     </p>
                     <p className="mt-2 text-sm font-semibold text-white">
@@ -436,7 +436,7 @@ export function ServiceCatalogBuilder({ initialCatalog }: ServiceCatalogBuilderP
                       key={item.id}
                       className={`rounded-[18px] border px-4 py-3 text-left text-sm transition ${
                         isActive
-                          ? "border-[#f2c16b]/70 bg-white/8 text-white"
+                          ? "border-brand-gold/70 bg-white/8 text-white"
                           : "border-white/10 bg-black/20 text-white/72 hover:bg-white/6"
                       }`}
                     >
@@ -603,7 +603,7 @@ export function ServiceCatalogBuilder({ initialCatalog }: ServiceCatalogBuilderP
               <ul className="grid gap-2">
                 {activityLog.map((item) => (
                   <li key={item.id} className="rounded-xl border border-white/10 bg-black/20 px-3 py-2 text-xs text-white/72">
-                    <span className="text-[#f2c16b]">{activityKindLabel(item.kind)}</span> - {item.message}
+                    <span className="text-brand-gold">{activityKindLabel(item.kind)}</span> - {item.message}
                   </li>
                 ))}
               </ul>

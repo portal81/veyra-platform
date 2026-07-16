@@ -49,7 +49,7 @@ export function BrandThemeModule({ settings, mutateSettings, ui, t }: Props) {
                 {(["en", "ar"] as LocaleCode[]).map((locale) => {
                   const active = settings.supportedLocales.includes(locale);
                   return (
-                    <label key={locale} className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm transition ${active ? "border-[#f2c16b] bg-white/10 text-white" : "border-white/10 bg-black/20 text-white/70"}`}>
+                    <label key={locale} className={`inline-flex items-center gap-2 rounded-full border px-4 py-3 text-sm transition ${active ? "border-brand-gold bg-white/10 text-white" : "border-white/10 bg-black/20 text-white/70"}`}>
                       <input checked={active} onChange={() => toggleLocale(locale)} type="checkbox" />
                       {locale === "en" ? "English" : "العربية"}
                     </label>
@@ -80,7 +80,7 @@ export function BrandThemeModule({ settings, mutateSettings, ui, t }: Props) {
           {settings.palettes.map((palette) => {
             const active = settings.paletteId === palette.id;
             return (
-              <button key={palette.id} type="button" onClick={() => mutateSettings((draft) => { draft.paletteId = palette.id; })} className={`rounded-[28px] border p-5 text-left transition ${active ? "border-[#f2c16b] bg-white/10 shadow-[0_22px_48px_rgba(0,0,0,0.2)]" : "border-white/10 bg-black/20 hover:bg-white/6"}`}>
+              <button key={palette.id} type="button" onClick={() => mutateSettings((draft) => { draft.paletteId = palette.id; })} className={`rounded-[28px] border p-5 text-left transition ${active ? "border-brand-gold bg-white/10 shadow-[0_22px_48px_rgba(0,0,0,0.2)]" : "border-white/10 bg-black/20 hover:bg-white/6"}`}>
                 <div className="flex gap-2">
                   {[palette.primary, palette.accent, palette.surface, palette.text].map((color) => <span key={color} className="h-10 w-10 rounded-full border border-white/10" style={{ backgroundColor: color }} />)}
                 </div>

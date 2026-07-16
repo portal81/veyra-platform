@@ -118,7 +118,7 @@ export function BlogCmsBuilder({ initialPosts, categories, tags }: BlogCmsBuilde
               onClick={() => setActiveId(post.id)}
               className={`rounded-xl border px-3 py-3 text-left ${
                 activePost?.id === post.id
-                  ? "border-[#f2c16b]/40 bg-[#f2c16b]/10"
+                  ? "border-brand-gold/40 bg-brand-gold/10"
                   : "border-white/10 bg-black/20 hover:bg-white/5"
               }`}
             >
@@ -235,7 +235,7 @@ export function BlogCmsBuilder({ initialPosts, categories, tags }: BlogCmsBuilde
                         })
                       }
                       className={`rounded-full border px-3 py-1 text-xs ${
-                        active ? "border-[#f2c16b]/40 bg-[#f2c16b]/10 text-[#f2c16b]" : "border-white/15 text-white/75"
+                        active ? "border-brand-gold/40 bg-brand-gold/10 text-brand-gold" : "border-white/15 text-white/75"
                       }`}
                     >
                       {tag.name}
@@ -281,7 +281,7 @@ export function BlogCmsBuilder({ initialPosts, categories, tags }: BlogCmsBuilde
             </label>
 
             {feedback ? (
-              <p className="rounded-xl border border-[#f2c16b]/30 bg-[#f2c16b]/10 px-3 py-2 text-sm text-[#f2c16b]">
+              <p className="rounded-xl border border-brand-gold/30 bg-brand-gold/10 px-3 py-2 text-sm text-brand-gold">
                 {feedback}
               </p>
             ) : null}

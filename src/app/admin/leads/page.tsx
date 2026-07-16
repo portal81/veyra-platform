@@ -421,7 +421,7 @@ export default async function AdminLeadsPage() {
 
         <section className="grid gap-4 xl:grid-cols-[minmax(0,1.2fr)_420px]">
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] uppercase tracking-wider text-[#f2c16b] font-medium">
+            <p className="text-[11px] uppercase tracking-wider text-brand-gold font-medium">
               {pickAdminText(locale, "Owner readings", "قراءات المالك")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">
@@ -537,7 +537,7 @@ export default async function AdminLeadsPage() {
           </div>
 
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] uppercase tracking-wider text-[#f2c16b] font-medium">
+            <p className="text-[11px] uppercase tracking-wider text-brand-gold font-medium">
               {pickAdminText(locale, "Immediate intervention", "تدخل فوري")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">
@@ -668,7 +668,7 @@ export default async function AdminLeadsPage() {
 
         <section className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] uppercase tracking-wider text-[#f2c16b] font-medium">
+            <p className="text-[11px] uppercase tracking-wider text-brand-gold font-medium">
               {pickAdminText(locale, "Case health", "صحة ملفات العملاء")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">
@@ -703,7 +703,7 @@ export default async function AdminLeadsPage() {
           </div>
 
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] uppercase tracking-wider text-[#f2c16b] font-medium">
+            <p className="text-[11px] uppercase tracking-wider text-brand-gold font-medium">
               {pickAdminText(locale, "Source performance", "أداء المصادر")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">
@@ -754,7 +754,7 @@ export default async function AdminLeadsPage() {
           </div>
 
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] uppercase tracking-wider text-[#f2c16b] font-medium">
+            <p className="text-[11px] uppercase tracking-wider text-brand-gold font-medium">
               {pickAdminText(locale, "Sales rep performance", "أداء فريق المبيعات")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">
@@ -844,7 +844,7 @@ export default async function AdminLeadsPage() {
           </div>
 
           <div className="admin-shell-panel p-5">
-            <p className="text-[11px] font-medium uppercase tracking-wider text-[#f2c16b]">
+            <p className="text-[11px] font-medium uppercase tracking-wider text-brand-gold">
               {pickAdminText(locale, "Lost reasons", "أسباب الخسارة")}
             </p>
             <h2 className="mt-2 text-lg font-semibold text-white">

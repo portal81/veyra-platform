@@ -219,7 +219,7 @@ export function ClientCaseRoleTasksEditor({
     <section id="role-tasks" className="admin-shell-panel scroll-mt-6 p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
             {t("Role tasks", "مهام الأدوار")}
           </p>
           <h2 className="mt-2 text-xl font-semibold text-white">
@@ -260,7 +260,7 @@ export function ClientCaseRoleTasksEditor({
       </div>
 
       {feedback ? (
-        <p className="mt-4 rounded-2xl border border-[#f2c16b]/20 bg-[#f2c16b]/10 px-4 py-3 text-sm text-[#f2c16b]">
+        <p className="mt-4 rounded-2xl border border-brand-gold/20 bg-brand-gold/10 px-4 py-3 text-sm text-brand-gold">
           {feedback}
         </p>
       ) : null}
@@ -375,7 +375,7 @@ export function ClientCaseRoleTasksEditor({
                   {t("Current target", "الهدف الحالي")}: {getTargetLabel(task.linkedTo, t)}
                 </span>
                 {task.linkedItemLabel ? (
-                  <span className="rounded-full border border-[#f2c16b]/20 bg-[#f2c16b]/10 px-3 py-1.5 text-[#f2c16b]">
+                  <span className="rounded-full border border-brand-gold/20 bg-brand-gold/10 px-3 py-1.5 text-brand-gold">
                     {task.linkedItemLabel}
                   </span>
                 ) : null}

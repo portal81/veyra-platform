@@ -6,7 +6,6 @@ import { addLeadDiscussionComment } from "@/lib/repository";
 const schema = z.object({
   leadId: z.string().min(1),
   body: z.string().min(1),
-  createdBy: z.string().min(1),
   mentions: z.array(z.string()).optional(),
 });
 
@@ -16,12 +15,12 @@ export async function POST(request: Request) {
 
   try {
     const payload = schema.parse(await request.json());
-    const result = await addLeadDiscussionComment(
-      payload.leadId,
-      payload.body,
-      payload.createdBy,
-      payload.mentions,
-    );
+      const result = await addLeadDiscussionComment(
+        payload.leadId,
+        payload.body,
+        guard.session!.email,
+        payload.mentions,
+      );
     return NextResponse.json(result);
   } catch (err) {
     if (err instanceof z.ZodError) {

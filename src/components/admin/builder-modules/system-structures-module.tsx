@@ -106,7 +106,7 @@ function SummaryCard({
   tone?: "neutral" | "accent";
 }) {
   return (
-    <div className={`rounded-[20px] border p-4 ${tone === "accent" ? "border-[#f2c16b]/35 bg-[#f2c16b]/10" : "border-white/10 bg-black/18"}`}>
+    <div className={`rounded-[20px] border p-4 ${tone === "accent" ? "border-brand-gold/35 bg-brand-gold/10" : "border-white/10 bg-black/18"}`}>
       <p className="text-xs uppercase tracking-[0.16em] text-white/42">{label}</p>
       <strong className="mt-2 block text-white">{value}</strong>
     </div>
@@ -349,7 +349,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
         key={`${section}-${field}`}
         type="button"
         onClick={() => setCopyEditor({ section, field, label, as, rows })}
-        className={`grid gap-3 rounded-[20px] border p-4 text-left transition ${isActive ? "border-[#f2c16b] bg-[#f2c16b]/8" : "border-white/10 bg-[#120f0d] hover:border-white/20"}`}
+        className={`grid gap-3 rounded-[20px] border p-4 text-left transition ${isActive ? "border-brand-gold bg-brand-gold/8" : "border-white/10 bg-[#120f0d] hover:border-white/20"}`}
       >
         <div className="flex items-center justify-between gap-3">
           <span className="truncate text-sm font-semibold text-white">{ui(label)}</span>
@@ -361,7 +361,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
         <p className="line-clamp-2 min-h-[42px] text-sm leading-6 text-white/58">{previewText(value)}</p>
         <div className="flex items-center justify-between">
           <span className="text-[11px] text-white/35">{field}</span>
-          <span className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-2.5 py-1 text-[10px] text-[#f6d293]">{t("Edit", "تعديل")}</span>
+          <span className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-2.5 py-1 text-[10px] text-[#f6d293]">{t("Edit", "تعديل")}</span>
         </div>
       </button>
     );
@@ -373,7 +373,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
         <div className="grid gap-4 rounded-[28px] border border-white/10 bg-black/20 p-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Editing journey", "رحلة التحرير")}</p>
+              <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Editing journey", "رحلة التحرير")}</p>
               <p className="mt-2 text-sm text-white/58">{t("This editor now hides extra decisions until you actually need them.", "هذا المحرر يخفي القرارات الزائدة حتى تحتاجها فعلًا.")}</p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -383,7 +383,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                 ["edit", t("3. Edit item", "3. عدّل العنصر")],
                 ["review", t("4. Review", "4. راجع")],
               ] as const).map(([step, label]) => (
-                <button key={step} type="button" onClick={() => setEditorStep(step)} className={`rounded-full border px-4 py-2 text-xs transition ${editorStep === step ? "border-[#f2c16b] bg-[#f2c16b]/12 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
+                <button key={step} type="button" onClick={() => setEditorStep(step)} className={`rounded-full border px-4 py-2 text-xs transition ${editorStep === step ? "border-brand-gold bg-brand-gold/12 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
                   {label}
                 </button>
               ))}
@@ -397,7 +397,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                 const readiness = zone === "header" ? `${coverage.headerFilled}/${headerFields.length}` : zone === "lead" ? `${coverage.leadFilled}/${leadFields.length}` : `${coverage.footerFilled}/${footerFields.length}`;
                 const inventory = zoneInventory(zone);
                 return (
-                  <button key={zone} type="button" onClick={() => { setActiveZoneView(zone); setSelectedBlockId(null); setSearch(""); setLibraryOpen(false); setEditorStep("arrange"); }} className="grid gap-4 rounded-[24px] border border-white/10 bg-[#120f0d] p-5 text-left transition hover:border-[#f2c16b]/45 hover:bg-white/[0.03]">
+                  <button key={zone} type="button" onClick={() => { setActiveZoneView(zone); setSelectedBlockId(null); setSearch(""); setLibraryOpen(false); setEditorStep("arrange"); }} className="grid gap-4 rounded-[24px] border border-white/10 bg-[#120f0d] p-5 text-left transition hover:border-brand-gold/45 hover:bg-white/[0.03]">
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-sm font-semibold text-white">{meta.title}</span>
                       <span className="rounded-full border border-white/10 bg-black/30 px-2.5 py-1 text-[11px] text-white/60">{readiness}</span>
@@ -410,7 +410,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-white/45">{t("Existing items", "العناصر الحالية")}: {blocks.filter((item) => item.zone === zone).length}</span>
-                      <span className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-3 py-1 text-[11px] text-[#f6d293]">{t("Open", "افتح")}</span>
+                      <span className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-3 py-1 text-[11px] text-[#f6d293]">{t("Open", "افتح")}</span>
                     </div>
                   </button>
                 );
@@ -422,7 +422,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
               <button type="button" onClick={() => askHazemForSystemArea("admin")} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                 {t("Ask Hazem about shared structure", "اسأل حازم عن الهيكل المشترك")}
               </button>
-              <button type="button" onClick={() => askHazemForSystemArea("website")} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+              <button type="button" onClick={() => askHazemForSystemArea("website")} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                 {t("Ask Hazem for better shared copy", "اطلب من حازم تحسين النص المشترك")}
               </button>
             </div>
@@ -432,7 +432,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
               <section className="rounded-[24px] border border-white/10 bg-[#120f0d] p-4">
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{zoneMeta(currentZone, t).title}</p>
+                    <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{zoneMeta(currentZone, t).title}</p>
                     <p className="mt-2 text-sm text-white/58">{t("You are now arranging only this part of the page.", "أنت تعدّل الآن هذا الجزء فقط من الصفحة.")}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -445,7 +445,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                   </div>
                 </div>
 
-                <div onDragOver={(event) => { event.preventDefault(); setActiveDropZone(currentZone); }} onDrop={() => { if (!draggingBlockId) return; moveBlock(draggingBlockId, currentZone); setDraggingBlockId(null); setActiveDropZone(null); }} onDragLeave={() => { if (activeDropZone === currentZone) setActiveDropZone(null); }} className={`mt-4 grid gap-3 rounded-[22px] border p-3 transition ${activeDropZone === currentZone ? "border-[#f2c16b]/60 bg-[#f2c16b]/8" : "border-white/10 bg-black/10"}`}>
+                <div onDragOver={(event) => { event.preventDefault(); setActiveDropZone(currentZone); }} onDrop={() => { if (!draggingBlockId) return; moveBlock(draggingBlockId, currentZone); setDraggingBlockId(null); setActiveDropZone(null); }} onDragLeave={() => { if (activeDropZone === currentZone) setActiveDropZone(null); }} className={`mt-4 grid gap-3 rounded-[22px] border p-3 transition ${activeDropZone === currentZone ? "border-brand-gold/60 bg-brand-gold/8" : "border-white/10 bg-black/10"}`}>
                   {currentZoneBlocks.map((block, index) => (
                     <article key={block.id} draggable onDragStart={() => setDraggingBlockId(block.id)} onDragOver={(event) => event.preventDefault()} onDrop={() => { if (!draggingBlockId) return; moveBlock(draggingBlockId, currentZone, index); setDraggingBlockId(null); setActiveDropZone(null); }} onDragEnd={() => { setDraggingBlockId(null); setActiveDropZone(null); }} className="grid gap-3 rounded-[20px] border border-white/10 bg-black/20 p-4 lg:grid-cols-[minmax(0,1fr)_auto]">
                       <div className="grid gap-2">
@@ -459,7 +459,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                       </div>
                       <div className="flex flex-wrap items-start justify-end gap-2">
                         <button type="button" onClick={() => { setSelectedBlockId(block.id); setEditorStep("edit"); }} className="rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-xs text-white/76 transition hover:bg-white/6">{t("Edit", "تعديل")}</button>
-                        <button type="button" onClick={() => focusBlockPreview(block)} className="rounded-xl border border-[#f2c16b]/30 bg-[#f2c16b]/8 px-3 py-2 text-xs text-[#f6d293] transition hover:bg-[#f2c16b]/12">{t("Show in preview", "اعرضه في المعاينة")}</button>
+                        <button type="button" onClick={() => focusBlockPreview(block)} className="rounded-xl border border-brand-gold/30 bg-brand-gold/8 px-3 py-2 text-xs text-[#f6d293] transition hover:bg-brand-gold/12">{t("Show in preview", "اعرضه في المعاينة")}</button>
                         <button type="button" onClick={() => duplicateBlock(block.id)} className="rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-xs text-white/76 transition hover:bg-white/6">{t("Duplicate", "نسخ")}</button>
                         <button type="button" onClick={() => patchBlock(block.id, { enabled: !block.enabled })} className="rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-xs text-white/76 transition hover:bg-white/6">{block.enabled ? t("Hide", "إخفاء") : t("Show", "إظهار")}</button>
                         <button type="button" onClick={() => { updateSystemBlocks(blocks.filter((item) => item.id !== block.id)); if (selectedBlockId === block.id) setSelectedBlockId(null); }} className="rounded-xl border border-red-400/30 bg-red-500/10 px-3 py-2 text-xs text-red-200 transition hover:bg-red-500/15">{t("Delete", "حذف")}</button>
@@ -473,10 +473,10 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
 
               <aside className="grid min-w-0 gap-4">
                 <div className="rounded-[24px] border border-white/10 bg-[#120f0d] p-4">
-                  <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Choose another area", "اختر جزءًا آخر")}</p>
+                  <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Choose another area", "اختر جزءًا آخر")}</p>
                   <div className="mt-4 grid gap-2">
                     {(["header", "lead", "footer"] as const).filter((zone) => hasZone(zone)).map((zone) => (
-                      <button key={zone} type="button" onClick={() => { setActiveZoneView(zone); setLibraryOpen(false); setSearch(""); }} className={`min-w-0 rounded-xl border px-3 py-3 text-sm text-left leading-6 transition ${currentZone === zone ? "border-[#f2c16b] bg-[#f2c16b]/10 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
+                      <button key={zone} type="button" onClick={() => { setActiveZoneView(zone); setLibraryOpen(false); setSearch(""); }} className={`min-w-0 rounded-xl border px-3 py-3 text-sm text-left leading-6 transition ${currentZone === zone ? "border-brand-gold bg-brand-gold/10 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
                         {zoneMeta(zone, t).title}
                       </button>
                     ))}
@@ -487,16 +487,16 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                   <div className="rounded-[24px] border border-white/10 bg-[#120f0d] p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Element library", "مكتبة العناصر")}</p>
+                        <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Element library", "مكتبة العناصر")}</p>
                         <p className="mt-2 text-sm text-white/58">{t("Only the items for the current area are shown here.", "هنا تظهر فقط العناصر المناسبة للجزء الحالي.")}</p>
                       </div>
                       <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] text-white/60">{visibleLibraryBlocks.length}</span>
                     </div>
 
-                    <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder={t("Search an item...", "ابحث عن عنصر...")} className="mt-4 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:border-[#f2c16b]/50 focus:outline-none" />
+                    <input value={search} onChange={(event) => setSearch(event.target.value)} placeholder={t("Search an item...", "ابحث عن عنصر...")} className="mt-4 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:border-brand-gold/50 focus:outline-none" />
                     <div className="mt-3 flex flex-wrap gap-1.5">
                       {(["all", "media", "text", "cta", "forms", "crm"] as const).map((category) => (
-                        <button key={category} type="button" onClick={() => setLibraryCategory(category)} className={`rounded-full border px-3 py-2 text-[11px] ${libraryCategory === category ? "border-[#f2c16b]/70 bg-[#f2c16b]/15 text-white" : "border-white/10 bg-black/20 text-white/65"}`}>
+                        <button key={category} type="button" onClick={() => setLibraryCategory(category)} className={`rounded-full border px-3 py-2 text-[11px] ${libraryCategory === category ? "border-brand-gold/70 bg-brand-gold/15 text-white" : "border-white/10 bg-black/20 text-white/65"}`}>
                           {categoryLabel(category, t)}
                         </button>
                       ))}
@@ -504,10 +504,10 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
 
                     <div className="mt-4 grid gap-3">
                       {visibleLibraryBlocks.map((item) => (
-                        <button key={item.id} type="button" onClick={() => addLibraryBlock(item.id)} className="grid gap-2 rounded-[18px] border border-white/10 bg-black/20 p-3 text-left transition hover:border-[#f2c16b]/40 hover:bg-white/5">
+                        <button key={item.id} type="button" onClick={() => addLibraryBlock(item.id)} className="grid gap-2 rounded-[18px] border border-white/10 bg-black/20 p-3 text-left transition hover:border-brand-gold/40 hover:bg-white/5">
                           <div className="flex items-center justify-between gap-3">
                             <span className="truncate text-sm font-semibold text-white">{t(item.titleEn, item.titleAr)}</span>
-                            <span className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-2.5 py-1 text-[10px] text-[#f6d293]">{t("Add", "إضافة")}</span>
+                            <span className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-2.5 py-1 text-[10px] text-[#f6d293]">{t("Add", "إضافة")}</span>
                           </div>
                           <p className="text-xs leading-6 text-white/52">{t(item.subtitleEn, item.subtitleAr)}</p>
                         </button>
@@ -523,7 +523,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
               <section className="rounded-[24px] border border-white/10 bg-[#120f0d] p-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Edit selected item", "عدّل العنصر المحدد")}</p>
+                    <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Edit selected item", "عدّل العنصر المحدد")}</p>
                     <p className="mt-2 text-sm text-white/58">{t("Only the chosen item is shown here to keep focus.", "هنا يظهر العنصر المختار فقط للحفاظ على التركيز.")}</p>
                   </div>
                   <button type="button" onClick={() => setEditorStep("arrange")} className="rounded-xl border border-white/10 bg-black/25 px-3 py-2 text-xs text-white/76 transition hover:bg-white/6">{t("Back to arrangement", "العودة للترتيب")}</button>
@@ -553,7 +553,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                       <div className="flex flex-wrap gap-2">
                         {PAGE_OPTIONS.map((page) => {
                           const on = selectedBlock.pages.includes(page.id);
-                          return <button key={page.id} type="button" onClick={() => togglePage(selectedBlock.id, page.id)} className={`rounded-full border px-3 py-2 text-xs ${on ? "border-[#f2c16b] bg-[#f2c16b]/10 text-white" : "border-white/10 bg-black/25 text-white/65"}`}>{t(page.en, page.ar)}</button>;
+                          return <button key={page.id} type="button" onClick={() => togglePage(selectedBlock.id, page.id)} className={`rounded-full border px-3 py-2 text-xs ${on ? "border-brand-gold bg-brand-gold/10 text-white" : "border-white/10 bg-black/25 text-white/65"}`}>{t(page.en, page.ar)}</button>;
                         })}
                       </div>
                     </Field>
@@ -561,7 +561,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                     <Field label={t("Item area", "مكان العنصر")}>
                       <div className="grid gap-2 lg:grid-cols-3">
                         {(["header", "lead", "footer"] as const).filter((zone) => hasZone(zone)).map((zone) => (
-                          <button key={zone} type="button" onClick={() => patchBlock(selectedBlock.id, { zone })} className={`rounded-xl border px-3 py-3 text-sm transition ${selectedBlock.zone === zone ? "border-[#f2c16b] bg-[#f2c16b]/10 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
+                          <button key={zone} type="button" onClick={() => patchBlock(selectedBlock.id, { zone })} className={`rounded-xl border px-3 py-3 text-sm transition ${selectedBlock.zone === zone ? "border-brand-gold bg-brand-gold/10 text-white" : "border-white/10 bg-black/25 text-white/65 hover:bg-white/6"}`}>
                             {zoneMeta(zone, t).title}
                           </button>
                         ))}
@@ -577,7 +577,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                       <button type="button" onClick={() => askHazemForSystemArea("admin", zoneMeta(selectedBlock.zone, t).title)} className="rounded-full border border-white/10 bg-black/18 px-4 py-2 text-xs font-semibold text-white/72 transition hover:bg-white/[0.05]">
                         {t("Ask Hazem about this item", "اسأل حازم عن هذا العنصر")}
                       </button>
-                      <button type="button" onClick={() => askHazemForSystemArea("website", zoneMeta(selectedBlock.zone, t).title)} className="rounded-full border border-[#f2c16b]/35 bg-[#f2c16b]/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-[#f2c16b]/15">
+                      <button type="button" onClick={() => askHazemForSystemArea("website", zoneMeta(selectedBlock.zone, t).title)} className="rounded-full border border-brand-gold/35 bg-brand-gold/10 px-4 py-2 text-xs font-semibold text-[#f8d28b] transition hover:bg-brand-gold/15">
                         {t("Ask Hazem for stronger copy", "اطلب من حازم تحسين النص")}
                       </button>
                     </div>
@@ -588,11 +588,11 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
               </section>
 
               <aside className="rounded-[24px] border border-white/10 bg-[#120f0d] p-4">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Quick actions", "إجراءات سريعة")}</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Quick actions", "إجراءات سريعة")}</p>
                 {selectedBlock ? (
                   <div className="mt-4 grid gap-2">
                     <button type="button" onClick={() => patchBlock(selectedBlock.id, { enabled: !selectedBlock.enabled })} className={`rounded-xl border px-4 py-3 text-sm transition ${selectedBlock.enabled ? "border-emerald-400/35 bg-emerald-500/10 text-emerald-200" : "border-white/10 bg-black/25 text-white/70 hover:bg-white/6"}`}>{selectedBlock.enabled ? t("Visible now", "ظاهر الآن") : t("Hidden now", "مخفي الآن")}</button>
-                    <button type="button" onClick={() => focusBlockPreview(selectedBlock)} className="rounded-xl border border-[#f2c16b]/30 bg-[#f2c16b]/8 px-4 py-3 text-sm text-[#f6d293] transition hover:bg-[#f2c16b]/12">{t("Show on live preview", "اعرضه في المعاينة الحية")}</button>
+                    <button type="button" onClick={() => focusBlockPreview(selectedBlock)} className="rounded-xl border border-brand-gold/30 bg-brand-gold/8 px-4 py-3 text-sm text-[#f6d293] transition hover:bg-brand-gold/12">{t("Show on live preview", "اعرضه في المعاينة الحية")}</button>
                     <a href={`${PUBLIC_SITE_URL}${pageToPublicRoute(selectedBlock.pages[0] ?? "home")}?focus=${zoneToTargetId(selectedBlock.zone)}`} target="_blank" rel="noreferrer" className="rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white/76 transition hover:bg-white/6">{t("Open on website", "افتحه على الموقع")}</a>
                     <button type="button" onClick={() => duplicateBlock(selectedBlock.id)} className="rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white/76 transition hover:bg-white/6">{t("Duplicate item", "نسخ العنصر")}</button>
                     <button type="button" onClick={() => setEditorStep("review")} className="rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-sm text-white/76 transition hover:bg-white/6">{t("Go to review", "اذهب للمراجعة")}</button>
@@ -638,7 +638,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                   onClick={() => setCopyFlow(step)}
                   className={`rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] transition ${
                     copyFlow === step
-                      ? "border-[#f2c16b]/60 bg-[#f2c16b]/14 text-[#f8d28b]"
+                      ? "border-brand-gold/60 bg-brand-gold/14 text-[#f8d28b]"
                       : "border-white/10 bg-black/18 text-white/68 hover:border-white/20 hover:bg-white/[0.04]"
                   }`}
                 >
@@ -660,7 +660,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                     }}
                     className={`grid gap-3 rounded-[24px] border p-4 text-left transition ${
                       currentCopySection.id === section.id
-                        ? "border-[#f2c16b]/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
+                        ? "border-brand-gold/60 bg-white/8 shadow-[0_0_0_1px_rgba(242,193,107,0.18)]"
                         : "border-white/10 bg-black/18 hover:border-white/20 hover:bg-white/[0.04]"
                     }`}
                   >
@@ -685,7 +685,7 @@ export function SystemStructuresModule({ settings, mutateSettings, ui, t, defaul
                       }}
                       className={`rounded-xl border px-4 py-2 text-sm transition ${
                         currentCopySection.id === section.id
-                          ? "border-[#f2c16b] bg-[#f2c16b]/10 text-white"
+                          ? "border-brand-gold bg-brand-gold/10 text-white"
                           : "border-white/10 bg-black/20 text-white/70 hover:bg-white/6"
                       }`}
                     >

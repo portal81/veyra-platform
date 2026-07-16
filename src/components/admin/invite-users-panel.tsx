@@ -138,7 +138,7 @@ function PermissionMatrix({
                   onClick={() => onAccessModeChange(mode)}
                   className={`rounded-[18px] border px-4 py-3 text-left text-sm transition ${
                     accessMode === mode
-                      ? "border-[#f2c16b]/35 bg-[#f2c16b]/10 text-white"
+                      ? "border-brand-gold/35 bg-brand-gold/10 text-white"
                       : "border-white/10 bg-black/20 text-white/68 hover:bg-white/5"
                   }`}
                 >
@@ -182,7 +182,7 @@ function PermissionMatrix({
                     onClick={() => setActiveGroupId(group.id)}
                     className={`rounded-[18px] border px-4 py-3 text-left transition ${
                       activeGroup.id === group.id
-                        ? "border-[#f2c16b]/30 bg-[#f2c16b]/10"
+                        ? "border-brand-gold/30 bg-brand-gold/10"
                         : "border-white/10 bg-[#120f0d] hover:bg-white/5"
                     }`}
                   >
@@ -201,7 +201,7 @@ function PermissionMatrix({
 
           <div className="rounded-[22px] border border-white/10 bg-[#120f0d] p-4">
             <div className="mb-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-[#f2c16b]">
+              <p className="text-xs uppercase tracking-[0.18em] text-brand-gold">
                 {activeGroup.label}
               </p>
               <h4 className="mt-2 text-xl font-semibold text-white">{t("Focused permission editing", "تحرير مركز للصلاحيات")}</h4>
@@ -217,7 +217,7 @@ function PermissionMatrix({
                     key={permission.key}
                     className={`grid gap-2 rounded-[18px] border px-4 py-3 transition ${
                       active
-                        ? "border-[#f2c16b]/30 bg-[#f2c16b]/10"
+                        ? "border-brand-gold/30 bg-brand-gold/10"
                         : "border-white/10 bg-black/20"
                     } ${accessMode === "custom" ? "cursor-pointer" : "cursor-default"}`}
                   >
@@ -290,12 +290,12 @@ function WorkspaceTabRail({
             onClick={() => onChange(view.id)}
             className={`grid gap-2 rounded-[24px] border px-4 py-4 text-left transition ${
               activeView === view.id
-                ? "border-[#f2c16b]/35 bg-[#f2c16b]/10"
+                ? "border-brand-gold/35 bg-brand-gold/10"
                 : "border-white/10 bg-black/20 hover:bg-white/5"
             }`}
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">{view.eyebrow}</span>
+              <span className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">{view.eyebrow}</span>
               {view.count !== null ? (
                 <span className="rounded-full border border-white/10 px-2 py-1 text-[11px] uppercase tracking-[0.14em] text-white/58">
                   {view.count}
@@ -331,7 +331,7 @@ function RecordRail<T extends { id: string }>({
   return (
     <div className="grid gap-3 rounded-[28px] border border-white/10 bg-white/5 p-4 md:p-5">
       <div>
-        <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{title}</p>
+        <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">{title}</p>
         <p className="mt-2 text-sm leading-7 text-white/58">{description}</p>
       </div>
 
@@ -346,7 +346,7 @@ function RecordRail<T extends { id: string }>({
               onClick={() => onSelect(record.id)}
               className={`rounded-[20px] border px-4 py-4 text-left transition ${
                 isSelected
-                  ? "border-[#f2c16b]/35 bg-[#f2c16b]/10"
+                  ? "border-brand-gold/35 bg-brand-gold/10"
                   : "border-white/10 bg-black/20 hover:bg-white/5"
               }`}
             >
@@ -762,7 +762,7 @@ export function InviteUsersPanel({
       <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Team workspace", "مساحة الفريق")}</p>
+            <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Team workspace", "مساحة الفريق")}</p>
             <h2 className="mt-2 font-serif text-3xl text-white">{t("Access center", "إدارة وصول مركزة")}</h2>
             <p className="mt-3 max-w-3xl text-sm leading-7 text-white/62">
               {t(
@@ -784,7 +784,7 @@ export function InviteUsersPanel({
         </div>
 
         {feedback ? (
-          <div className="mt-5 rounded-[18px] border border-[#f2c16b]/20 bg-[#f2c16b]/10 px-4 py-3 text-sm text-[#f5d59b]">
+          <div className="mt-5 rounded-[18px] border border-brand-gold/20 bg-brand-gold/10 px-4 py-3 text-sm text-[#f5d59b]">
             {feedback}
           </div>
         ) : null}
@@ -793,7 +793,7 @@ export function InviteUsersPanel({
           {activeView === "invite" ? (
             <div className="grid gap-5 xl:grid-cols-[340px_minmax(0,1fr)]">
               <section className="rounded-[28px] border border-white/10 bg-black/20 p-5">
-                <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">{t("Invite setup", "إعداد الدعوة")}</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">{t("Invite setup", "إعداد الدعوة")}</p>
                 <h3 className="mt-3 text-2xl font-semibold text-white">{t("Send a new access record", "أرسل سجل وصول جديد")}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/56">
                   {t(
@@ -827,7 +827,7 @@ export function InviteUsersPanel({
                     type="button"
                     onClick={handleInvite}
                     disabled={!email}
-                    className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-5 py-3 font-semibold text-[#1d140d] disabled:cursor-not-allowed disabled:opacity-40"
+                    className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-5 py-3 font-semibold text-[#1d140d] disabled:cursor-not-allowed disabled:opacity-40"
                   >
                     {isPending && !savingId ? t("Sending...", "جارٍ الإرسال...") : t("Send invitation", "إرسال الدعوة")}
                   </button>
@@ -864,13 +864,13 @@ export function InviteUsersPanel({
                   <section className="grid gap-4 rounded-[28px] border border-white/10 bg-white/5 p-5 md:p-6">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">Selected user</p>
+                        <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">Selected user</p>
                         <h3 className="mt-2 font-serif text-4xl text-white">{selectedUser.fullName}</h3>
                         <p className="mt-3 text-sm leading-7 text-white/56">{selectedUser.email}</p>
                       </div>
 
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-[#f2c16b]">
+                        <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-brand-gold">
                           {compactRoleLabel(selectedUser.role)}
                         </span>
                         <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-white/58">
@@ -980,7 +980,7 @@ export function InviteUsersPanel({
                   <section className="grid gap-4 rounded-[28px] border border-white/10 bg-white/5 p-5 md:p-6">
                     <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.22em] text-[#f2c16b]">Selected invitation</p>
+                        <p className="text-xs uppercase tracking-[0.22em] text-brand-gold">Selected invitation</p>
                         <h3 className="mt-2 font-serif text-4xl text-white">{selectedInvitation.email}</h3>
                         <p className="mt-3 text-sm leading-7 text-white/56">
                           Invited by {selectedInvitation.invitedBy} on {formatDate(selectedInvitation.createdAt)}
@@ -988,7 +988,7 @@ export function InviteUsersPanel({
                       </div>
 
                       <div className="flex flex-wrap gap-2">
-                        <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-[#f2c16b]">
+                        <span className="rounded-full border border-white/10 px-3 py-2 text-xs text-brand-gold">
                           {compactRoleLabel(selectedInvitation.role)}
                         </span>
                         <span
@@ -1113,7 +1113,7 @@ export function InviteUsersPanel({
 
       <section className="rounded-[30px] border border-white/10 bg-white/5 p-5">
         <div className="flex items-center justify-between gap-3">
-          <p className="text-xs uppercase tracking-[0.24em] text-[#f2c16b]">{t("Activity log", "سجل النشاط")}</p>
+          <p className="text-xs uppercase tracking-[0.24em] text-brand-gold">{t("Activity log", "سجل النشاط")}</p>
           <button
             type="button"
             onClick={() => setActivityLog([])}

@@ -29,14 +29,13 @@ export async function POST(request: Request) {
     response.cookies.set(ADMIN_SESSION_COOKIE, result.token, {
       httpOnly: true,
       sameSite: "lax",
-      secure: false,
+      secure: true,
       path: "/",
       maxAge: 60 * 60 * 24 * 30,
     });
 
     return response;
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Could not sign in.";
-    return NextResponse.json({ message }, { status: 400 });
+  } catch {
+    return NextResponse.json({ message: "Dev login failed." }, { status: 400 });
   }
 }

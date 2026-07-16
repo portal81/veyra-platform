@@ -141,7 +141,7 @@ function ColorPicker({
             onClick={() => onChange(preset.value)}
             className={`inline-flex min-w-0 items-center gap-2 rounded-full border px-3 py-2 text-left text-xs transition ${
               value?.toLowerCase() === preset.value.toLowerCase()
-                ? "border-[#f2c16b] bg-white/10 text-white"
+                ? "border-brand-gold bg-white/10 text-white"
                 : "border-white/10 text-white/68 hover:bg-white/5"
             }`}
           >
@@ -173,7 +173,7 @@ export function BuilderSection({
   return (
     <section className="rounded-[32px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/15">
       <div className="max-w-3xl">
-        {eyebrow ? <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{eyebrow}</p> : null}
+        {eyebrow ? <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{eyebrow}</p> : null}
         <h3 className="mt-3 font-serif text-3xl text-white">{title}</h3>
         {description ? <p className="mt-3 text-white/68">{description}</p> : null}
       </div>
@@ -288,7 +288,7 @@ export function AdminWorkspaceShell({
           <section className="rounded-[36px] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(242,193,107,0.14),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-6 shadow-[0_30px_80px_rgba(0,0,0,0.24)] md:p-8">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <div className="max-w-4xl">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{eyebrow}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{eyebrow}</p>
                 <h1 className="mt-3 font-serif text-4xl leading-tight text-white md:text-5xl">{title}</h1>
                 <p className="mt-4 text-base leading-8 text-white/68 md:text-lg">{description}</p>
               </div>
@@ -312,7 +312,7 @@ export function AdminWorkspaceShell({
 
         <aside className="grid gap-6 xl:order-2 xl:sticky xl:top-24">
           <section className="rounded-[30px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{t("Section menu", "قائمة القسم")}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{t("Section menu", "قائمة القسم")}</p>
             <h2 className="mt-3 font-serif text-3xl text-white">{t(contextPanel.title.en, contextPanel.title.ar)}</h2>
             <p className="mt-3 text-sm leading-7 text-white/62">{t(contextPanel.description.en, contextPanel.description.ar)}</p>
             <div className="mt-6 grid gap-3">
@@ -321,12 +321,12 @@ export function AdminWorkspaceShell({
                   key={`${item.label.en}-${index}`}
                   className={`rounded-[22px] border px-4 py-4 transition ${
                     item.tone === "accent"
-                      ? "border-[#f2c16b]/30 bg-[#f2c16b]/10 shadow-[0_14px_30px_rgba(0,0,0,0.16)]"
+                      ? "border-brand-gold/30 bg-brand-gold/10 shadow-[0_14px_30px_rgba(0,0,0,0.16)]"
                       : "border-white/10 bg-black/20 hover:bg-white/6"
                   }`}
                 >
                   <div className="flex items-start gap-3">
-                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/20 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#f2c16b]">
+                    <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 bg-black/20 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gold">
                       0{index + 1}
                     </span>
                     <div className="min-w-0">
@@ -356,7 +356,7 @@ export function AdminWorkspaceShell({
 
         <aside className="hidden xl:block xl:order-3 xl:sticky xl:top-24">
           <section className="rounded-[30px] border border-white/10 bg-[radial-gradient(circle_at_top_right,rgba(242,193,107,0.14),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-5 shadow-[0_26px_60px_rgba(0,0,0,0.22)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2c16b]">{t("Navigation", "التنقل")}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-brand-gold">{t("Navigation", "التنقل")}</p>
             <h2 className="mt-3 font-serif text-3xl text-white">{t("Control hub", "مركز التحكم")}</h2>
             <p className="mt-3 text-sm leading-7 text-white/62">
               {t("Clear sections for content, inventory, CRM, and team access.", "تقسيم واضح للمحتوى والمخزون والعملاء ووصول الفريق.")}
@@ -378,11 +378,11 @@ export function AdminWorkspaceShell({
                           href={item.href}
                           className={`rounded-[22px] border px-4 py-4 transition ${
                             isActive
-                              ? "border-[#f2c16b] bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.16)]"
+                              ? "border-brand-gold bg-white/10 shadow-[0_18px_40px_rgba(0,0,0,0.16)]"
                               : "border-white/10 bg-black/20 hover:bg-white/6"
                           }`}
                         >
-                          <p className="text-[11px] uppercase tracking-[0.22em] text-[#f2c16b]">{t(item.eyebrow.en, item.eyebrow.ar)}</p>
+                          <p className="text-[11px] uppercase tracking-[0.22em] text-brand-gold">{t(item.eyebrow.en, item.eyebrow.ar)}</p>
                           <p className="mt-2 text-sm font-semibold text-white">{t(item.label.en, item.label.ar)}</p>
                         </Link>
                       );
@@ -392,8 +392,8 @@ export function AdminWorkspaceShell({
               ))}
             </div>
 
-            <div className="mt-6 rounded-[24px] border border-[#f2c16b]/18 bg-[linear-gradient(180deg,rgba(242,193,107,0.14),rgba(255,255,255,0.04))] p-4">
-              <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Quick objective", "هدف سريع")}</p>
+            <div className="mt-6 rounded-[24px] border border-brand-gold/18 bg-[linear-gradient(180deg,rgba(242,193,107,0.14),rgba(255,255,255,0.04))] p-4">
+              <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Quick objective", "هدف سريع")}</p>
               <p className="mt-3 text-sm leading-7 text-white/72">
                 {t("Keep edits structured, keep offers current, and keep sales teams focused on the next action.", "حافظ على تنظيم التعديلات، وتحديث العروض، وتركيز فريق المبيعات على الخطوة التالية.")}
               </p>

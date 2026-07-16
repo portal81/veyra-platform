@@ -91,16 +91,16 @@ export function CalculatorsModule({ settings, mutateSettings, ui, t, defaultText
               </div>
             </div>
             
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Unit Types Grid", "شبكة أنواع الوحدات")}</p>
+            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Unit Types Grid", "شبكة أنواع الوحدات")}</p>
             <div className="mt-2 grid gap-4 2xl:grid-cols-2">
               {settings.installmentCalculator.unitTypes.map((unit, index) => (
-                <div key={unit.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-[#f2c16b] transition duration-300">
+                <div key={unit.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-brand-gold transition duration-300">
                   <div className="grid gap-4 md:grid-cols-[0.8fr_1fr]">
                     <Field label={ui("Unit id")}>
-                      <input value={unit.id} onChange={(event) => updateInstallmentUnit(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input value={unit.id} onChange={(event) => updateInstallmentUnit(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                     <Field label={ui("Price per meter")}>
-                      <input type="number" value={unit.pricePerMeter} onChange={(event) => updateInstallmentUnit(index, { pricePerMeter: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input type="number" value={unit.pricePerMeter} onChange={(event) => updateInstallmentUnit(index, { pricePerMeter: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                   </div>
                   <LocalizedTextEditor label={ui("Unit type label")} value={unit.label ?? defaultText()} onChange={(next) => updateInstallmentUnit(index, { label: next })} as="input" englishPlaceholder="Residential" arabicPlaceholder="سكني" rows={2} />
@@ -108,19 +108,19 @@ export function CalculatorsModule({ settings, mutateSettings, ui, t, defaultText
               ))}
             </div>
 
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Installment Plans Matrix", "مصفوفة خطط التقسيط")}</p>
+            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Installment Plans Matrix", "مصفوفة خطط التقسيط")}</p>
             <div className="mt-2 grid gap-4">
               {settings.installmentCalculator.plans.map((plan, index) => (
-                <div key={plan.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-[#f2c16b] transition duration-300">
+                <div key={plan.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-brand-gold transition duration-300">
                   <div className="grid gap-4 md:grid-cols-3">
                     <Field label={ui("Plan id")}>
-                      <input value={plan.id} onChange={(event) => updateInstallmentPlan(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input value={plan.id} onChange={(event) => updateInstallmentPlan(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                     <Field label={ui("Years")}>
-                      <input type="number" value={plan.years} onChange={(event) => updateInstallmentPlan(index, { years: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input type="number" value={plan.years} onChange={(event) => updateInstallmentPlan(index, { years: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                     <Field label={ui("Interest multiplier")}>
-                      <input type="number" step="0.01" value={plan.interestMultiplier} onChange={(event) => updateInstallmentPlan(index, { interestMultiplier: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input type="number" step="0.01" value={plan.interestMultiplier} onChange={(event) => updateInstallmentPlan(index, { interestMultiplier: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                   </div>
                   <LocalizedTextEditor label={ui("Plan label")} value={plan.label ?? defaultText()} onChange={(next) => updateInstallmentPlan(index, { label: next })} as="input" englishPlaceholder="6 years" arabicPlaceholder="٦ سنوات" rows={2} />
@@ -155,16 +155,16 @@ export function CalculatorsModule({ settings, mutateSettings, ui, t, defaultText
               </div>
             </div>
 
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Finishing Tiers Setup", "إعداد باقات التشطيب")}</p>
+            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Finishing Tiers Setup", "إعداد باقات التشطيب")}</p>
             <div className="mt-2 grid gap-4 2xl:grid-cols-2">
               {settings.finishingCalculator.tiers.map((tier, index) => (
-                <div key={tier.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-[#f2c16b] transition duration-300">
+                <div key={tier.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-brand-gold transition duration-300">
                   <div className="grid gap-4 md:grid-cols-[0.8fr_1fr]">
                     <Field label="Tier id">
-                      <input value={tier.id} onChange={(event) => updateFinishingTier(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input value={tier.id} onChange={(event) => updateFinishingTier(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                     <Field label="Price per meter">
-                      <input type="number" value={tier.pricePerMeter} onChange={(event) => updateFinishingTier(index, { pricePerMeter: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input type="number" value={tier.pricePerMeter} onChange={(event) => updateFinishingTier(index, { pricePerMeter: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                   </div>
                   <LocalizedTextEditor label="Tier label" value={tier.label ?? defaultText()} onChange={(next) => updateFinishingTier(index, { label: next })} as="input" englishPlaceholder="Super Lux" arabicPlaceholder="سوبر لوكس" rows={2} />
@@ -172,16 +172,16 @@ export function CalculatorsModule({ settings, mutateSettings, ui, t, defaultText
               ))}
             </div>
 
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Configurable Add-ons", "الإضافات الاختيارية")}</p>
+            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Configurable Add-ons", "الإضافات الاختيارية")}</p>
             <div className="mt-2 grid gap-4">
               {settings.finishingCalculator.addOns.map((addOn, index) => (
-                <div key={addOn.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-[#f2c16b] transition duration-300">
+                <div key={addOn.id} className="grid gap-4 rounded-[26px] border border-white/10 bg-[#120f0d] p-5 hover:border-brand-gold transition duration-300">
                   <div className="grid gap-4 md:grid-cols-[0.9fr_1fr]">
                     <Field label="Add-on id">
-                      <input value={addOn.id} onChange={(event) => updateFinishingAddOn(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input value={addOn.id} onChange={(event) => updateFinishingAddOn(index, { id: event.target.value })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                     <Field label="Flat surcharge (Price)">
-                      <input type="number" value={addOn.price} onChange={(event) => updateFinishingAddOn(index, { price: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-[#f2c16b]" />
+                      <input type="number" value={addOn.price} onChange={(event) => updateFinishingAddOn(index, { price: Number(event.target.value) || 0 })} className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-gold" />
                     </Field>
                   </div>
                   <LocalizedTextEditor label="Add-on label" value={addOn.label ?? defaultText()} onChange={(next) => updateFinishingAddOn(index, { label: next })} as="input" englishPlaceholder="Lighting package" arabicPlaceholder="باقة إضاءة" rows={2} />

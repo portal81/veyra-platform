@@ -7,7 +7,16 @@ export async function GET() {
   const guard = await requireAdminRoute("settings.manage");
   if (guard.response) return guard.response;
   const settings = await getSiteSettings();
-  return NextResponse.json(settings);
+
+  const safeSettings = {
+    ...settings,
+    hazemAi: {
+      ...settings.hazemAi,
+      apiKey: undefined,
+    },
+  };
+
+  return NextResponse.json(safeSettings);
 }
 
 export async function PATCH(request: Request) {
@@ -15,14 +24,16 @@ export async function PATCH(request: Request) {
   if (guard.response) return guard.response;
 
   try {
-    const payload = (await request.json()) as SiteSettings;
-    const settings = await updateSiteSettings(payload);
+    const body = await request.json();
+    if (!body || typeof body !== "object") {
+      return NextResponse.json({ message: "Invalid settings payload." }, { status: 400 });
+    }
+    const settings = await updateSiteSettings(body as SiteSettings);
     return NextResponse.json({
       message: "Settings updated successfully.",
       settings,
     });
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to update settings.";
-    return NextResponse.json({ message }, { status: 400 });
+  } catch {
+    return NextResponse.json({ message: "Failed to update settings." }, { status: 400 });
   }
 }

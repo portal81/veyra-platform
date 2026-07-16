@@ -54,7 +54,7 @@ export function LeadHandoffDialog({ leadId, leadName, users, currentUserId, curr
         onClick={(e) => e.stopPropagation()}
       >
         <div className="border-b border-white/8 px-5 py-4">
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
             {locale === "ar" ? "تسليم عميل" : "Handoff Lead"}
           </p>
           <h2 className="mt-1 text-lg font-semibold text-white">{leadName}</h2>

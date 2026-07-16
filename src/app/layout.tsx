@@ -6,7 +6,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
 };
-import { Cairo, Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cairo, Cormorant_Garamond } from "next/font/google";
 import { Toaster } from "sonner";
 import { AdminLocaleProvider } from "@/components/admin/admin-locale-provider";
 import { PageTransition } from "@/components/page-transition";
@@ -19,11 +19,6 @@ import { SITE_URL } from "@/lib/site-url";
 import arMessages from "../../messages/ar.json";
 import enMessages from "../../messages/en.json";
 import "./globals.css";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -79,7 +74,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={direction}
-      className={`${manrope.variable} ${cormorant.variable} ${cairo.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${cairo.variable} h-full antialiased`}
     >
       <body className={`min-h-full antialiased ${direction === "rtl" ? "font-arabic" : ""}`}>
         <AdminLocaleProvider initialLocale={locale} messages={messages}>

@@ -197,7 +197,7 @@ export function ClientCaseFilesEditor({ leadId, initialFiles }: ClientCaseFilesE
   return (
     <div id="files-review" className="mt-4 grid scroll-mt-6 gap-4">
       {feedback ? (
-        <p className="rounded-2xl border border-[#f2c16b]/20 bg-[#f2c16b]/10 px-4 py-3 text-sm text-[#f2c16b]">
+        <p className="rounded-2xl border border-brand-gold/20 bg-brand-gold/10 px-4 py-3 text-sm text-brand-gold">
           {feedback}
         </p>
       ) : null}
@@ -212,7 +212,7 @@ export function ClientCaseFilesEditor({ leadId, initialFiles }: ClientCaseFilesE
             if (file) void uploadCaseDocument(file);
             event.currentTarget.value = "";
           }}
-          className="text-sm normal-case tracking-normal text-white file:mr-4 file:rounded-full file:border-0 file:bg-[#f2c16b] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#1d140d] disabled:opacity-50"
+          className="text-sm normal-case tracking-normal text-white file:mr-4 file:rounded-full file:border-0 file:bg-brand-gold file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#1d140d] disabled:opacity-50"
           accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,image/png,image/jpeg,image/webp"
         />
         <span className="text-xs normal-case tracking-normal text-white/55">
@@ -257,7 +257,7 @@ export function ClientCaseFilesEditor({ leadId, initialFiles }: ClientCaseFilesE
                       href={file.storagePath}
                       target="_blank"
                       rel="noreferrer"
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-[#f2c16b]/40 hover:text-[#f2c16b]"
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-brand-gold/40 hover:text-brand-gold"
                     >
                       {t("Open file", "فتح الملف")}
                     </a>

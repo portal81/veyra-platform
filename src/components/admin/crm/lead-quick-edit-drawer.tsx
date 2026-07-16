@@ -387,10 +387,10 @@ export function LeadQuickEditDrawer({
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-end bg-black/55 p-4 md:items-center md:p-6">
-      <div className="admin-shell-surface max-h-[calc(100vh-2rem)] w-full max-w-3xl overflow-y-auto p-5 shadow-[0_30px_70px_rgba(0,0,0,0.45)]">
+      <div className="admin-shell-surface admin-shell-drawer-panel max-h-[calc(100vh-2rem)] w-full max-w-3xl overflow-y-auto p-5 shadow-[0_30px_70px_rgba(0,0,0,0.45)]">
         <div className="mb-4 flex items-start justify-between gap-3">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">
+            <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">
               {t("Quick edit", "تعديل سريع")}
             </p>
             <h4 className="mt-2 font-serif text-2xl text-white">{quickEditLead.fullName}</h4>
@@ -405,7 +405,7 @@ export function LeadQuickEditDrawer({
         </div>
 
         {drawerFeedback ? (
-          <p className="admin-shell-muted-card mb-4 px-3 py-2 text-xs text-[#f2c16b]">{drawerFeedback}</p>
+          <p className="admin-shell-muted-card mb-4 px-3 py-2 text-xs text-brand-gold">{drawerFeedback}</p>
         ) : null}
 
         <div className="grid gap-4">
@@ -514,7 +514,7 @@ export function LeadQuickEditDrawer({
           <div className={showTeamSections ? "admin-shell-panel p-4" : "hidden"}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">{t("Case team", "فريق الملف")}</p>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">{t("Case team", "فريق الملف")}</p>
                 <h5 className="mt-2 text-base font-semibold text-white">{t("Multi-role assignments", "إسناد الأدوار")}</h5>
                 <p className="mt-2 text-sm leading-6 text-white/62">
                   {t(
@@ -582,7 +582,7 @@ export function LeadQuickEditDrawer({
 
           <div className={showTeamSections ? "admin-shell-panel p-4" : "hidden"}>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">{t("Project or service", "المشروع أو الخدمة")}</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">{t("Project or service", "المشروع أو الخدمة")}</p>
               <h5 className="mt-2 text-base font-semibold text-white">{t("Execution link", "ربط التنفيذ")}</h5>
               <p className="mt-2 text-sm leading-6 text-white/62">
                 {t(
@@ -679,7 +679,7 @@ export function LeadQuickEditDrawer({
 
           <div className={showTeamSections ? "admin-shell-panel p-4" : "hidden"}>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">{t("Delivery readiness", "جاهزية التنفيذ")}</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">{t("Delivery readiness", "جاهزية التنفيذ")}</p>
               <h5 className="mt-2 text-base font-semibold text-white">{t("First execution checkpoint", "أول نقطة جاهزية للتنفيذ")}</h5>
               <p className="mt-2 text-sm leading-6 text-white/62">
                 {t(
@@ -808,7 +808,7 @@ export function LeadQuickEditDrawer({
 
           <div className={showTeamSections ? "admin-shell-panel p-4" : "hidden"}>
             <div>
-              <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">{t("Site tracking", "متابعة الموقع")}</p>
+              <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">{t("Site tracking", "متابعة الموقع")}</p>
               <h5 className="mt-2 text-base font-semibold text-white">{t("Live delivery pulse", "نبض التنفيذ الحالي")}</h5>
               <p className="mt-2 text-sm leading-6 text-white/62">
                 {t(
@@ -952,7 +952,7 @@ export function LeadQuickEditDrawer({
           <div className={showFileSections ? "admin-shell-panel p-4" : "hidden"}>
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
                   {t("Case files", "ملفات العميل")}
                 </p>
                 <h5 className="mt-2 text-base font-semibold text-white">
@@ -1004,7 +1004,7 @@ export function LeadQuickEditDrawer({
                             href={file.storagePath}
                             target="_blank"
                             rel="noreferrer"
-                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-[#f2c16b]/40 hover:text-[#f2c16b]"
+                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/75 transition hover:border-brand-gold/40 hover:text-brand-gold"
                           >
                             {t("Open file", "فتح الملف")}
                           </a>
@@ -1114,7 +1114,7 @@ export function LeadQuickEditDrawer({
                     if (file) void uploadCaseDocument(file);
                     event.currentTarget.value = "";
                   }}
-                  className="text-sm normal-case tracking-normal text-white file:mr-4 file:rounded-full file:border-0 file:bg-[#f2c16b] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#1d140d] disabled:opacity-50"
+                  className="text-sm normal-case tracking-normal text-white file:mr-4 file:rounded-full file:border-0 file:bg-brand-gold file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[#1d140d] disabled:opacity-50"
                   accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,image/png,image/jpeg,image/webp"
                 />
                 <span className="text-xs normal-case tracking-normal text-white/55">
@@ -1259,7 +1259,7 @@ export function LeadQuickEditDrawer({
               type="button"
               onClick={() => updateLead(quickEditLead.id, { note: noteDrafts[quickEditLead.id] })}
               disabled={!noteDrafts[quickEditLead.id]?.trim()}
-              className="rounded-full bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-4 py-3 text-sm font-semibold text-[#1d140d] disabled:cursor-not-allowed disabled:opacity-40"
+              className="rounded-full bg-gradient-to-r from-brand-gold to-brand-gold-dark px-4 py-3 text-sm font-semibold text-[#1d140d] disabled:cursor-not-allowed disabled:opacity-40"
             >
               {t("Save note", "حفظ الملاحظة")}
             </button>
@@ -1278,7 +1278,7 @@ export function LeadQuickEditDrawer({
           </div>
 
           <div className="admin-shell-panel p-3">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#f2c16b]">{t("Lead timeline", "سجل الليد")}</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-brand-gold">{t("Lead timeline", "سجل الليد")}</p>
             <div className="mt-3 grid gap-2">
               {quickEditLeadTimeline.length ? (
                 quickEditLeadTimeline.map((item) => (

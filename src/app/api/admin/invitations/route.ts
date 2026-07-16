@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       payload.email,
       payload.role,
       payload.permissions as PermissionKey[],
-      "owner@veyra.com",
+      guard.session!.email,
       payload.accessMode,
     );
 

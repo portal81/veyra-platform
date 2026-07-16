@@ -3,11 +3,30 @@
 :root {
   --background: #120f0d;
   --foreground: #f5efe7;
+
+  /* Brand Spec: Veyra Architectural Light Mode */
+  --brand-white: #FFFFFF;
+  --brand-gray: #F8F9FA;
+  --brand-gray-warm: #F1F3F5;
+  --brand-text-primary: #1A202C;
+  --brand-text-secondary: #2D3748;
+  --brand-gold: #D4AF37;
+  --brand-gold-light: #E8C97A;
+  --brand-gold-dark: #C5A880;
+  --brand-sand: #C5A880;
+  --brand-success: #059669;
+  --brand-error: #DC2626;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-brand-gold: var(--brand-gold);
+  --color-brand-gold-light: var(--brand-gold-light);
+  --color-brand-gold-dark: var(--brand-gold-dark);
+  --color-brand-sand: var(--brand-sand);
+  --color-brand-success: var(--brand-success);
+  --color-brand-error: var(--brand-error);
   --font-sans: var(--font-cairo);
   --font-serif: var(--font-cormorant);
   --font-arabic: var(--font-cairo);
@@ -241,7 +260,7 @@ button,
   border-radius: 999px;
   padding: 0.7rem 1rem;
   background: rgba(242, 193, 107, 0.08);
-  color: #f2c16b;
+  color: var(--brand-gold);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.32em;
@@ -266,7 +285,7 @@ button,
 }
 
 .estate-primary-button {
-  background: linear-gradient(90deg, #f2c16b, #c68f43);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   color: #1f150d;
   font-weight: 700;
   box-shadow: 0 20px 38px rgba(198, 143, 67, 0.28);
@@ -801,7 +820,7 @@ button,
   font-weight: 700;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: #f2c16b;
+  color: var(--brand-gold);
   margin: 0;
 }
 
@@ -843,7 +862,7 @@ button,
 }
 
 .admin-field-required {
-  color: #f2c16b;
+  color: var(--brand-gold);
   margin-left: 0.2rem;
 }
 
@@ -898,7 +917,7 @@ button,
   align-items: center;
   gap: 0.5rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, #f2c16b, #c68f43);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   color: #1f150d;
   font-weight: 700;
   font-size: 0.8rem;
@@ -1040,9 +1059,9 @@ button,
 .admin-missing-media-upload-btn {
   flex-shrink: 0;
   border-radius: 999px;
-  border: 1px solid rgba(242,193,107,0.28);
-  background: rgba(242,193,107,0.08);
-  color: #f2c16b;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--brand-gold);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -1101,8 +1120,8 @@ button,
   min-width: 1.2rem;
   height: 1.2rem;
   border-radius: 999px;
-  background: rgba(242,193,107,0.16);
-  color: #f2c16b;
+  background: rgba(212, 175, 55, 0.16);
+  color: var(--brand-gold);
   font-size: 0.62rem;
   font-weight: 700;
   padding: 0 0.25rem;
@@ -1370,8 +1389,8 @@ button,
 }
 
 .admin-shell-button-primary {
-  border: 1px solid rgba(242, 193, 107, 0.75);
-  background: linear-gradient(90deg, #f2c16b, #ca9549);
+  border: 1px solid rgba(212, 175, 55, 0.75);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   color: #1d140d;
 }
 
@@ -1385,6 +1404,61 @@ button,
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: transparent;
   color: rgba(255, 255, 255, 0.74);
+}
+
+/* Premium Micro-Interactive Overrides */
+.admin-shell-button-primary:hover {
+  transform: translateY(-2.5px) scale(1.02) !important;
+  box-shadow: 0 4px 18px rgba(242, 193, 107, 0.25) !important;
+}
+
+.admin-shell-button-primary:active {
+  transform: translateY(0) scale(0.97) !important;
+}
+
+.admin-shell-nav-item:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+  border-color: rgba(242, 193, 107, 0.4) !important;
+  background: rgba(242, 193, 107, 0.05) !important;
+}
+
+.admin-shell-nav-item:active {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+/* Glassmorphism panel drawer overlay */
+.admin-shell-drawer-panel {
+  background: rgba(18, 15, 13, 0.8) !important;
+  backdrop-filter: blur(28px) !important;
+  border-left: 1px solid rgba(242, 193, 107, 0.15) !important;
+}
+
+/* High-priority leads pulse animation */
+@keyframes goldPulse {
+  0% { box-shadow: 0 0 0 0 rgba(242, 193, 107, 0.4); }
+  70% { box-shadow: 0 0 0 8px rgba(242, 193, 107, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(242, 193, 107, 0); }
+}
+
+.high-priority-lead-card {
+  animation: goldPulse 2s infinite !important;
+  border: 1px solid rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Custom Scrollbars for Platform */
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+::-webkit-scrollbar-track {
+  background: rgba(18, 15, 13, 0.5) !important;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(242, 193, 107, 0.2) !important;
+  border-radius: 4px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 193, 107, 0.4) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1478,14 +1552,14 @@ button,
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   padding: 0.85rem 1.2rem;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #1f150d;
-  box-shadow: 0 14px 32px rgba(183, 123, 47, 0.22);
+  box-shadow: 0 14px 32px rgba(197, 168, 128, 0.22);
   transition: transform 180ms ease, opacity 180ms ease;
 }
 
@@ -1528,7 +1602,7 @@ button,
 }
 
 .lang-switch-btn-active {
-  background: #dba14a;
+  background: var(--brand-gold);
   color: #20150d;
 }
 
@@ -1734,7 +1808,7 @@ button,
 }
 
 .public-search-input:focus {
-  border-color: #dba14a;
+  border-color: var(--brand-gold);
 }
 
 .public-popular-tags {
@@ -1759,7 +1833,7 @@ button,
 }
 
 .public-popular-tag:hover {
-  background: #dba14a;
+  background: var(--brand-gold);
   border-color: transparent;
   color: white;
 }
@@ -2132,7 +2206,7 @@ button,
 
 .site-public-shell .lead-form-submit {
   border-radius: 999px;
-  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   color: #1f150d;
   font-weight: 700;
   font-size: 0.85rem;
@@ -2171,10 +2245,10 @@ button,
 /* ── Public Button Overrides ──────────────────────────── */
 
 .site-public-shell .estate-primary-button {
-  background: linear-gradient(90deg, #e0ac58, #bb7d31);
+  background: linear-gradient(90deg, var(--brand-gold), var(--brand-sand));
   color: #1f150d;
   font-weight: 700;
-  box-shadow: 0 20px 38px rgba(183, 123, 47, 0.28);
+  box-shadow: 0 20px 38px rgba(197, 168, 128, 0.28);
 }
 
 .site-public-shell .estate-secondary-button {

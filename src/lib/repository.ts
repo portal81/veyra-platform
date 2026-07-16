@@ -89,8 +89,10 @@ function mergeFinishingPackage(item: FinishingPackage): FinishingPackage {
   };
 }
 
+let crmSeeded = false;
+
 async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerClient>) {
-  if (!supabase) {
+  if (!supabase || crmSeeded) {
     return;
   }
 
@@ -123,6 +125,8 @@ async function ensureCrmSeeded(supabase: ReturnType<typeof createSupabaseServerC
       throw new Error(seedActivitiesError.message);
     }
   }
+
+  crmSeeded = true;
 }
 
 function mergeSmartDevice(item: SmartDevice): SmartDevice {
@@ -1015,7 +1019,7 @@ export async function resolveHandoff(activityId: string, accepted: boolean) {
       .eq("id", activityId)
       .single();
     if (existing) {
-      const payload = { ...(typeof existing.body === "string" ? JSON.parse(existing.body) : existing.body), status: accepted ? "accepted" : "rejected" };
+      const payload = { ...(typeof existing.body === "string" ? (() => { try { return JSON.parse(existing.body); } catch { return {}; } })() : existing.body), status: accepted ? "accepted" : "rejected" };
       await supabase.from("lead_activities").update({ body: JSON.stringify(payload), kind }).eq("id", activityId);
     }
     return;
@@ -1024,7 +1028,10 @@ export async function resolveHandoff(activityId: string, accepted: boolean) {
   const idx = demoStore.leadActivities.findIndex((a) => a.id === activityId);
   if (idx !== -1) {
     const existing = demoStore.leadActivities[idx];
-    const payload = JSON.parse(existing.body);
+    let payload: Record<string, unknown> = {};
+    try {
+      payload = JSON.parse(existing.body);
+    } catch { /* fallback to empty */ }
     payload.status = accepted ? "accepted" : "rejected";
     demoStore.leadActivities[idx] = { ...existing, body: JSON.stringify(payload), kind };
   }

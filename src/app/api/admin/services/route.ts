@@ -15,14 +15,16 @@ export async function PATCH(request: Request) {
   if (guard.response) return guard.response;
 
   try {
-    const payload = (await request.json()) as ServiceCatalog;
-    const catalog = await updateServiceCatalog(payload);
+    const body = await request.json();
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
+      return NextResponse.json({ message: "Invalid services payload." }, { status: 400 });
+    }
+    const catalog = await updateServiceCatalog(body as ServiceCatalog);
     return NextResponse.json({
       message: "Service catalog updated successfully.",
       catalog,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to update services.";
-    return NextResponse.json({ message }, { status: 400 });
+    return NextResponse.json({ message: "Failed to update services." }, { status: 400 });
   }
 }

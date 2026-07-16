@@ -66,7 +66,7 @@ export function LayoutBlocksEditor({
               key={item.id}
               type="button"
               onClick={() => onChange([...items, { ...item, enabled: true }])}
-              className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs uppercase tracking-[0.16em] text-white/72 transition hover:border-[#f2c16b]/40 hover:bg-white/6"
+              className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs uppercase tracking-[0.16em] text-white/72 transition hover:border-brand-gold/40 hover:bg-white/6"
             >
               {t("Add", "إضافة")} {locale === "ar" ? item.label.ar || item.label.en || item.id : item.label.en || item.id}
             </button>
@@ -87,7 +87,7 @@ export function LayoutBlocksEditor({
             }}
             onDragEnd={() => setDraggingId(null)}
             className={`grid gap-4 rounded-[24px] border px-4 py-4 transition md:grid-cols-[1.3fr_auto_auto_auto] md:items-center ${
-              draggingId === item.id ? "border-[#f2c16b] bg-white/10" : "border-white/10 bg-black/20"
+              draggingId === item.id ? "border-brand-gold bg-white/10" : "border-white/10 bg-black/20"
             }`}
           >
             <div className="grid gap-2">
@@ -111,7 +111,7 @@ export function LayoutBlocksEditor({
               />
             </div>
             <label className={`inline-flex items-center justify-center gap-2 rounded-full border px-4 py-3 text-sm transition ${
-              item.enabled ? "border-[#f2c16b] bg-white/10 text-white" : "border-white/10 bg-black/25 text-white/60"
+              item.enabled ? "border-brand-gold bg-white/10 text-white" : "border-white/10 bg-black/25 text-white/60"
             }`}>
               <input type="checkbox" checked={item.enabled} onChange={(event) => onChange(items.map((entry) => (entry.id === item.id ? { ...entry, enabled: event.target.checked } : entry)))} />
               {item.enabled ? t("Visible", "ظاهر") : t("Hidden", "مخفي")}

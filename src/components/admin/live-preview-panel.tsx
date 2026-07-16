@@ -173,7 +173,7 @@ export function LivePreviewPanel({ settings, focusTarget, onClose }: LivePreview
                 setLoading(true);
               }}
               className={`rounded-lg px-3 py-1.5 text-xs font-medium transition ${
-                activePage === page.id ? "bg-[#f2c16b]/15 text-[#f2c16b]" : "text-white/50 hover:text-white/80"
+                activePage === page.id ? "bg-brand-gold/15 text-brand-gold" : "text-white/50 hover:text-white/80"
               }`}
             >
               {locale === "ar" ? page.labelAr : page.labelEn}
@@ -223,7 +223,7 @@ export function LivePreviewPanel({ settings, focusTarget, onClose }: LivePreview
           onClick={() => setFitToFrame((current) => !current)}
           className={`rounded-lg border px-2.5 py-1.5 text-xs transition ${
             fitToFrame
-              ? "border-[#f2c16b]/45 bg-[#f2c16b]/10 text-[#f2c16b]"
+              ? "border-brand-gold/45 bg-brand-gold/10 text-brand-gold"
               : "border-white/10 text-white/60 hover:text-white"
           }`}
         >
@@ -231,8 +231,8 @@ export function LivePreviewPanel({ settings, focusTarget, onClose }: LivePreview
         </button>
 
         {focusTarget ? (
-          <div className="flex items-center gap-2 rounded-xl border border-[#f2c16b]/20 bg-[#f2c16b]/8 px-3 py-1.5 text-xs text-white/80">
-            <span className="text-[#f2c16b]">{t("Editing", "أنت تعدّل")}</span>
+          <div className="flex items-center gap-2 rounded-xl border border-brand-gold/20 bg-brand-gold/8 px-3 py-1.5 text-xs text-white/80">
+            <span className="text-brand-gold">{t("Editing", "أنت تعدّل")}</span>
             <span className="font-medium text-white">{focusTarget.title}</span>
             {focusTarget.subtitle ? <span className="text-white/45">- {focusTarget.subtitle}</span> : null}
           </div>
@@ -313,7 +313,7 @@ export function LivePreviewPanel({ settings, focusTarget, onClose }: LivePreview
           </div>
         ) : (
           <div className="flex h-64 flex-col items-center justify-center gap-3 text-white/30">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-[#f2c16b]/30 border-t-[#f2c16b]" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-brand-gold/30 border-t-brand-gold" />
             <span className="text-sm">{t("Preparing preview...", "جارٍ تجهيز المعاينة...")}</span>
           </div>
         )}

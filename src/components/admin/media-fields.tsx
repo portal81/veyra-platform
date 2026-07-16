@@ -92,7 +92,7 @@ export function MediaDropzone({ label, value, onChange, helperText }: MediaDropz
           void handleFiles(event.dataTransfer.files);
         }}
         className={`rounded-[22px] border border-dashed p-4 transition ${
-          dragging ? "border-[#f2c16b] bg-[#f2c16b]/8" : "border-white/10 bg-black/25"
+          dragging ? "border-brand-gold bg-brand-gold/8" : "border-white/10 bg-black/25"
         }`}
       >
         <p className="text-sm text-white/72">
@@ -114,7 +114,7 @@ export function MediaDropzone({ label, value, onChange, helperText }: MediaDropz
         placeholder={t("Image URL", "رابط الصورة (URL)")}
       />
 
-      {status ? <p className="text-xs text-[#f2c16b]">{status}</p> : null}
+      {status ? <p className="text-xs text-brand-gold">{status}</p> : null}
     </div>
   );
 }
@@ -184,7 +184,7 @@ export function MediaGalleryField({ label, values, onChange, helperText }: Media
           void handleFiles(event.dataTransfer.files);
         }}
         className={`rounded-[22px] border border-dashed p-4 transition ${
-          dragging ? "border-[#f2c16b] bg-[#f2c16b]/8" : "border-white/10 bg-black/25"
+          dragging ? "border-brand-gold bg-brand-gold/8" : "border-white/10 bg-black/25"
         }`}
       >
         <p className="text-sm text-white/72">
@@ -229,7 +229,7 @@ export function MediaGalleryField({ label, values, onChange, helperText }: Media
         placeholder={t("Comma-separated image URLs", "عناوين صور مفصولة بفاصلة (,)")}
       />
 
-      {status ? <p className="text-xs text-[#f2c16b]">{status}</p> : null}
+      {status ? <p className="text-xs text-brand-gold">{status}</p> : null}
     </div>
   );
 }

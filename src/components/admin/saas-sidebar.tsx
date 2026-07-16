@@ -61,8 +61,9 @@ function navLabel(key: string, t: (en: string, ar: string) => string): string {
   const map: Record<string, [string, string]> = {
     dashboard:  ["Today dashboard",         "لوحة اليوم"],
     "site-map": ["Website Map",             "خريطة الموقع"],
-    builder:    ["Website Editor",          "محرر الموقع"],
+    "builder-visual": ["Veyra Visual Studio", "استوديو التصميم المرئي"],
     projects:   ["Projects",               "المشروعات"],
+    engineering: ["Engineering & CAD",      "الهندسة والعمليات"],
     services:   ["Services",               "الخدمات"],
     blog:       ["Blog Articles",          "مقالات المدونة"],
     leads:      ["Leads & Pipeline",       "العملاء وخط المتابعة"],
@@ -93,7 +94,8 @@ const NAV_GROUPS: NavGroup[] = [
       { href: "/admin/site-map", key: "site-map", icon: Map,              permission: "settings.manage" },
       { href: "/admin/settings", key: "builder",   icon: SquarePen,       permission: "settings.manage" },
       { href: "/admin/projects", key: "projects",  icon: BriefcaseBusiness, permission: "projects.view" },
-      { href: "/admin/services", key: "services",  icon: Wrench,           permission: "services.manage" },
+      { href: "/admin/engineering", key: "engineering", icon: Wrench,      permission: "projects.view" },
+      { href: "/admin/services", key: "services",  icon: Layers,           permission: "services.manage" },
       { href: "/admin/blog",     key: "blog",      icon: BookText,         permission: "blog.manage" },
     ],
   },
@@ -115,6 +117,7 @@ const LINK_PERMISSIONS: Record<string, PermissionKey> = {
   "/admin/site-map":  "settings.manage",
   "/admin/settings":  "settings.manage",
   "/admin/projects":  "projects.view",
+  "/admin/engineering": "projects.view",
   "/admin/services":  "services.manage",
   "/admin/blog":      "blog.manage",
   "/admin/leads":     "leads.view",
@@ -227,7 +230,7 @@ export function SaaSAdminSidebar() {
                         </span>
                       )}
                       {active && (
-                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f2c16b]" />
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand-gold" />
                       )}
                     </Link>
                   );
@@ -238,7 +241,7 @@ export function SaaSAdminSidebar() {
               {group.id === "crm" && (
                 <Link
                   href="/admin/leads"
-                  className="admin-shell-muted-card mt-2 flex items-center gap-2 rounded-2xl px-3.5 py-3 text-xs text-neutral-400 transition hover:border-[#f2c16b]/30 hover:text-[#f2c16b]"
+                  className="admin-shell-muted-card mt-2 flex items-center gap-2 rounded-2xl px-3.5 py-3 text-xs text-neutral-400 transition hover:border-brand-gold/30 hover:text-brand-gold"
                 >
                   <PlusCircle className="h-3.5 w-3.5" />
                   {t("New lead", "عميل جديد")}
@@ -260,7 +263,7 @@ export function SaaSAdminSidebar() {
               disabled={isPending}
               onClick={() => setLocale(lang)}
               className={`flex-1 rounded-xl py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                locale === lang ? "bg-[#f2c16b] text-black" : "text-neutral-400 hover:text-white"
+                locale === lang ? "bg-brand-gold text-black" : "text-neutral-400 hover:text-white"
               }`}
             >
               {lang}
@@ -271,7 +274,7 @@ export function SaaSAdminSidebar() {
         {/* User row */}
         {sessionUser && (
           <div className="admin-shell-panel mb-4 flex items-center gap-3 rounded-2xl px-3 py-3">
-            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f2c16b]/15 text-xs font-bold text-[#f2c16b]">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-gold/15 text-xs font-bold text-brand-gold">
               {sessionUser.fullName.charAt(0).toUpperCase()}
             </div>
             <div className="min-w-0 flex-1">
@@ -330,7 +333,7 @@ export function SaaSAdminMobileNav() {
             key={item.href}
             href={item.href}
             className={`relative flex flex-col items-center gap-1 px-4 py-2 text-[10px] font-medium transition ${
-              active ? "text-[#f2c16b]" : "text-neutral-500"
+              active ? "text-brand-gold" : "text-neutral-500"
             }`}
           >
             <div className="relative">

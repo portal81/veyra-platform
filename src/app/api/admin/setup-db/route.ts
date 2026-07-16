@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireAdminRoute } from "@/lib/admin-route";
 
 const SQL = `
 create table if not exists public.projects (
@@ -147,6 +148,9 @@ create table if not exists public.handoffs (
 `.trim();
 
 export async function GET() {
+  const guard = await requireAdminRoute("settings.manage");
+  if (guard.response) return guard.response;
+
   const { Client } = await import("pg");
 
   const dbUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -155,7 +159,7 @@ export async function GET() {
 
   if (!ref || !dbPass) {
     return NextResponse.json(
-      { error: "SUPABASE_DB_PASSWORD not set as env var on Vercel" },
+      { error: "Database password is not configured." },
       { status: 400 },
     );
   }
@@ -174,9 +178,8 @@ export async function GET() {
     await client.query(SQL);
     await client.end();
     return NextResponse.json({ success: true, message: "All tables created." });
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Unknown error";
+  } catch {
     try { await client.end(); } catch { /* noop */ }
-    return NextResponse.json({ error: message }, { status: 500 });
+    return NextResponse.json({ error: "Database setup failed. Check server logs." }, { status: 500 });
   }
 }

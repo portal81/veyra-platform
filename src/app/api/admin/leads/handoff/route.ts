@@ -5,7 +5,6 @@ import { createHandoff, resolveHandoff } from "@/lib/repository";
 
 const createSchema = z.object({
   leadId: z.string().min(1),
-  fromUserId: z.string().min(1),
   toUserId: z.string().min(1),
   note: z.string().optional().default(""),
 });
@@ -21,7 +20,7 @@ export async function POST(request: Request) {
 
   try {
     const payload = createSchema.parse(await request.json());
-    const result = await createHandoff(payload.leadId, payload.fromUserId, payload.toUserId, payload.note);
+    const result = await createHandoff(payload.leadId, guard.session!.userId, payload.toUserId, payload.note);
     return NextResponse.json(result);
   } catch (err) {
     if (err instanceof z.ZodError) {

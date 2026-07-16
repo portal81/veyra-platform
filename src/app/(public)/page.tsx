@@ -5,10 +5,15 @@ import { LeadForm } from "@/components/lead-form";
 import { SectionTitle } from "@/components/section-title";
 import { getProjects, getFinishingPackages, getSmartDevices } from "@/lib/repository";
 import { formatCurrency } from "@/lib/utils";
+import { getCurrentAdminLocale } from "@/lib/admin-locale-server";
+import { pickAdminText } from "@/lib/admin-locale";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
+  const locale = await getCurrentAdminLocale();
+  const t = (en: string, ar: string) => pickAdminText(locale, en, ar);
+
   const [projects, finishingPackages, smartDevices] = await Promise.all([
     getProjects(),
     getFinishingPackages(),
@@ -27,28 +32,28 @@ export default async function HomePage() {
         {signatureProject?.heroImage && (
           <img
             src={signatureProject.heroImage}
-            alt="Search Portal Backdrop"
+            alt={t("Search Portal Backdrop", "خلفية بوابة البحث")}
             className="public-hero-search-backdrop"
           />
         )}
         <div className="public-hero-search-overlay" />
         <div className="public-hero-search-content">
-          <h1 className="text-4xl font-bold md:text-6xl">Find Your Dream Property</h1>
+          <h1 className="text-4xl font-bold md:text-6xl">{t("Find Your Dream Property", "ابحث عن عقار أحلامك")}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-xl">
-            Discover the finest residential and commercial projects in Egypt with the best payment plans.
+            {t("Discover the finest residential and commercial projects in Egypt with the best payment plans.", "اكتشف أفضل المشاريع السكنية والتجارية في مصر مع أفضل خطط الدفع.")}
           </p>
           <div className="public-search-box mt-10">
             <input
               type="text"
-              placeholder={`Search for a project or area (e.g., New Cairo, Zayed)...`}
+              placeholder={t("Search for a project or area (e.g., New Cairo, Zayed)...", "ابحث عن مشروع أو منطقة (مثل: القاهرة الجديدة، الشيخ زايد)...")}
               className="public-search-input"
             />
             <Link href="/projects" className="estate-primary-button whitespace-nowrap !rounded-xl !px-10 !py-4 !text-lg">
-              Search Now
+              {t("Search Now", "ابحث الآن")}
             </Link>
           </div>
           <div className="public-popular-tags">
-            <span className="text-sm font-medium">Popular areas:</span>
+            <span className="text-sm font-medium">{t("Popular areas:", "مناطق رائجة:")}</span>
             {topLocations.map((loc) => (
               <Link key={loc} href={`/projects?location=${loc}`} className="public-popular-tag">
                 {loc}
@@ -62,18 +67,18 @@ export default async function HomePage() {
       <section className="public-section public-section-wide">
         <div className="estate-scene-shell">
           <SectionTitle
-            eyebrow="Service Architecture"
-            title="Three business lines with clearer movement and stronger visual distinction."
-            description="Each service behaves like its own premium product while the brand language stays unified."
+            eyebrow={t("Service Architecture", "هيكل الخدمات")}
+            title={t("Three business lines with clearer movement and stronger visual distinction.", "ثلاث خطوط أعمال بحركة أوضح وتمييز بصري أقوى.")}
+            description={t("Each service behaves like its own premium product while the brand language stays unified.", "كل خدمة تظهر كمنتج فاخر مستقل مع الحفاظ على لغة العلامة التجارية الموحدة.")}
           />
           <div className="estate-scene-rule" />
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {[
-            { href: "/projects", index: 1, title: "Projects", copy: "Scalable project listings, unit inventories, installment flows, and visit booking.", stat: "Residential + Mixed-use", link: "Open section" },
-            { href: "/finishing", index: 2, title: "Finishing", copy: "Package-driven finishing journeys with estimation logic and direct conversion points.", stat: "Three pricing tiers", link: "Open section" },
-            { href: "/smart-home", index: 3, title: "Smart Home", copy: "Device modules, setup journeys, and premium add-ons that extend the real-estate sale.", stat: "Consultation to install", link: "Open section" },
+            { href: "/projects", index: 1, title: t("Projects", "المشروعات"), copy: t("Scalable project listings, unit inventories, installment flows, and visit booking.", "قوائم مشروعات قابلة للتوسع، مخزون وحدات، خطط تقسيط، وحجز زيارات."), stat: t("Residential + Mixed-use", "سكني ومتعدد الاستخدامات"), link: t("Open section", "القسم المفتوح") },
+            { href: "/finishing", index: 2, title: t("Finishing", "التشطيب"), copy: t("Package-driven finishing journeys with estimation logic and direct conversion points.", "رحلات تشطيب مبنية على الباقات مع منطق تقدير ونقاط تحويل مباشرة."), stat: t("Three pricing tiers", "ثلاث فئات سعرية"), link: t("Open section", "القسم المفتوح") },
+            { href: "/smart-home", index: 3, title: t("Smart Home", "المنزل الذكي"), copy: t("Device modules, setup journeys, and premium add-ons that extend the real-estate sale.", "وحدات أجهزة ورحلات تجهيز وإضافات فاخرة تمتد البيع العقاري."), stat: t("Consultation to install", "من الاستشارة إلى التركيب"), link: t("Open section", "القسم المفتوح") },
           ].map((item) => (
             <Link key={item.href} href={item.href} className={`estate-service-card estate-service-card-${item.index} estate-service-card-editorial`}>
               <span className="estate-service-index">0{item.index}</span>
@@ -93,9 +98,9 @@ export default async function HomePage() {
         <section className="public-section public-section-wide">
           <div className="estate-portfolio-shell">
             <SectionTitle
-              eyebrow="Featured Projects"
-              title="Project cards now move like property showcases, not flat listing tiles."
-              description="Images, overlays, and metrics are staged to feel like premium real-estate placement."
+              eyebrow={t("Featured Projects", "المشروعات المميزة")}
+              title={t("Project cards now move like property showcases, not flat listing tiles.", "بطاقات المشروعات الآن تتحرك كمعارض عقارية وليس كقوائم مسطحة.")}
+              description={t("Images, overlays, and metrics are staged to feel like premium real-estate placement.", "الصور والطبقات والقياسات معروضة لإحساس بأجواء العرض العقاري الفاخر.")}
             />
           </div>
 
@@ -114,13 +119,13 @@ export default async function HomePage() {
                       <p className="text-sm uppercase tracking-[0.22em]" style={{ color: "#dba14a" }}>{project.category}</p>
                       <h3 className="font-serif text-4xl" style={{ color: "#241b13" }}>{project.name}</h3>
                     </div>
-                    <span className="estate-outline-pill">{project.units.length} unit types</span>
+                    <span className="estate-outline-pill">{project.units.length} {t("unit types", "أنواع وحدات")}</span>
                   </div>
                   <p className="text-base leading-8" style={{ color: "rgba(36,27,19,0.68)" }}>{project.description}</p>
                   <div className="grid gap-3 text-sm md:grid-cols-3" style={{ color: "rgba(36,27,19,0.68)" }}>
                     <div>{formatCurrency(project.startingPricePerMeter)} / m²</div>
-                    <div>Installments up to {project.installmentYears} years</div>
-                    <div>Mixed-use investment flow</div>
+                    <div>{t("Installments up to", "التقسيط حتى")} {project.installmentYears} {t("years", "سنوات")}</div>
+                    <div>{t("Mixed-use investment flow", "تدفق استثماري متعدد الاستخدامات")}</div>
                   </div>
                   <div className="estate-home-showcase-rail">
                     {project.units.slice(0, 3).map((unit) => (
@@ -137,7 +142,7 @@ export default async function HomePage() {
                   </div>
                   <div className="estate-pulse-line" />
                   <Link href={`/projects/${project.slug}`} className="estate-primary-button w-fit">
-                    View project details
+                    {t("View project details", "عرض تفاصيل المشروع")}
                   </Link>
                 </div>
               </article>
@@ -150,9 +155,9 @@ export default async function HomePage() {
       <section className="public-section public-section-wide grid gap-6 lg:grid-cols-2">
         <div className="grid gap-6">
           <SectionTitle
-            eyebrow="Installments"
-            title="Investment tools with controllable pricing logic."
-            description="Unit type, meter price, installment years, and down payment all come from admin-controlled settings."
+            eyebrow={t("Installments", "التقسيط")}
+            title={t("Investment tools with controllable pricing logic.", "أدوات استثمارية بمنطق تسعير قابل للتحكم.")}
+            description={t("Unit type, meter price, installment years, and down payment all come from admin-controlled settings.", "نوع الوحدة وسعر المتر وسنوات التقسيط ونسبة الدفع الأولي كلها من إعدادات الإدارة.")}
           />
           <div className="estate-tool-shell estate-tool-shell-atlas">
             <InstallmentCalculator />
@@ -160,9 +165,9 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-6">
           <SectionTitle
-            eyebrow="Finishing"
-            title="Package-driven finishing estimates."
-            description="Area, tier, and optional upgrades are editable from the admin builder."
+            eyebrow={t("Finishing", "التشطيب")}
+            title={t("Package-driven finishing estimates.", "تقديرات تشطيب مبنية على الباقات.")}
+            description={t("Area, tier, and optional upgrades are editable from the admin builder.", "المساحة والفئة والترقيات الاختيارية قابلة للتعديل من بيلدر الإدارة.")}
           />
           <div className="estate-tool-shell estate-tool-shell-atlas">
             <FinishingEstimator />
@@ -173,9 +178,9 @@ export default async function HomePage() {
       {/* ── Service Modules ──────────────────────────── */}
       <section className="public-section public-section-wide">
         <SectionTitle
-          eyebrow="Service Modules"
-          title="Complementary services are staged like premium upsells after the core property journey."
-          description="Finishing and smart-home modules carry the same visual polish while keeping their own product logic."
+          eyebrow={t("Service Modules", "الخدمات المكملة")}
+          title={t("Complementary services are staged like premium upsells after the core property journey.", "الخدمات المكملة معروضة كبيع إضافي فاخر بعد الرحلة العقارية الأساسية.")}
+          description={t("Finishing and smart-home modules carry the same visual polish while keeping their own product logic.", "وحدات التشطيب والمنزل الذكي تحمل نفس البصمة البصرية مع الحفاظ على منطق منتجها الخاص.")}
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <div className="grid gap-4">
@@ -216,17 +221,17 @@ export default async function HomePage() {
         <div className="mx-auto grid w-[min(1240px,calc(100%-1.5rem))] gap-8 lg:grid-cols-[0.82fr_1.18fr]">
           <div>
             <SectionTitle
-              eyebrow="Lead Capture"
-              title="A final conversion block tuned for luxury property journeys."
-              description="The form stays practical, but the closing section now feels like the last scene of a premium property funnel."
+              eyebrow={t("Lead Capture", "التقاط الطلبات")}
+              title={t("A final conversion block tuned for luxury property journeys.", "قسم تحويل أخير مُعد لرحلات العقارات الفاخرة.")}
+              description={t("The form stays practical, but the closing section now feels like the last scene of a premium property funnel.", "النموذج يبقى عمليًا، لكن القسم الختامي أصبح يشعرك بمشهد نهائي لمجرى عقاري فاخر.")}
             />
             <div className="estate-home-booking-list">
-              <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: "#dba14a" }}>Before you submit</p>
+              <p className="text-[11px] uppercase tracking-[0.26em]" style={{ color: "#dba14a" }}>{t("Before you submit", "قبل أن ترسل الطلب")}</p>
               <div className="mt-4 grid gap-3">
                 {[
-                  "Pick the right path first: projects, finishing, or smart home.",
-                  "The clearer the request, the faster the recommendation.",
-                  "Submit without commitment, then refine details with the team.",
+                  t("Pick the right path first: projects, finishing, or smart home.", "اختر المسار الصحيح أولًا: مشروعات، تشطيب، أو منزل ذكي."),
+                  t("The clearer the request, the faster the recommendation.", "كلما كان الطلب أوضح، كان التوصية أسرع."),
+                  t("Submit without commitment, then refine details with the team.", "أرسل بدون التزام، ثم عدّل التفاصيل مع الفريق."),
                 ].map((text, i) => (
                   <div key={i} className="estate-project-fit-row">
                     <span className="estate-project-fit-index">0{i + 1}</span>
@@ -247,10 +252,10 @@ export default async function HomePage() {
         <div className="public-section">
           <div className="mb-12 text-center">
             <h2 className="font-serif text-3xl font-bold md:text-5xl" style={{ color: "#241b13" }}>
-              Browse by Category
+              {t("Browse by Category", "تصفح حسب الفئة")}
             </h2>
             <p style={{ color: "rgba(36,27,19,0.6)" }}>
-              Browse a wide range of properties tailored to all your needs
+              {t("Browse a wide range of properties tailored to all your needs", "تصفح مجموعة واسعة من العقارات المخصصة لجميع احتياجاتك")}
             </p>
           </div>
           <div className="public-browse-grid">

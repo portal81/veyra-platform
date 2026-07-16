@@ -34,8 +34,7 @@ export async function POST(request: Request) {
     });
 
     return response;
-  } catch (error) {
-    const message = error instanceof Error ? error.message : "Could not sign in.";
-    return NextResponse.json({ message }, { status: 400 });
+  } catch {
+    return NextResponse.json({ message: "Invalid email or password." }, { status: 400 });
   }
 }

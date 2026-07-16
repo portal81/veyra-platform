@@ -15,14 +15,16 @@ export async function PATCH(request: Request) {
   if (guard.response) return guard.response;
 
   try {
-    const payload = (await request.json()) as Project[];
-    const projects = await updateProjectsCatalog(payload);
+    const body = await request.json();
+    if (!Array.isArray(body)) {
+      return NextResponse.json({ message: "Projects payload must be an array." }, { status: 400 });
+    }
+    const projects = await updateProjectsCatalog(body as Project[]);
     return NextResponse.json({
       message: "Projects catalog updated successfully.",
       projects,
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to update projects.";
-    return NextResponse.json({ message }, { status: 400 });
+    return NextResponse.json({ message: "Failed to update projects." }, { status: 400 });
   }
 }

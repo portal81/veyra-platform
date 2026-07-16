@@ -175,7 +175,7 @@ export function HazemBuilderAssistantRail({
   return (
     <aside className="sticky top-24 grid gap-4 rounded-[28px] border border-white/10 bg-[#0c0a09] p-4 shadow-[0_24px_48px_rgba(0,0,0,0.25)]">
       <div className="rounded-[22px] border border-white/10 bg-white/[0.04] p-4">
-        <p className="text-[11px] uppercase tracking-[0.24em] text-[#f2c16b]">
+        <p className="text-[11px] uppercase tracking-[0.24em] text-brand-gold">
           {t(locale, "Hazem assistant", "مساعد حازم")}
         </p>
         <h3 className="mt-3 font-serif text-2xl text-white">
@@ -202,7 +202,7 @@ export function HazemBuilderAssistantRail({
             type="button"
             onClick={() => setMode("admin")}
             className={`rounded-full px-3 py-2 text-xs transition ${
-              mode === "admin" ? "bg-[#f2c16b] text-[#1b140c]" : "border border-white/12 bg-black/30 text-white/72"
+              mode === "admin" ? "bg-brand-gold text-[#1b140c]" : "border border-white/12 bg-black/30 text-white/72"
             }`}
           >
             {t(locale, "Admin advisor", "مستشار الأدمن")}
@@ -211,7 +211,7 @@ export function HazemBuilderAssistantRail({
             type="button"
             onClick={() => setMode("website")}
             className={`rounded-full px-3 py-2 text-xs transition ${
-              mode === "website" ? "bg-[#f2c16b] text-[#1b140c]" : "border border-white/12 bg-black/30 text-white/72"
+              mode === "website" ? "bg-brand-gold text-[#1b140c]" : "border border-white/12 bg-black/30 text-white/72"
             }`}
           >
             {t(locale, "Sales copy", "كتابة المبيعات")}
@@ -253,7 +253,7 @@ export function HazemBuilderAssistantRail({
       </div>
 
       <div className="grid gap-3 rounded-[22px] border border-white/10 bg-black/20 p-4">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+        <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
           {t(locale, "Suggested prompts", "اقتراحات جاهزة")}
         </p>
         <div className="flex flex-wrap gap-2">
@@ -279,7 +279,7 @@ export function HazemBuilderAssistantRail({
                 className={`max-w-[94%] rounded-2xl border px-4 py-3 text-sm leading-7 ${
                   item.role === "assistant"
                     ? "justify-self-start border-white/10 bg-black/35 text-white/90"
-                    : "justify-self-end border-[#f2c16b]/30 bg-[#f2c16b]/10 text-[#f6ddb1]"
+                    : "justify-self-end border-brand-gold/30 bg-brand-gold/10 text-[#f6ddb1]"
                 }`}
               >
                 {item.content}
@@ -303,7 +303,7 @@ export function HazemBuilderAssistantRail({
           type="button"
           onClick={() => void sendMessage()}
           disabled={loading || !message.trim()}
-          className="rounded-2xl bg-gradient-to-r from-[#f2c16b] to-[#c68f43] px-4 py-3 text-sm font-semibold text-[#20160f] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-2xl bg-gradient-to-r from-brand-gold to-brand-gold-dark px-4 py-3 text-sm font-semibold text-[#20160f] transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? t(locale, "Hazem is thinking...", "حازم بيفكر الآن...") : t(locale, "Send to Hazem", "أرسل إلى حازم")}
         </button>

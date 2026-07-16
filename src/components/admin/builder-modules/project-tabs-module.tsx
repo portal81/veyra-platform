@@ -272,7 +272,7 @@ export function ProjectHighlightsTab({
     <div className="mt-6 grid gap-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2c16b]">{t("Highlights", "المميزات")}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-gold">{t("Highlights", "المميزات")}</p>
           <h3 className="mt-2 font-serif text-3xl text-white">{t("Project selling points", "نقاط قوة المشروع")}</h3>
         </div>
         <button
@@ -326,7 +326,7 @@ export function ProjectUnitsTab({
     <div className="mt-6 grid gap-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#f2c16b]">{t("Units", "الوحدات")}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-gold">{t("Units", "الوحدات")}</p>
           <h3 className="mt-2 font-serif text-3xl text-white">{t("Project units and pricing", "وحدات المشروع وتسعيرها")}</h3>
         </div>
         <button

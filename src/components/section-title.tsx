@@ -13,7 +13,7 @@ export function SectionTitle({
 }: SectionTitleProps) {
   return (
     <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
-      <p className="mb-3 text-xs font-semibold tracking-[0.28em] text-[#f2c16b] uppercase">
+      <p className="mb-3 text-xs font-semibold tracking-[0.28em] text-brand-gold uppercase">
         {eyebrow}
       </p>
       <h2 className="font-serif text-4xl leading-tight text-white md:text-5xl">{title}</h2>

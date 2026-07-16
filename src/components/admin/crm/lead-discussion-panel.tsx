@@ -79,7 +79,7 @@ export function LeadDiscussionPanel({ leadId, initialComments, users, currentUse
     <div className="admin-shell-panel scroll-mt-6 p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-[#f2c16b]">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-brand-gold">
             {locale === "ar" ? "نقاش الفريق" : "Team Discussion"}
           </p>
           <h2 className="mt-2 text-xl font-semibold text-white">
@@ -101,7 +101,7 @@ export function LeadDiscussionPanel({ leadId, initialComments, users, currentUse
                 key={comment.id}
                 className={`rounded-2xl border px-4 py-3 ${
                   isCurrentUser
-                    ? "border-[#f2c16b]/20 bg-[#f2c16b]/5 ml-8"
+                    ? "border-brand-gold/20 bg-brand-gold/5 ml-8"
                     : "border-white/8 bg-white/[3%] mr-8"
                 }`}
               >
@@ -144,7 +144,7 @@ export function LeadDiscussionPanel({ leadId, initialComments, users, currentUse
         <button
           type="submit"
           disabled={!body.trim() || sending}
-          className="shrink-0 rounded-xl bg-[#f2c16b] px-4 py-2.5 text-sm font-bold text-[#1f150d] transition hover:bg-[#e0b05a] disabled:opacity-40"
+          className="shrink-0 rounded-xl bg-brand-gold px-4 py-2.5 text-sm font-bold text-[#1f150d] transition hover:bg-[#e0b05a] disabled:opacity-40"
         >
           {sending
             ? locale === "ar" ? "..." : "..."

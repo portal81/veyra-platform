@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { useAdminLocale } from "@/components/admin/admin-locale-provider";
 
 export function AdminLoginForm({ devMode = false }: { devMode?: boolean }) {
@@ -20,7 +20,7 @@ export function AdminLoginForm({ devMode = false }: { devMode?: boolean }) {
   const effectiveEmail = useMemo(() => email || invitedEmail, [email, invitedEmail]);
 
   // Check dev mode availability on mount
-  useMemo(() => {
+  useEffect(() => {
     if (devMode) {
       setDevResult("available");
     } else if (devParam === "1" || devParam === "true") {
@@ -33,7 +33,7 @@ export function AdminLoginForm({ devMode = false }: { devMode?: boolean }) {
         .then((res) => setDevResult(res.ok ? "available" : "unavailable"))
         .catch(() => setDevResult("unavailable"));
     }
-  }, [devParam]);
+  }, [devMode, devParam]);
 
   function submit() {
     startTransition(async () => {

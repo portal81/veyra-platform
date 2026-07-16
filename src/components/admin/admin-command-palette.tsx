@@ -278,7 +278,7 @@ export function AdminCommandPalette() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`admin-shell-panel fixed bottom-4 ${launcherPositionClass} z-30 hidden rounded-full px-4 py-2 text-xs text-neutral-200 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition hover:border-[#f2c16b]/40 hover:text-white lg:block`}
+        className={`admin-shell-panel fixed bottom-4 ${launcherPositionClass} z-30 hidden rounded-full px-4 py-2 text-xs text-neutral-200 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition hover:border-brand-gold/40 hover:text-white lg:block`}
       >
         {locale === "ar" ? "بحث سريع" : "Quick Search"}{" "}
         <span className="text-neutral-500">Ctrl+K</span>
@@ -369,9 +369,9 @@ export function AdminCommandPalette() {
                       key={`ai-${item.id}`}
                       type="button"
                       onClick={() => handleAICommand(item)}
-                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:bg-[#f2c16b]/8"
+                      className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition hover:bg-brand-gold/8"
                     >
-                      <span className="flex h-6 w-6 items-center justify-center rounded-md border border-white/10 bg-black/20 text-[10px] text-[#f2c16b] font-bold">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md border border-white/10 bg-black/20 text-[10px] text-brand-gold font-bold">
                         AI
                       </span>
                       <div className="min-w-0 flex-1">
@@ -416,7 +416,7 @@ export function AdminCommandPalette() {
                         </p>
                       </div>
                       {pathname === item.href ? (
-                        <span className="shrink-0 text-[10px] text-[#f2c16b]">
+                        <span className="shrink-0 text-[10px] text-brand-gold">
                           {locale === "ar" ? "الحالية" : "Current"}
                         </span>
                       ) : null}
