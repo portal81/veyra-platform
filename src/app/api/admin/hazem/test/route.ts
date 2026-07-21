@@ -253,7 +253,6 @@ export async function POST(request: Request) {
     ]);
 
     const resolvedApiKey =
-      hazemAi.apiKey?.trim() ||
       (provider === "openai" ? process.env.OPENAI_API_KEY?.trim() : process.env.GROQ_API_KEY?.trim()) ||
       process.env.GROQ_API_KEY?.trim() ||
       "";

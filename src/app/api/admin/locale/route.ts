@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   response.cookies.set(adminLocaleCookieName, locale, {
     path: "/",
     sameSite: "lax",
-    httpOnly: false,
+    httpOnly: true,
     maxAge: 60 * 60 * 24 * 365,
   });
 

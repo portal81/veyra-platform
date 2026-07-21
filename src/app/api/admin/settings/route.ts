@@ -25,9 +25,17 @@ export async function PATCH(request: Request) {
 
   try {
     const body = await request.json();
-    if (!body || typeof body !== "object") {
+    if (!body || typeof body !== "object" || Array.isArray(body)) {
       return NextResponse.json({ message: "Invalid settings payload." }, { status: 400 });
     }
+
+    const disallowedKeys = ["id", "createdAt", "updatedAt"];
+    for (const key of disallowedKeys) {
+      if (key in body) {
+        return NextResponse.json({ message: `Field "${key}" cannot be set directly.` }, { status: 400 });
+      }
+    }
+
     const settings = await updateSiteSettings(body as SiteSettings);
     return NextResponse.json({
       message: "Settings updated successfully.",

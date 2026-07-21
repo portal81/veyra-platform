@@ -145,6 +145,19 @@ create table if not exists public.handoffs (
   "createdAt" timestamptz not null default now(),
   "resolvedAt" timestamptz
 );
+
+-- Performance indexes
+create index if not exists idx_leads_stage on public.leads("stage");
+create index if not exists idx_leads_created_at on public.leads("createdAt" desc);
+create index if not exists idx_lead_activities_lead_id on public.lead_activities("leadId");
+create index if not exists idx_lead_activities_kind on public.lead_activities("kind");
+create index if not exists idx_lead_activities_created_at on public.lead_activities("createdAt" desc);
+create index if not exists idx_units_project_id on public.units("project_id");
+create index if not exists idx_user_invitations_email on public.user_invitations("email");
+create index if not exists idx_user_invitations_status on public.user_invitations("status");
+create index if not exists idx_ai_chat_logs_session_id on public.ai_chat_logs("session_id");
+create index if not exists idx_entity_comments_thread_id on public.entity_comments("threadId");
+create index if not exists idx_handoffs_entity on public.handoffs("entityType", "entityId");
 `.trim();
 
 export async function GET() {

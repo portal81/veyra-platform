@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { getAdminSession } from "@/lib/admin-auth";
-import { hasPermission } from "@/lib/admin-session";
+import { requireAdminRoute } from "@/lib/admin-route";
 import { demoStore } from "@/lib/demo-store";
 import { getMarketingTrackingSettings, updateMarketingTrackingSettings } from "@/lib/repository";
 import type { MarketingTrackingSettings } from "@/lib/types";
@@ -39,11 +38,9 @@ const marketingTrackingSchema = z.object({
   updatedBy: z.string().optional(),
 });
 
-export async function GET(_request: NextRequest) {
-  const session = await getAdminSession();
-  if (!hasPermission(session, "tracking.manage")) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-  }
+export async function GET() {
+  const guard = await requireAdminRoute("tracking.manage");
+  if (guard.response) return guard.response;
 
   const fallbackSettings: MarketingTrackingSettings = {
     enableGTM: false,
@@ -67,10 +64,8 @@ export async function GET(_request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  const session = await getAdminSession();
-  if (!hasPermission(session, "tracking.manage")) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
-  }
+  const guard = await requireAdminRoute("tracking.manage");
+  if (guard.response) return guard.response;
 
   try {
     const body = await request.json();

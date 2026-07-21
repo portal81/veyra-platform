@@ -8,7 +8,7 @@ const schema = z.object({
 });
 
 export async function POST(request: Request) {
-  if (!isDevMode()) {
+  if (process.env.NODE_ENV === "production" || !isDevMode()) {
     return NextResponse.json({ message: "Dev mode is not enabled." }, { status: 403 });
   }
 
